@@ -1,0 +1,153 @@
+/* ==========================================================================
+   animations.css — 보이스피싱 헬스키친 B안
+   ========================================================================== */
+
+/* ── 헬파이어 시퀀스 ─────────────────────────────────────────────────── */
+
+/* ① burn — 주황→빨강 플래시 */
+@keyframes burn {
+  0%   { background-color: transparent; }
+  30%  { background-color: rgba(255,152,0,0.15); }
+  70%  { background-color: rgba(192,57,43,0.2);  }
+  100% { background-color: transparent; }
+}
+.fx-burn {
+  animation: burn 0.2s ease-in-out both;
+  will-change: background-color;
+}
+
+/* ② melt — 아래로 녹아내리기 */
+@keyframes melt {
+  0%   { transform: translateY(0)    scaleY(1)    ; filter: blur(0px); opacity: 1; }
+  40%  { transform: translateY(6px)  scaleY(0.97) ; filter: blur(2px); opacity: 0.9; }
+  100% { transform: translateY(18px) scaleY(0.9)  ; filter: blur(8px); opacity: 0.6; }
+}
+.fx-melt {
+  animation: melt 0.4s var(--ease-hell) forwards;
+  will-change: transform, filter, opacity;
+}
+
+/* ③ rise — 통과 시 위로 상승 */
+@keyframes rise {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(-24px); opacity: 0; }
+}
+.fx-rise {
+  animation: rise 0.6s var(--ease-hell) forwards;
+  will-change: transform, opacity;
+}
+
+/* ── 불꽃 파티클 ────────────────────────────────────────────────────── */
+.fire-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFD700 0%, #FF4500 50%, transparent 100%);
+  animation: hellParticle linear both;
+  will-change: transform, opacity;
+}
+@keyframes hellParticle {
+  0%   { transform: translateY(0)    scale(1);   opacity: 0.9; }
+  60%  { transform: translateY(-60px) scale(0.7); opacity: 0.6; }
+  100% { transform: translateY(-120px) scale(0);  opacity: 0; }
+}
+
+/* ── 금색 파티클 ────────────────────────────────────────────────────── */
+.gold-particle {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F7DC6F 0%, #F39C12 70%);
+  animation: goldShower linear both;
+  will-change: transform, opacity;
+}
+@keyframes goldShower {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(80px)  rotate(360deg);  opacity: 0; }
+}
+
+/* ── 삼지창 글로우 ──────────────────────────────────────────────────── */
+@keyframes tridentGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(192,57,43,0.8)) drop-shadow(0 0 25px rgba(192,57,43,0.4)); }
+  50%       { filter: drop-shadow(0 0 20px rgba(231,76,60,1))   drop-shadow(0 0 50px rgba(192,57,43,0.7)); }
+}
+.trident-glow {
+  animation: tridentGlow 2s ease-in-out infinite;
+}
+
+/* ── 파형 바 ─────────────────────────────────────────────────────────── */
+.waveform-bar {
+  fill: var(--color-primary);
+  filter: drop-shadow(0 0 4px var(--color-hot));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: waveIdle 1.8s ease-in-out infinite;
+}
+@keyframes waveIdle {
+  0%, 100% { transform: scaleY(1);    opacity: 0.6; }
+  50%       { transform: scaleY(0.3); opacity: 0.3; }
+}
+
+.waveform-bar-div {
+  flex: 1; min-width: 2px; max-width: 5px;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  transform-origin: center;
+  transition: height var(--dur-fast), background-color var(--dur-fast);
+}
+.waveform-bar-div.playing {
+  background-color: var(--color-current-spice);
+  animation: wavePlay 0.8s ease-in-out infinite;
+}
+@keyframes wavePlay {
+  0%, 100% { height: 6px; }
+  50%       { height: 28px; }
+}
+.waveform-bar-div.played { background-color: var(--color-text-muted); }
+
+/* ── CTA 버튼 맥동 (금색) ────────────────────────────────────────────── */
+@keyframes pulseGold {
+  0%   { box-shadow: 0 0 0 0   rgba(243,156,18,0.7); }
+  70%  { box-shadow: 0 0 0 14px rgba(243,156,18,0);  }
+  100% { box-shadow: 0 0 0 0   rgba(243,156,18,0);  }
+}
+.btn-pulse-gold { animation: pulseGold 1.8s ease-out infinite; }
+
+/* ── fadeIn 공통 ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn var(--dur-normal) var(--ease-snap) both; }
+
+/* ── 결과 오버레이 아이콘 팝 ─────────────────────────────────────────── */
+@keyframes iconPop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.result-overlay.show .result-icon          { animation: iconPop 0.4s var(--ease-bounce) both; }
+.result-overlay.show .result-overlay-inner { animation: fadeIn 0.35s var(--ease-snap) both; }
+
+/* ── 교육 카드 슬라이드 인 ───────────────────────────────────────────── */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.edu-card { animation: slideInUp var(--dur-normal) var(--ease-snap) both; }
+.edu-card:nth-child(1) { animation-delay: 0.05s; }
+.edu-card:nth-child(2) { animation-delay: 0.10s; }
+.edu-card:nth-child(3) { animation-delay: 0.15s; }
+.edu-card:nth-child(4) { animation-delay: 0.20s; }
+
+/* ── prefers-reduced-motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fx-burn, .fx-melt, .fx-rise,
+  .fire-particle, .gold-particle,
+  .trident-glow, .waveform-bar,
+  .waveform-bar-div.playing,
+  .btn-pulse-gold, .fade-in, .edu-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

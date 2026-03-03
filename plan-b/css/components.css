@@ -1,0 +1,213 @@
+/* ==========================================================================
+   components.css — 보이스피싱 헬스키친 B안
+   ========================================================================== */
+
+/* ── 공통 버튼 베이스 ────────────────────────────────────────────────── */
+.btn-order, .btn-choice {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; min-height: 52px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-main); font-weight: var(--fw-bold);
+  cursor: pointer; border: none;
+  transition: background-color var(--dur-fast), transform var(--dur-fast),
+              box-shadow var(--dur-fast), opacity var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  padding: var(--space-sm) var(--space-md);
+  text-align: center; position: relative; overflow: hidden;
+}
+.btn-order:active, .btn-choice:active { transform: scale(0.97); }
+
+/* ── 주문 CTA 버튼 (금색 테두리) ────────────────────────────────────── */
+.btn-order {
+  background: linear-gradient(135deg, #1a0808, #2a0d0d);
+  color: var(--color-gold);
+  font-size: var(--fs-lg); font-weight: var(--fw-black);
+  min-height: 56px;
+  border: 2px solid var(--color-gold);
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 20px rgba(243,156,18,0.25), inset 0 0 20px rgba(0,0,0,0.3);
+}
+.btn-order:hover { background: linear-gradient(135deg, #2a0d0d, #3a1010); box-shadow: 0 0 30px rgba(243,156,18,0.4); }
+
+/* ── 선택 버튼 공통 ──────────────────────────────────────────────────── */
+.btn-choice {
+  gap: var(--space-sm); text-align: left;
+  justify-content: flex-start;
+  min-height: 64px; padding: var(--space-md);
+  border: 1.5px solid transparent;
+  background-color: var(--color-bg-card);
+  font-size: var(--fs-sm);
+}
+.btn-choice.disabled, .btn-choice:disabled {
+  opacity: 0.4; cursor: not-allowed; pointer-events: none;
+}
+.choice-label {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; min-width: 32px;
+  border-radius: 50%; font-size: var(--fs-sm);
+  font-weight: var(--fw-black); flex-shrink: 0;
+}
+.choice-text {
+  font-size: var(--fs-sm); font-weight: var(--fw-medium);
+  line-height: 1.4; word-break: keep-all; color: var(--color-text);
+}
+
+/* ── A 버튼 — 위험(지옥맛) ──────────────────────────────────────────── */
+.btn-hell-choice { border-color: var(--color-primary); }
+.btn-hell-choice .choice-label-a { background-color: var(--color-primary); color: #fff; }
+.btn-hell-choice:hover:not(:disabled) { background-color: rgba(192,57,43,0.15); }
+
+/* ── B 버튼 — 안전(통과) ────────────────────────────────────────────── */
+.btn-survived-choice { border-color: var(--color-border); }
+.btn-survived-choice .choice-label-b { background-color: var(--color-border); color: var(--color-text-sub); }
+.btn-survived-choice:hover:not(:disabled) { background-color: rgba(255,255,255,0.04); }
+
+/* ── 맛 단계 배지 ────────────────────────────────────────────────────── */
+.spice-badge, .spice-badge-sm {
+  display: inline-flex; align-items: center;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.spice-badge { font-size: var(--fs-sm); }
+.spice-badge-sm { font-size: var(--fs-xs); }
+
+.spice-mild  { color: #FF9800; border-color: rgba(255,152,0,0.5);  background: rgba(255,152,0,0.1); }
+.spice-hot   { color: #E74C3C; border-color: rgba(231,76,60,0.5);  background: rgba(231,76,60,0.1); }
+.spice-fire  { color: #C0392B; border-color: rgba(192,57,43,0.5);  background: rgba(192,57,43,0.1); }
+.spice-hell  { color: #FF6B35; border-color: rgba(139,0,0,0.6);    background: rgba(139,0,0,0.15);
+               text-shadow: 0 0 8px rgba(255,107,53,0.6); }
+
+/* ── 메뉴 카드 (레스토랑 메뉴판 스타일) ──────────────────────────────── */
+.menu-card {
+  background: linear-gradient(145deg, #1a0808, #0f0404);
+  border: 1.5px solid var(--color-border-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex; flex-direction: column; gap: var(--space-sm);
+  position: relative; overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+}
+/* 상단 컬러 라인 (현재 맛 단계 컬러) */
+.menu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-current-spice), var(--color-gold), transparent);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.menu-card-header { display: flex; align-items: center; justify-content: space-between; }
+.menu-card-label {
+  font-size: var(--fs-xs); color: var(--color-gold);
+  font-weight: var(--fw-bold); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.menu-desc {
+  font-size: var(--fs-sm); color: var(--color-text-sub);
+  line-height: 1.7; word-break: keep-all; font-style: italic;
+}
+
+/* ── 재료(키워드) 배지 ────────────────────────────────────────────────── */
+.ingredients-grid { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.ingredient-item {
+  display: flex; flex-direction: column; gap: 2px;
+  background-color: rgba(243,156,18,0.08);
+  border: 1px solid rgba(243,156,18,0.25);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm); min-width: 80px;
+}
+.ingredient-label {
+  font-size: var(--fs-xs); color: var(--color-gold);
+  font-weight: var(--fw-bold); letter-spacing: 0.04em;
+}
+.ingredient-value {
+  font-size: var(--fs-sm); color: var(--color-text); font-weight: var(--fw-medium);
+  word-break: keep-all;
+}
+
+/* ── 영수증 스타일 ────────────────────────────────────────────────────── */
+.menu-result-item {
+  display: flex; align-items: center; gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px dashed var(--color-border);
+  font-family: monospace;
+}
+.item-spice { font-size: var(--fs-xs); min-width: 120px; }
+.item-name  { flex: 1; font-size: var(--fs-sm); color: var(--color-text-sub); }
+.item-result { font-size: 1rem; flex-shrink: 0; }
+.item-survived .item-name { color: var(--color-survived); }
+.item-hell     .item-name { color: var(--color-hot); }
+
+.menu-result-total {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-sm) 0; margin-top: var(--space-xs);
+}
+.total-label { font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--color-text-sub); }
+.total-score { font-size: var(--fs-lg); font-weight: var(--fw-black); color: var(--color-gold); }
+
+/* ── 교육 카드 ────────────────────────────────────────────────────────── */
+.edu-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex; flex-direction: column; gap: var(--space-sm);
+  position: relative; overflow: hidden;
+}
+.edu-card--hell {
+  border-color: rgba(192,57,43,0.5);
+}
+.edu-card--hell::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-hot));
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+.edu-card--survived {
+  border-color: rgba(39,174,96,0.35);
+}
+.edu-card--survived::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--color-survived);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+.edu-card-header {
+  display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap;
+}
+.edu-card-spice { font-size: var(--fs-xs); color: var(--color-text-muted); }
+.edu-card-badge {
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  padding: 2px var(--space-xs); border-radius: var(--radius-pill);
+}
+.badge-hell     { background: rgba(192,57,43,0.2); color: var(--color-hot); border: 1px solid rgba(192,57,43,0.4); }
+.badge-survived { background: rgba(39,174,96,0.15); color: var(--color-survived); border: 1px solid rgba(39,174,96,0.3); }
+.edu-card-choice {
+  display: flex; align-items: flex-start; gap: var(--space-xs);
+  font-size: var(--fs-sm); color: var(--color-text-sub); line-height: 1.5; word-break: keep-all;
+}
+.choice-tag {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: 50%; background: var(--color-border);
+  font-size: var(--fs-xs); font-weight: var(--fw-black); color: var(--color-text);
+  flex-shrink: 0; margin-top: 1px;
+}
+.edu-card-edu {
+  font-size: var(--fs-sm); color: var(--color-text-sub);
+  line-height: 1.7; word-break: keep-all;
+  padding-top: var(--space-xs); border-top: 1px solid var(--color-border);
+}
+.edu-card-response {
+  font-size: var(--fs-sm); color: var(--color-gold);
+  line-height: 1.6; word-break: keep-all;
+}
+
+/* ── 데스크톱 ─────────────────────────────────────────────────────────── */
+@media (min-width: 520px) {
+  #screen-menu-stage .stage-body,
+  #screen-receipt .receipt-page {
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    min-height: 100vh;
+  }
+}

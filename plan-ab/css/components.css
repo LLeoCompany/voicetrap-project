@@ -1,0 +1,214 @@
+/* ==========================================================================
+   components.css — 보이스피싱크홀 A+B 조합안
+   ========================================================================== */
+
+/* ── 공통 버튼 베이스 ────────────────────────────────────────────────── */
+.btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%;
+  border-radius: var(--radius-md);
+  font-family: var(--font-main); font-weight: var(--fw-bold);
+  cursor: pointer; border: none;
+  transition: background-color var(--dur-fast), transform var(--dur-fast),
+              box-shadow var(--dur-fast), opacity var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled, .btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── 시작 CTA 버튼 ────────────────────────────────────────────────────── */
+.btn-primary {
+  min-height: 56px;
+  padding: var(--space-md) var(--space-xl);
+  background: linear-gradient(135deg, #8B0000, var(--color-primary));
+  color: var(--color-text);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-black);
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(192,57,43,0.4);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary), #E74C3C);
+  box-shadow: 0 6px 28px rgba(192,57,43,0.55);
+}
+
+/* ── 싱크홀 선택 버튼 (#btn-a) ──────────────────────────────────────── */
+.btn-sink {
+  min-height: 64px;
+  padding: var(--space-md);
+  gap: var(--space-sm);
+  justify-content: flex-start;
+  text-align: left;
+  font-size: var(--fs-sm);
+  border: 1.5px solid var(--color-current);
+  background-color: var(--color-current-bg);
+  color: var(--color-text);
+  transition: background-color var(--dur-fast), border-color 0.4s, transform var(--dur-fast);
+}
+.btn-sink:hover:not(:disabled) {
+  background-color: rgba(192,57,43,0.15);
+}
+
+/* ── 탈출 선택 버튼 (#btn-b) ────────────────────────────────────────── */
+.btn-safe {
+  min-height: 64px;
+  padding: var(--space-md);
+  gap: var(--space-sm);
+  justify-content: flex-start;
+  text-align: left;
+  font-size: var(--fs-sm);
+  border: 1.5px solid var(--color-border-light);
+  background-color: rgba(255,255,255,0.03);
+  color: var(--color-text);
+}
+.btn-safe:hover:not(:disabled) {
+  background-color: rgba(255,255,255,0.06);
+}
+
+/* ── 선택 버튼 내부 레이블 ────────────────────────────────────────────── */
+.choice-label {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; min-width: 32px;
+  border-radius: 50%;
+  font-size: var(--fs-sm); font-weight: var(--fw-black);
+  flex-shrink: 0;
+}
+.choice-label-a {
+  background-color: var(--color-current);
+  color: #fff;
+  transition: background-color 0.4s;
+}
+.choice-label-b {
+  background-color: var(--color-border-light);
+  color: var(--color-text-sub);
+}
+.choice-text {
+  font-size: var(--fs-sm); font-weight: var(--fw-medium);
+  line-height: 1.4; word-break: keep-all; color: var(--color-text);
+}
+
+/* ── 맛 단계 배지 ────────────────────────────────────────────────────── */
+.spice-badge {
+  display: inline-flex; align-items: center;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  border: 1px solid currentColor;
+  white-space: nowrap;
+  background-color: var(--color-current-bg);
+  color: var(--color-current);
+  transition: color 0.4s, background-color 0.4s, border-color 0.4s;
+}
+
+/* ── 액션 버튼 (결과 화면 그리드) ──────────────────────────────────── */
+.btn-action {
+  min-height: 52px;
+  padding: var(--space-sm) var(--space-md);
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  gap: var(--space-xs);
+  flex-direction: column;
+  transition: background-color var(--dur-fast), transform var(--dur-fast);
+}
+.btn-action:hover { background-color: rgba(255,255,255,0.09); }
+.btn-action-icon { font-size: 1.25rem; }
+
+/* ── 재시작 버튼 ──────────────────────────────────────────────────────── */
+.btn-retry {
+  min-height: 52px;
+  padding: var(--space-sm) var(--space-xl);
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-sub);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+}
+.btn-retry:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ── 교육 카드 ────────────────────────────────────────────────────────── */
+.edu-card {
+  background-color: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex; flex-direction: column; gap: var(--space-sm);
+  position: relative; overflow: hidden;
+}
+.edu-card.edu-card--sink {
+  border-color: rgba(192,57,43,0.45);
+}
+.edu-card.edu-card--sink::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--color-primary), #8B0000);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.edu-card-header {
+  display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap;
+}
+.edu-card-spice { font-size: var(--fs-xs); color: var(--color-text-muted); }
+.edu-card-badge {
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  padding: 2px var(--space-xs); border-radius: var(--radius-pill);
+  background: rgba(192,57,43,0.18);
+  color: var(--color-primary);
+  border: 1px solid rgba(192,57,43,0.4);
+}
+
+.edu-card-choice {
+  display: flex; align-items: flex-start; gap: var(--space-xs);
+  font-size: var(--fs-sm); color: var(--color-text-sub);
+  line-height: 1.5; word-break: keep-all;
+}
+.choice-tag {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: 50%; background: var(--color-border);
+  font-size: var(--fs-xs); font-weight: var(--fw-black);
+  color: var(--color-text); flex-shrink: 0; margin-top: 1px;
+}
+
+.edu-card-damage {
+  font-size: var(--fs-sm); color: var(--color-text-sub);
+  line-height: 1.7; word-break: keep-all;
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border);
+}
+.edu-card-response {
+  font-size: var(--fs-sm); color: var(--color-gold);
+  line-height: 1.6; word-break: keep-all;
+}
+
+/* ── 섹션 레이블 ────────────────────────────────────────────────────── */
+.section-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+}
+
+/* ── 구분선 ────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  border: none;
+}

@@ -1,0 +1,197 @@
+/* ==========================================================================
+   animations.css — 보이스피싱크홀 A+B 조합안
+   ========================================================================== */
+
+/* ── 싱크홀 시퀀스 (A 선택) ──────────────────────────────────────────── */
+
+/* ① shake — 단계별 강도 */
+@keyframes shakeMild {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes shakeHot {
+  0%,100% { transform: translateX(0) translateY(0); }
+  15% { transform: translateX(-8px) translateY(-2px); }
+  35% { transform: translateX(8px)  translateY(2px); }
+  55% { transform: translateX(-7px) translateY(-1px); }
+  75% { transform: translateX(7px)  translateY(1px); }
+}
+@keyframes shakeFire {
+  0%,100% { transform: translateX(0) translateY(0) rotate(0); }
+  12% { transform: translateX(-10px) translateY(-3px) rotate(-0.5deg); }
+  30% { transform: translateX(10px)  translateY(3px)  rotate(0.5deg); }
+  50% { transform: translateX(-9px)  translateY(-2px) rotate(-0.3deg); }
+  70% { transform: translateX(9px)   translateY(2px)  rotate(0.3deg); }
+}
+@keyframes shakeHell {
+  0%,100% { transform: translateX(0) translateY(0) rotate(0); }
+  10% { transform: translateX(-14px) translateY(-4px) rotate(-1deg); }
+  25% { transform: translateX(14px)  translateY(4px)  rotate(1deg); }
+  45% { transform: translateX(-12px) translateY(-3px) rotate(-0.8deg); }
+  65% { transform: translateX(12px)  translateY(3px)  rotate(0.8deg); }
+  80% { transform: translateX(-10px) translateY(-2px) rotate(-0.5deg); }
+}
+
+.fx-shake-mild { animation: shakeMild 0.3s ease-in-out both; }
+.fx-shake-hot  { animation: shakeHot  0.3s ease-in-out both; }
+.fx-shake-fire { animation: shakeFire 0.3s ease-in-out both; }
+.fx-shake-hell { animation: shakeHell 0.35s ease-in-out both; }
+
+/* ② distort — rotate + blur + scale (단계별) */
+@keyframes distortMild {
+  0%   { transform: rotate(0) scale(1);    filter: blur(0px);  opacity: 1; }
+  50%  { transform: rotate(3deg) scale(0.97); filter: blur(2px); opacity: 0.95; }
+  100% { transform: rotate(6deg) scale(0.94); filter: blur(4px); opacity: 0.8; }
+}
+@keyframes distortHot {
+  0%   { transform: rotate(0) scale(1);     filter: blur(0px);  opacity: 1; }
+  50%  { transform: rotate(5deg) scale(0.96); filter: blur(4px); opacity: 0.9; }
+  100% { transform: rotate(10deg) scale(0.90); filter: blur(8px); opacity: 0.75; }
+}
+@keyframes distortFire {
+  0%   { transform: rotate(0) scale(1);      filter: blur(0px);   opacity: 1; }
+  50%  { transform: rotate(7deg) scale(0.95); filter: blur(6px);  opacity: 0.85; }
+  100% { transform: rotate(14deg) scale(0.88); filter: blur(12px); opacity: 0.65; }
+}
+@keyframes distortHell {
+  0%   { transform: rotate(0) scale(1);       filter: blur(0px);   opacity: 1; }
+  40%  { transform: rotate(10deg) scale(0.93); filter: blur(8px);  opacity: 0.8; }
+  100% { transform: rotate(20deg) scale(0.82); filter: blur(18px); opacity: 0.5; }
+}
+
+.fx-distort-mild { animation: distortMild 0.5s var(--ease-sink) forwards; will-change: transform, filter, opacity; }
+.fx-distort-hot  { animation: distortHot  0.5s var(--ease-sink) forwards; will-change: transform, filter, opacity; }
+.fx-distort-fire { animation: distortFire 0.5s var(--ease-sink) forwards; will-change: transform, filter, opacity; }
+.fx-distort-hell { animation: distortHell 0.6s var(--ease-sink) forwards; will-change: transform, filter, opacity; }
+
+/* ③ suck — 빨아들이기 */
+@keyframes suck {
+  0%   { transform: scale(1)    rotate(0);     opacity: 0.6; }
+  50%  { transform: scale(0.5)  rotate(180deg); opacity: 0.4; }
+  100% { transform: scale(0)    rotate(360deg); opacity: 0; }
+}
+.fx-suck {
+  animation: suck 0.4s var(--ease-sink) forwards;
+  will-change: transform, opacity;
+}
+
+/* ④ 안전 탈출 (B 선택) */
+@keyframes safeRise {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(-24px); opacity: 0; }
+}
+.fx-safe-rise {
+  animation: safeRise 0.5s var(--ease-snap) forwards;
+  will-change: transform, opacity;
+}
+
+/* ── 파티클 ───────────────────────────────────────────────────────────── */
+/* 금색 파티클 */
+@keyframes goldParticle {
+  0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(90px)  rotate(360deg); opacity: 0; }
+}
+.gold-particle {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F7DC6F 0%, #F39C12 70%);
+  animation: goldParticle linear both;
+  will-change: transform, opacity;
+}
+
+/* 흰색 파티클 (지옥맛 대폭발) */
+@keyframes whiteParticle {
+  0%   { transform: translate(0,0)  scale(1); opacity: 0.9; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+}
+.white-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFFFFF 0%, rgba(255,255,255,0) 100%);
+  animation: whiteParticle linear both;
+  will-change: transform, opacity;
+}
+
+/* ── 음파 파형 바 ────────────────────────────────────────────────────── */
+.waveform-bar-div {
+  flex: 1; min-width: 2px; max-width: 5px;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  transform-origin: center;
+  transition: height var(--dur-fast), background-color var(--dur-fast);
+}
+.waveform-bar-div.playing {
+  background-color: var(--color-current);
+  animation: wavePlay 0.8s ease-in-out infinite;
+}
+@keyframes wavePlay {
+  0%, 100% { height: 6px; }
+  50%       { height: 26px; }
+}
+.waveform-bar-div.played { background-color: var(--color-text-muted); }
+
+/* SVG 파형 바 (인트로) */
+.waveform-bar {
+  fill: var(--color-primary);
+  filter: drop-shadow(0 0 4px rgba(192,57,43,0.6));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: waveIdle 1.8s ease-in-out infinite;
+}
+@keyframes waveIdle {
+  0%, 100% { transform: scaleY(1);   opacity: 0.6; }
+  50%       { transform: scaleY(0.3); opacity: 0.3; }
+}
+
+/* ── 시작 버튼 맥동 ─────────────────────────────────────────────────── */
+@keyframes pulseRed {
+  0%   { box-shadow: 0 0 0 0   rgba(192,57,43,0.7); }
+  70%  { box-shadow: 0 0 0 14px rgba(192,57,43,0);  }
+  100% { box-shadow: 0 0 0 0   rgba(192,57,43,0);  }
+}
+.btn-pulse { animation: pulseRed 1.8s ease-out infinite; }
+
+/* ── fadeIn 공통 ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn var(--dur-normal) var(--ease-snap) both; }
+
+/* ── 결과 오버레이 아이콘 팝 ─────────────────────────────────────────── */
+@keyframes iconPop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  70%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.result-overlay.show .result-icon          { animation: iconPop 0.4s var(--ease-bounce) both; }
+.result-overlay.show .result-overlay-inner { animation: fadeIn 0.35s var(--ease-snap) both; }
+
+/* ── 교육 카드 슬라이드 인 ───────────────────────────────────────────── */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.edu-card { animation: slideInUp var(--dur-normal) var(--ease-snap) both; }
+.edu-card:nth-child(1) { animation-delay: 0.05s; }
+.edu-card:nth-child(2) { animation-delay: 0.10s; }
+.edu-card:nth-child(3) { animation-delay: 0.15s; }
+.edu-card:nth-child(4) { animation-delay: 0.20s; }
+
+/* ── prefers-reduced-motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fx-shake-mild, .fx-shake-hot, .fx-shake-fire, .fx-shake-hell,
+  .fx-distort-mild, .fx-distort-hot, .fx-distort-fire, .fx-distort-hell,
+  .fx-suck, .fx-safe-rise,
+  .gold-particle, .white-particle,
+  .waveform-bar, .waveform-bar-div.playing,
+  .btn-pulse, .fade-in, .edu-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,93 @@
+/* ==========================================================================
+   variables.css — 보이스피싱크홀 A+B 조합안
+   ========================================================================== */
+
+:root {
+  /* ── 기본 색상 ──────────────────────────────────────────────────────── */
+  --color-bg:           #0a0a0a;
+  --color-primary:      #C0392B;
+  --color-primary-dark: #8B0000;
+  --color-safe:         #27AE60;
+  --color-gold:         #F39C12;
+  --color-text:         #FFFFFF;
+  --color-text-sub:     #AAAAAA;
+  --color-text-muted:   #666666;
+  --color-border:       #2a2a2a;
+  --color-border-light: #3a3a3a;
+
+  /* ── 카드 배경 (단계별 점점 붉어짐) ─────────────────────────────────── */
+  --color-card-1: #161616;
+  --color-card-2: #1a0808;
+  --color-card-3: #1a0404;
+  --color-card-4: #120000;
+
+  /* ── 맛 단계 컬러 ──────────────────────────────────────────────────── */
+  --spice-1-color: #FF9800;
+  --spice-1-bg:    rgba(255,152,0,0.10);
+  --spice-2-color: #E74C3C;
+  --spice-2-bg:    rgba(231,76,60,0.10);
+  --spice-3-color: #C0392B;
+  --spice-3-bg:    rgba(192,57,43,0.10);
+  --spice-4-color: #8B0000;
+  --spice-4-bg:    rgba(139,0,0,0.15);
+  --spice-4-gold:  #F39C12;
+
+  /* ── 동적 단계 컬러 (JS로 매 단계마다 교체) ───────────────────────── */
+  --color-current:    #FF9800;
+  --color-current-bg: rgba(255,152,0,0.10);
+
+  /* ── 레이아웃 ────────────────────────────────────────────────────────── */
+  --max-width: 480px;
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+
+  /* ── 타이포그래피 ────────────────────────────────────────────────────── */
+  --font-main: 'Noto Sans KR', sans-serif;
+  --fs-xs:  clamp(10px, 2.5vw, 12px);
+  --fs-sm:  clamp(12px, 3vw,   14px);
+  --fs-base:clamp(14px, 3.5vw, 16px);
+  --fs-lg:  clamp(16px, 4vw,   18px);
+  --fs-xl:  clamp(18px, 4.5vw, 22px);
+  --fs-2xl: clamp(22px, 5.5vw, 28px);
+  --fs-3xl: clamp(28px, 7vw,   36px);
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+  --fw-black:   900;
+
+  /* ── 스페이싱 ────────────────────────────────────────────────────────── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl:48px;
+
+  /* ── 보더 반지름 ──────────────────────────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-pill: 999px;
+
+  /* ── 애니메이션 ──────────────────────────────────────────────────────── */
+  --dur-fast:   0.15s;
+  --dur-normal: 0.3s;
+  --dur-slow:   0.6s;
+  --ease-snap:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce:cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-sink:  cubic-bezier(0.55, 0, 1, 0.45);
+
+  /* ── 싱크홀 강도 변수 (SinkholeEffect.js에서 동적 주입) ─────────────── */
+  --shake-x:       8px;
+  --distort-angle: 6deg;
+  --blur-amount:   4px;
+
+  /* ── z-index 레이어 ───────────────────────────────────────────────────── */
+  --z-base:    1;
+  --z-overlay: 100;
+  --z-toast:   200;
+  --z-modal:   300;
+}

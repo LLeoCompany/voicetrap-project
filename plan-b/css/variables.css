@@ -1,0 +1,91 @@
+/* ==========================================================================
+   variables.css — 보이스피싱 헬스키친 B안
+   ========================================================================== */
+:root {
+  /* ── 컬러 ── */
+  --color-bg:        #0a0a0a;
+  --color-bg-card:   #1a0a0a;   /* 붉은 기운 카드 */
+  --color-bg-card2:  #120808;
+  --color-primary:   #C0392B;
+  --color-primary-d: #922b21;
+  --color-hot:       #E74C3C;
+  --color-hell:      #8B0000;   /* 지옥맛 딥레드 */
+  --color-gold:      #F39C12;   /* 금색 accent */
+  --color-gold-l:    #F7DC6F;   /* 금색 밝은 */
+  --color-survived:  #27AE60;   /* 통과 초록 */
+  --color-survived-d:#1e8449;
+  --color-text:      #FFFFFF;
+  --color-text-sub:  #CCCCCC;
+  --color-text-muted:#888888;
+  --color-border:    #3a1a1a;
+  --color-border-gold: rgba(243,156,18,0.4);
+  --color-overlay:   rgba(5, 0, 0, 0.92);
+
+  /* ── 맛 단계 컬러 ── */
+  --color-mild:   #FF9800;   /* 순한맛 주황 */
+  --color-hot2:   #E74C3C;   /* 매운맛 빨강 */
+  --color-fire:   #C0392B;   /* 불맛 다크레드 */
+  --color-hell2:  #8B0000;   /* 지옥맛 딥레드 */
+
+  /* 현재 활성 맛 컬러 (JS로 동적 교체) */
+  --color-current-spice: #FF9800;
+
+  /* ── 글로우 ── */
+  --glow-red:  rgba(192, 57, 43, 0.6);
+  --glow-hell: rgba(139, 0, 0, 0.8);
+  --glow-gold: rgba(243, 156, 18, 0.5);
+
+  /* ── 타이포그래피 ── */
+  --font-main: "Noto Sans KR", sans-serif;
+  --fs-hero:   clamp(2rem, 8vw, 3.5rem);
+  --fs-xl:     clamp(1.5rem, 5vw, 2.2rem);
+  --fs-lg:     clamp(1.1rem, 3.5vw, 1.5rem);
+  --fs-md:     clamp(0.95rem, 2.8vw, 1.1rem);
+  --fs-sm:     clamp(0.82rem, 2.2vw, 0.9rem);
+  --fs-xs:     0.74rem;
+  --fw-black:  900;
+  --fw-bold:   700;
+  --fw-medium: 500;
+
+  /* ── 레이아웃 ── */
+  --max-width:  480px;
+  --space-xs:   0.375rem;
+  --space-sm:   0.75rem;
+  --space-md:   1.25rem;
+  --space-lg:   2rem;
+  --space-xl:   3rem;
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-pill:9999px;
+
+  /* ── Safe Area ── */
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+
+  /* ── 애니메이션 ── */
+  --ease-snap:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-hell:   cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:    0.15s;
+  --dur-normal:  0.4s;
+  --dur-slow:    0.8s;
+  --dur-hell:    1.3s;
+  --dur-screen:  0.4s;
+
+  /* ── Z-index ── */
+  --z-screen:   10;
+  --z-progress: 50;
+  --z-overlay:  100;
+  --z-toast:    200;
+  --z-particle: 90;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms; --dur-normal: 0.01ms;
+    --dur-slow: 0.01ms; --dur-hell: 0.5s; --dur-screen: 0.01ms;
+  }
+}
