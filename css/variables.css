@@ -1,0 +1,83 @@
+/* ==========================================================================
+   variables.css — 보이스피싱크홀 캠페인
+   CSS Custom Properties 전역 정의
+   ========================================================================== */
+
+:root {
+  /* ── 컬러 ────────────────────────────────────────────────── */
+  --color-bg:          #0a0a0a;   /* 딥 블랙 배경 */
+  --color-bg-card:     #161616;   /* 카드/패널 배경 */
+  --color-bg-card2:    #1e1e1e;   /* 보조 카드 */
+  --color-primary:     #c0392b;   /* 다크 레드 (포인트) */
+  --color-primary-d:   #922b21;   /* 다크 레드 딥 */
+  --color-accent:      #e74c3c;   /* 브라이트 레드 */
+  --color-safe:        #27ae60;   /* 안전 초록 */
+  --color-safe-d:      #1e8449;   /* 안전 초록 딥 */
+  --color-text:        #ffffff;   /* 주 텍스트 */
+  --color-text-sub:    #aaaaaa;   /* 보조 텍스트 */
+  --color-text-muted:  #666666;   /* 흐린 텍스트 */
+  --color-border:      #2a2a2a;   /* 기본 테두리 */
+  --color-border-red:  #c0392b55; /* 빨간 테두리 (반투명) */
+  --color-overlay:     rgba(0, 0, 0, 0.85); /* 다크 오버레이 */
+  --color-glow-red:    rgba(192, 57, 43, 0.6);
+  --color-glow-safe:   rgba(39, 174, 96, 0.5);
+
+  /* ── 타이포그래피 ────────────────────────────────────────── */
+  --font-main:  "Noto Sans KR", sans-serif;
+  --fs-hero:    clamp(2.2rem, 8vw, 4rem);
+  --fs-xl:      clamp(1.6rem, 5vw, 2.4rem);
+  --fs-lg:      clamp(1.2rem, 3.5vw, 1.6rem);
+  --fs-md:      clamp(1rem, 2.8vw, 1.2rem);
+  --fs-sm:      clamp(0.85rem, 2.2vw, 0.95rem);
+  --fs-xs:      0.75rem;
+  --fw-black:   900;
+  --fw-bold:    700;
+  --fw-medium:  500;
+  --fw-regular: 400;
+
+  /* ── 레이아웃 ────────────────────────────────────────────── */
+  --max-width:  480px;
+  --space-xs:   0.375rem;
+  --space-sm:   0.75rem;
+  --space-md:   1.25rem;
+  --space-lg:   2rem;
+  --space-xl:   3rem;
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-pill: 9999px;
+
+  /* ── Safe Area (iPhone 노치 / Dynamic Island) ───────────── */
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+
+  /* ── 애니메이션 타이밍 ───────────────────────────────────── */
+  --ease-snap:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-sink:     cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:      cubic-bezier(0.0, 0, 0.2, 1);
+  --dur-fast:      0.15s;
+  --dur-normal:    0.4s;
+  --dur-slow:      0.8s;
+  --dur-sinkhole:  1.5s;   /* 싱크홀 전체 시퀀스 */
+  --dur-screen:    0.4s;   /* 화면 전환 */
+
+  /* ── Z-index ─────────────────────────────────────────────── */
+  --z-screen:   10;
+  --z-overlay:  100;
+  --z-toast:    200;
+  --z-progress: 50;
+}
+
+/* 접근성: 움직임 줄이기 설정 시 애니메이션 단축 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast:     0.01ms;
+    --dur-normal:   0.01ms;
+    --dur-slow:     0.01ms;
+    --dur-sinkhole: 0.5s;
+    --dur-screen:   0.01ms;
+  }
+}

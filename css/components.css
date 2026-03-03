@@ -1,0 +1,419 @@
+/* ==========================================================================
+   components.css — 보이스피싱크홀 캠페인
+   재사용 UI 컴포넌트 스타일
+   ========================================================================== */
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   버튼 시스템
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* 공통 버튼 베이스 */
+.btn-primary,
+.btn-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-main);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color var(--dur-fast),
+    transform        var(--dur-fast),
+    box-shadow       var(--dur-fast),
+    opacity          var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  /* iOS 최소 터치 타겟 48px 보장 */
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 터치 피드백 */
+.btn-primary:active,
+.btn-choice:active {
+  transform: scale(0.97);
+}
+
+/* ── 주 CTA 버튼 ──────────────────────────────────────────────────────── */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-black);
+  min-height: 56px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.4);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  box-shadow: 0 6px 24px rgba(231, 76, 60, 0.5);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-d);
+  box-shadow: none;
+}
+
+/* ── 선택 버튼 공통 ───────────────────────────────────────────────────── */
+.btn-choice {
+  gap: var(--space-sm);
+  text-align: left;
+  justify-content: flex-start;
+  min-height: 64px;
+  padding: var(--space-md);
+  border: 1.5px solid transparent;
+  background-color: var(--color-bg-card);
+}
+
+.btn-choice.disabled,
+.btn-choice:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 선택지 레이블 (A / B) */
+.choice-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-black);
+  flex-shrink: 0;
+}
+
+/* 선택지 텍스트 */
+.choice-text {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  word-break: keep-all;
+  color: var(--color-text);
+}
+
+/* ── A 버튼 — 위험 선택 (빨간 테두리) ──────────────────────────────────── */
+.btn-danger {
+  border-color: var(--color-primary);
+}
+
+.btn-danger .choice-label {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: rgba(192, 57, 43, 0.15);
+  border-color: var(--color-accent);
+}
+
+.btn-danger:active:not(:disabled) {
+  background-color: rgba(192, 57, 43, 0.25);
+}
+
+/* ── B 버튼 — 안전 선택 (회색 테두리) ──────────────────────────────────── */
+.btn-safe-choice {
+  border-color: var(--color-border);
+}
+
+.btn-safe-choice .choice-label {
+  background-color: var(--color-border);
+  color: var(--color-text-sub);
+}
+
+.btn-safe-choice:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-text-muted);
+}
+
+.btn-safe-choice:active:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   상황 카드 — .situation-card
+   ════════════════════════════════════════════════════════════════════════ */
+.situation-card {
+  position: relative;
+}
+
+/* 카드 상단 빨간 포인트 라인 */
+.situation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), transparent);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   키워드 배지 — .keyword-item
+   ════════════════════════════════════════════════════════════════════════ */
+.keyword-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background-color: rgba(192, 57, 43, 0.1);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  min-width: 80px;
+}
+
+.keyword-label {
+  font-size: var(--fs-xs);
+  color: var(--color-primary);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.keyword-value {
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  font-weight: var(--fw-medium);
+  word-break: keep-all;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   오디오 플레이어 — .audio-player
+   (layout.css에서 구조 정의, 여기서 세부 스타일)
+   ════════════════════════════════════════════════════════════════════════ */
+.audio-player {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 재생 중 글로우 효과 */
+.audio-player.playing {
+  border-color: rgba(192, 57, 43, 0.5);
+  box-shadow: 0 0 16px rgba(192, 57, 43, 0.15);
+}
+
+/* 오디오 버튼 글로우 (재생 중) */
+.audio-play-btn.playing {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 12px rgba(231, 76, 60, 0.6);
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   진행 바 — .progress-bar-wrap / .progress-bar
+   (layout.css에서 구조 정의됨)
+   ════════════════════════════════════════════════════════════════════════ */
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   결과 오버레이 — .result-overlay
+   (layout.css에서 구조 정의됨)
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* sink 타입 오버레이 배경 */
+.result-overlay.type-sink {
+  background-color: rgba(10, 0, 0, 0.94);
+}
+
+/* safe 타입 오버레이 배경 */
+.result-overlay.type-safe {
+  background-color: rgba(0, 10, 5, 0.94);
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   교육 카드 — .edu-card (최종 리포트)
+   ════════════════════════════════════════════════════════════════════════ */
+.edu-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+/* sink 카드 — 빨간 강조 */
+.edu-card--sink {
+  border-color: rgba(192, 57, 43, 0.5);
+}
+
+.edu-card--sink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+/* safe 카드 — 초록 강조 */
+.edu-card--safe {
+  border-color: rgba(39, 174, 96, 0.35);
+}
+
+.edu-card--safe::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-safe);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+/* 카드 헤더 행 */
+.edu-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.edu-card-stage {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+}
+
+.edu-card-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  flex: 1;
+}
+
+/* 통과/탈락 배지 */
+.edu-card-badge {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  padding: 2px var(--space-xs);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.badge-sink {
+  background-color: rgba(192, 57, 43, 0.2);
+  color: var(--color-accent);
+  border: 1px solid rgba(192, 57, 43, 0.4);
+}
+
+.badge-safe {
+  background-color: rgba(39, 174, 96, 0.15);
+  color: var(--color-safe);
+  border: 1px solid rgba(39, 174, 96, 0.3);
+}
+
+/* 선택한 내용 */
+.edu-card-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-size: var(--fs-sm);
+  color: var(--color-text-sub);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* 선택지 태그 (A/B) */
+.choice-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-black);
+  color: var(--color-text);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* 교육 내용 텍스트 */
+.edu-card-edu {
+  font-size: var(--fs-sm);
+  color: var(--color-text-sub);
+  line-height: 1.7;
+  word-break: keep-all;
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border);
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   원형 게이지 — .score-gauge-wrap
+   (layout.css에서 구조, 여기서 색상/세부)
+   ════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── 오디오 플레이 버튼 아이콘 전환 (opacity 방식, display:none 금지) ── */
+.audio-play-btn .icon-play  { opacity: 1;  transition: opacity var(--dur-fast); pointer-events: none; }
+.audio-play-btn .icon-pause { opacity: 0;  transition: opacity var(--dur-fast); pointer-events: none;
+                               position: absolute; }
+.audio-play-btn.playing .icon-play  { opacity: 0; }
+.audio-play-btn.playing .icon-pause { opacity: 1; }
+
+.audio-play-btn {
+  position: relative; /* icon-pause absolute 기준 */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   인트로 음파 파형 배경
+   ════════════════════════════════════════════════════════════════════════ */
+.waveform-svg {
+  /* 빨간 글로우 */
+  filter: drop-shadow(0 0 8px rgba(192, 57, 43, 0.8))
+          drop-shadow(0 0 20px rgba(192, 57, 43, 0.4));
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   금감원 배지
+   ════════════════════════════════════════════════════════════════════════ */
+.fss-badge {
+  opacity: 0.7;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════
+   데스크톱 중앙 정렬 컨테이너 테두리 (선택사항)
+   ════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 520px) {
+  #screen-stage .stage-body,
+  #screen-result .result-page {
+    border-left:  1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    min-height: 100vh;
+  }
+
+  #screen-start .start-content {
+    max-width: var(--max-width);
+  }
+}

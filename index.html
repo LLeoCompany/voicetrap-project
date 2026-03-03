@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>보이스피싱크홀 — 당신은 피할 수 있습니까?</title>
+  <meta name="description" content="금융감독원 보이스피싱 예방 캠페인. 실제 수법을 직접 체험하고 판단하세요." />
+
+  <!-- Google Fonts: Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       SCREEN 0 — 인트로
+       딥 블랙 + 빨간 음파 파형 + 타이핑 텍스트
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="screen-intro" class="screen active" role="main" aria-label="인트로 화면">
+
+    <!-- 배경 음파 파형 SVG -->
+    <div class="intro-waveform" aria-hidden="true">
+      <svg id="waveform-svg" class="waveform-svg" viewBox="0 0 360 120" preserveAspectRatio="none">
+        <!-- JS가 동적으로 bar 생성 -->
+      </svg>
+    </div>
+
+    <!-- 타이핑 효과 텍스트 -->
+    <div class="intro-content">
+      <p class="intro-text" id="intro-typing" aria-live="polite">
+        <!-- JS typeWriter 주입 -->
+      </p>
+      <p class="intro-sub">화면을 터치하면 시작됩니다</p>
+    </div>
+
+    <!-- 터치/클릭 전체 오버레이 -->
+    <button class="screen-tap-area" id="btn-intro-tap" aria-label="화면 터치하여 시작">
+      <span class="sr-only">화면을 터치하면 시작됩니다</span>
+    </button>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       SCREEN 1 — 시작 화면
+       싱크홀 배경 + 로고 + CTA
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="screen-start" class="screen" aria-label="시작 화면">
+
+    <!-- 배경 (에셋 입고 전: CSS 그라디언트 폴백) -->
+    <div class="start-bg" aria-hidden="true">
+      <div class="start-bg-overlay"></div>
+    </div>
+
+    <div class="start-content">
+      <!-- 스테이지 도트 인디케이터 (6개) -->
+      <div class="stage-dots" id="stage-dots-start" aria-label="6단계 중 진행 상황">
+        <span class="dot" data-stage="1" aria-label="1단계"></span>
+        <span class="dot" data-stage="2" aria-label="2단계"></span>
+        <span class="dot" data-stage="3" aria-label="3단계"></span>
+        <span class="dot" data-stage="4" aria-label="4단계"></span>
+        <span class="dot" data-stage="5" aria-label="5단계"></span>
+        <span class="dot" data-stage="6" aria-label="6단계"></span>
+      </div>
+
+      <!-- 로고 -->
+      <div class="start-logo" aria-label="보이스피싱크홀">
+        <span class="logo-white">보이스피</span><span class="logo-red">싱크홀</span>
+      </div>
+
+      <!-- 헤드라인 -->
+      <h1 class="start-headline">당신은 피할 수<br />있습니까?</h1>
+
+      <!-- 서브 카피 -->
+      <p class="start-sub">실제 보이스피싱 수법을 직접 체험하고<br />당신의 판단을 시험해 보세요</p>
+
+      <!-- CTA 버튼 -->
+      <button class="btn-primary btn-pulse" id="btn-start" aria-label="도전 시작">
+        지금 도전하기
+      </button>
+
+      <!-- 금감원 로고 -->
+      <div class="fss-badge">
+        <span class="fss-text">금융감독원 보이스피싱 예방 캠페인</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       SCREEN 2 — 스테이지 화면 (Stage 1~6 공통 재사용)
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="screen-stage" class="screen" aria-label="스테이지 화면">
+
+    <!-- 상단 고정: 스테이지 번호 + 진행 바 -->
+    <header class="stage-header" id="stage-header">
+      <div class="stage-meta">
+        <span class="stage-type" id="stage-type">은행 사칭형</span>
+        <span class="stage-number" id="stage-number">STAGE <strong>1</strong> / 6</span>
+      </div>
+      <div class="progress-bar-wrap" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <!-- 도트 인디케이터 -->
+      <div class="stage-dots stage-dots-sm" id="stage-dots-stage" aria-hidden="true">
+        <span class="dot" data-stage="1"></span>
+        <span class="dot" data-stage="2"></span>
+        <span class="dot" data-stage="3"></span>
+        <span class="dot" data-stage="4"></span>
+        <span class="dot" data-stage="5"></span>
+        <span class="dot" data-stage="6"></span>
+      </div>
+    </header>
+
+    <div class="stage-body">
+
+      <!-- 음성 플레이어 -->
+      <div class="audio-player" id="audio-player">
+        <button class="audio-play-btn" id="btn-audio-play" aria-label="음성 재생">
+          <svg class="icon-play" id="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+          </svg>
+          <svg class="icon-pause" id="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
+            <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="waveform-player" id="waveform-player" aria-hidden="true">
+          <!-- JS가 동적으로 파형 바 생성 -->
+        </div>
+        <span class="audio-label" id="audio-label">음성 재생 후 선택 가능합니다</span>
+      </div>
+
+      <!-- 상황 카드 -->
+      <div class="situation-card" id="situation-card">
+        <!-- 키워드 배지 그리드 -->
+        <div class="keywords-grid" id="keywords-grid">
+          <!-- JS 주입: .keyword-item × N -->
+        </div>
+        <!-- 상황 설명 텍스트 -->
+        <p class="situation-text" id="situation-text">
+          <!-- JS 주입 -->
+        </p>
+      </div>
+
+      <!-- A / B 선택 버튼 -->
+      <div class="choices" id="choices" aria-label="선택지">
+        <button class="btn-choice btn-danger" id="btn-a" disabled aria-label="A 선택">
+          <span class="choice-label">A</span>
+          <span class="choice-text" id="choice-a-text"><!-- JS 주입 --></span>
+        </button>
+        <button class="btn-choice btn-safe-choice" id="btn-b" disabled aria-label="B 선택">
+          <span class="choice-label">B</span>
+          <span class="choice-text" id="choice-b-text"><!-- JS 주입 --></span>
+        </button>
+      </div>
+
+    </div><!-- /stage-body -->
+
+    <!-- 결과 오버레이 (선택 직후 표시) -->
+    <div class="result-overlay" id="result-overlay" aria-live="assertive" aria-atomic="true">
+      <div class="result-overlay-inner">
+        <div class="result-icon" id="result-icon" aria-hidden="true">
+          <!-- sink: 싱크홀 아이콘 / safe: 체크 아이콘 (JS 주입) -->
+        </div>
+        <p class="result-feedback-text" id="result-feedback-text"><!-- JS 주입 --></p>
+        <div class="result-education" id="result-education">
+          <p class="edu-label">알고 계셨나요?</p>
+          <p class="edu-text" id="result-edu-text"><!-- JS 주입 --></p>
+        </div>
+        <p class="result-next-hint">잠시 후 다음 단계로 이동합니다...</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       SCREEN 3 — 최종 리포트
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="screen-result" class="screen" aria-label="최종 결과 화면">
+    <div class="result-page">
+
+      <!-- 상단 헤더 -->
+      <div class="result-header">
+        <p class="result-header-label">보이스피싱크홀 체험 결과</p>
+      </div>
+
+      <!-- 원형 점수 게이지 (SVG) -->
+      <div class="score-gauge-wrap" aria-label="최종 점수">
+        <svg class="score-gauge" id="score-gauge" viewBox="0 0 160 160" aria-hidden="true">
+          <!-- 배경 트랙 -->
+          <circle class="gauge-track" cx="80" cy="80" r="64" />
+          <!-- 진행 링 (JS 주입: stroke-dashoffset) -->
+          <circle class="gauge-progress" id="gauge-progress" cx="80" cy="80" r="64" />
+        </svg>
+        <div class="score-text" id="score-text">
+          <span class="score-num" id="score-num">0</span>
+          <span class="score-denom">/ 6</span>
+          <span class="score-label">통과</span>
+        </div>
+      </div>
+
+      <!-- 결과 메시지 -->
+      <div class="result-message" id="result-message">
+        <p class="result-msg-text" id="result-msg-text"><!-- JS 주입 --></p>
+      </div>
+
+      <!-- 수법별 교육 카드 -->
+      <div class="edu-section">
+        <h2 class="edu-section-title">단계별 체험 결과</h2>
+        <div class="edu-cards" id="edu-cards">
+          <!-- JS 동적 생성: .edu-card × 6 -->
+        </div>
+      </div>
+
+      <!-- 행동 유도 그리드 -->
+      <div class="action-section">
+        <h2 class="action-section-title">지금 바로 공유하고 경품에 응모하세요</h2>
+        <div class="action-grid" id="action-grid">
+
+          <!-- SNS 공유 -->
+          <button class="action-item" id="btn-share-kakao" aria-label="카카오톡 공유">
+            <div class="action-icon action-icon-kakao">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3C6.477 3 2 6.477 2 10.9c0 2.74 1.63 5.15 4.09 6.56L5.2 21l4.32-2.87c.81.14 1.64.21 2.48.21 5.523 0 10-3.477 10-7.9C22 6.477 17.523 3 12 3z" fill="currentColor"/>
+              </svg>
+            </div>
+            <span>카카오 공유</span>
+          </button>
+
+          <!-- URL 복사 -->
+          <button class="action-item" id="btn-share-url" aria-label="링크 복사">
+            <div class="action-icon action-icon-link">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span>링크 복사</span>
+          </button>
+
+          <!-- 경품 응모 -->
+          <button class="action-item action-item-highlight" id="btn-apply" aria-label="경품 응모">
+            <div class="action-icon action-icon-gift">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="8" width="18" height="4" rx="1" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M12 8v13M3 12h18M8 8a3 3 0 1 1 4-4M16 8a3 3 0 1 0-4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span>경품 응모</span>
+          </button>
+
+          <!-- 금감원 카드뉴스 -->
+          <a class="action-item" id="btn-cardnews" href="#" target="_blank" rel="noopener" aria-label="카드뉴스 보기">
+            <div class="action-icon action-icon-news">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span>카드뉴스</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- 재도전 버튼 -->
+      <button class="btn-retry" id="btn-retry" aria-label="처음부터 다시 도전">
+        다시 도전하기
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       토스트 메시지 (전역)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- 싱크홀 플래시 오버레이 (전역) -->
+  <div class="flash-overlay" id="flash-overlay" aria-hidden="true"></div>
+
+  <!-- 스크린리더 전용 -->
+  <span class="sr-only" id="sr-announce" aria-live="assertive"></span>
+
+
+  <!-- ════════════════════════════════════════════════════════
+       JS 모듈 (의존성 순서대로 로드)
+  ═══════════════════════════════════════════════════════════ -->
+  <script src="js/stages.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/AudioEngine.js"></script>
+  <script src="js/SinkholeEffect.js"></script>
+  <script src="js/ScoreTracker.js"></script>
+  <script src="js/StageManager.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
