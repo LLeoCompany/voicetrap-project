@@ -251,6 +251,27 @@
   /* ── DOMContentLoaded ──────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
 
+    /* ── 스크롤 힌트 — 클릭 시 맨 아래로, 최하단 도달 시 숨김 ── */
+    var failScreenIds = ['screen-step1-fail', 'screen-step2-fail', 'screen-step3-fail'];
+    failScreenIds.forEach(function (id) {
+      var screen = document.getElementById(id);
+      if (!screen) return;
+      var hint = screen.querySelector('.scroll-hint');
+      if (!hint) return;
+
+      /* 클릭 → 맨 아래로 스크롤 */
+      hint.addEventListener('click', function () {
+        screen.scrollTo({ top: screen.scrollHeight, behavior: 'smooth' });
+      });
+
+      /* 스크롤 → 최하단 근처면 숨김 */
+      screen.addEventListener('scroll', function () {
+        var remaining = screen.scrollHeight - screen.scrollTop - screen.clientHeight;
+        hint.style.opacity = remaining < 40 ? '0' : '';
+        hint.style.pointerEvents = remaining < 40 ? 'none' : '';
+      });
+    });
+
     /* ── SVG 이퀄라이저 생성 ── */
     createWaveBars('wave-step1');
     createWaveBars('wave-step2');

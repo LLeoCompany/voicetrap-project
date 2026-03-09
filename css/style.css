@@ -413,6 +413,55 @@ img {
   transform: translateX(-50%) translateY(0);
 }
 
+
+/* ==========================================================================
+   [공통] SCROLL HINT — 실패 페이지 스크롤 유도 화살표
+   ========================================================================== */
+
+.scroll-hint {
+  position: fixed;
+  bottom: calc(28px + var(--safe-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* fail 화면이 active 일 때만 표시 */
+#screen-step1-fail.active .scroll-hint,
+#screen-step2-fail.active .scroll-hint,
+#screen-step3-fail.active .scroll-hint {
+  opacity: 1;
+}
+
+/* 화살표 — 두 개 겹쳐서 이중 쉐브론 */
+.scroll-hint-arrow {
+  width: 16px;
+  height: 16px;
+  border-right: 2.5px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 2.5px solid rgba(255, 255, 255, 0.85);
+  transform: rotate(45deg);
+  animation: scroll-bounce 1.1s ease-in-out infinite;
+}
+.scroll-hint-arrow:nth-child(2) {
+  animation-delay: 0.18s;
+  opacity: 0.5;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: rotate(45deg) translate(0, 0);   opacity: 1;   }
+  50%        { transform: rotate(45deg) translate(4px, 4px); opacity: 0.6; }
+}
+
 /* ==========================================================================
    [INTRO1]  #screen-intro1
    이미지: image/intro1/pc.png (1920×1080) / mo.png (390×844)
