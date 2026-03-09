@@ -7,6 +7,7 @@
    │                                                                           │
    │  [전역]          Reset · Variables · App · Screen 전환 · Toast            │
    │  [공통]          page-canvas · page-img · btn-pos · btn-tap-all           │
+   │  [공통-애니]     phone-wave(음파) · ticker-overlay(빨간글자슬라이드)         │
    │  [INTRO1]        #screen-intro1                                           │
    │  [INTRO2]        #screen-intro2                                           │
    │  [MAIN]          #screen-main                                             │
@@ -209,6 +210,191 @@ img {
   border: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ==========================================================================
+   [공통-애니] PHONE WAVE — 음파 오버레이 (step1·2·3 공통)
+   폰 화면 위에 position:absolute 로 올려서 정적 이미지를 덮고 애니메이션 표시
+   ─────────────────────────────────────────────────────────────────────────
+   위치 좌표: 이미지 기준 % (step1/2/3 동일 레이아웃이므로 공통 적용)
+   ========================================================================== */
+
+/* 폰 화면 오버레이 컨테이너 */
+.phone-wave {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050505;          /* 폰 화면 색 — 정적 이미지 위에 덮음 */
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* 웨이브 바 (JS가 생성) */
+.wave-bar {
+  flex: 1;
+  border-radius: 2px;
+  min-height: 3px;
+  animation: wave-bounce 1.1s ease-in-out infinite;
+}
+
+/* 재생/정지 버튼 */
+.wave-play-btn {
+  position: absolute;
+  z-index: 3;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.93);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(220, 50, 50, 0.7);
+  transition: transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.wave-play-btn:active { transform: scale(0.88); }
+
+/* 재생 아이콘 (삼각형) */
+.wave-play-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent transparent #c0392b;
+  margin-left: 3px;
+}
+
+/* 일시정지 아이콘 (두 막대) — .playing 클래스 토글 */
+.wave-play-btn.playing .wave-play-icon {
+  width: 11px;
+  height: 14px;
+  border: none;
+  margin-left: 0;
+  background: linear-gradient(
+    to right,
+    #c0392b 0 35%,
+    transparent 35% 65%,
+    #c0392b 65% 100%
+  );
+  border-radius: 1px;
+}
+
+/* ─── MOBILE (≤ 768px) · 캔버스 390×844 ───
+   폰 화면 좌표: top 205/844, left 38/390, width 314/390, height 90/844
+   ※ 이미지 확인 후 수치 조정 필요 */
+@media (max-width: 768px) {
+  .phone-wave {
+    top:    24.3%;   /* 205 / 844 */
+    left:    9.7%;   /* 38  / 390 */
+    width:  80.5%;   /* 314 / 390 */
+    height: 10.7%;   /* 90  / 844 */
+    padding: 0 8px;
+    gap: 2px;
+  }
+  .wave-play-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .wave-play-icon {
+    border-width: 7px 0 7px 13px;
+  }
+}
+
+/* ─── DESKTOP (≥ 769px) · 캔버스 1920×1080 ───
+   폰 화면 좌표: top 195/1080, left 590/1920, width 740/1920, height 150/1080
+   ※ 이미지 확인 후 수치 조정 필요 */
+@media (min-width: 769px) {
+  .phone-wave {
+    top:    18.1%;   /* 195 / 1080 */
+    left:   30.7%;   /* 590 / 1920 */
+    width:  38.5%;   /* 740 / 1920 */
+    height: 13.9%;   /* 150 / 1080 */
+    padding: 0 14px;
+    gap: 3px;
+  }
+  .wave-play-btn {
+    width: 52px;
+    height: 52px;
+  }
+  .wave-play-icon {
+    border-width: 9px 0 9px 16px;
+  }
+}
+
+
+/* ==========================================================================
+   [공통-애니] TICKER OVERLAY — 빨간 글자 슬라이드 (step1·2·3 공통)
+   이미지 안 빨간 글자 밴드 위에 덮어서 스크롤 텍스트 표시
+   ========================================================================== */
+
+.ticker-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.82);  /* 정적 이미지 글자를 덮는 배경 */
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 22s linear infinite;
+}
+
+.ticker-text {
+  font-style: italic;
+  font-weight: 700;
+  color: #e02020;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 8px rgba(200, 0, 0, 0.5);
+}
+
+/* ─── MOBILE ───
+   티커 밴드: top 342/844 = 40.6%, height 28px */
+@media (max-width: 768px) {
+  .ticker-overlay {
+    top:    40.6%;   /* 342 / 844 */
+    height: 28px;
+  }
+  .ticker-text {
+    font-size: 0.72rem;
+    padding-right: 60px;
+  }
+}
+
+/* ─── DESKTOP ───
+   티커 밴드: top 355/1080 = 32.9%, height 38px */
+@media (min-width: 769px) {
+  .ticker-overlay {
+    top:    32.9%;   /* 355 / 1080 */
+    height: 38px;
+  }
+  .ticker-text {
+    font-size: 0.92rem;
+    padding-right: 100px;
+  }
+}
+
+
+/* ==========================================================================
+   [공통-애니] KEYFRAMES
+   ========================================================================== */
+
+@keyframes wave-bounce {
+  0%, 100% { transform: scaleY(0.25); }
+  50%       { transform: scaleY(1);   }
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0);    }
+  100% { transform: translateX(-50%); }
 }
 
 

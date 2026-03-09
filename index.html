@@ -35,7 +35,6 @@
             <source media="(max-width: 768px)" srcset="image/intro1/mo.png" />
             <img src="image/intro1/pc.png" alt="" class="page-img" draggable="false" />
           </picture>
-          <!-- 전체 탭 -->
           <button class="btn-tap-all" id="btn-intro1-next" aria-label="다음으로">
             <span class="sr-only">화면을 터치하면 다음으로 이동합니다</span>
           </button>
@@ -70,7 +69,6 @@
             <source media="(max-width: 768px)" srcset="image/main/mo.png" />
             <img src="image/main/pc.png" alt="" class="page-img" draggable="false" />
           </picture>
-          <!-- 시작 버튼 — 이미지 위 투명 오버레이, 위치는 CSS에서 지정 -->
           <button class="btn-pos" id="btn-main-start" aria-label="도전 시작하기">
             <span class="sr-only">도전 시작하기</span>
           </button>
@@ -80,8 +78,8 @@
 
       <!-- ============================================================
            STEP 1  (#screen-step1)
-           선택 A → #screen-step1-suc
-           선택 B → #screen-step1-fail
+           선택 A (#btn-step1-a) → #screen-step1-suc
+           선택 B (#btn-step1-b) → #screen-step1-fail
       ============================================================ -->
       <section id="screen-step1" class="screen">
         <div class="page-canvas">
@@ -89,11 +87,29 @@
             <source media="(max-width: 768px)" srcset="image/step1/mo.png" />
             <img src="image/step1/pc.png" alt="" class="page-img" draggable="false" />
           </picture>
-          <button class="btn-pos btn-step1-a" id="btn-step1-a" aria-label="선택 A">
-            <span class="sr-only">선택 A</span>
+
+          <!-- 음파 오버레이 — 폰 화면 위 -->
+          <div class="phone-wave" id="wave-step1">
+            <!-- JS가 .wave-bar 생성 -->
+            <button class="wave-play-btn" id="btn-step1-play" aria-label="음성 재생/정지" aria-pressed="false">
+              <span class="wave-play-icon"></span>
+            </button>
+          </div>
+
+          <!-- 빨간 글자 티커 오버레이 -->
+          <div class="ticker-overlay" aria-hidden="true">
+            <div class="ticker-track">
+              <span class="ticker-text">"있으시죠? 지금부터 절차대로 진행합니다." &nbsp;……&nbsp; "아시면 안다, 모르시면 모른다. 간단하면 진술하세요." &nbsp;……&nbsp; "현 시간부로 약식 조치 진행하겠습니다." &nbsp;……&nbsp; "불필요한 질문 하지 마시고, 질문은 제가 안내한 다음에 하세요." &nbsp;……&nbsp; "전 서울중앙지검 합동수사… 박영도 수사관" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span class="ticker-text">"있으시죠? 지금부터 절차대로 진행합니다." &nbsp;……&nbsp; "아시면 안다, 모르시면 모른다. 간단하면 진술하세요." &nbsp;……&nbsp; "현 시간부로 약식 조치 진행하겠습니다." &nbsp;……&nbsp; "불필요한 질문 하지 마시고, 질문은 제가 안내한 다음에 하세요." &nbsp;……&nbsp; "전 서울중앙지검 합동수사… 박영도 수사관" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+          </div>
+
+          <!-- 선택 버튼 -->
+          <button class="btn-pos btn-step1-a" id="btn-step1-a" aria-label="수사관의 안내에 따라 절차를 진행한다">
+            <span class="sr-only">수사관의 안내에 따라 절차를 진행한다</span>
           </button>
-          <button class="btn-pos btn-step1-b" id="btn-step1-b" aria-label="선택 B">
-            <span class="sr-only">선택 B</span>
+          <button class="btn-pos btn-step1-b" id="btn-step1-b" aria-label="전화를 끊고 공식 기관 번호로 직접 확인한다">
+            <span class="sr-only">전화를 끊고 공식 기관 번호로 직접 확인한다</span>
           </button>
         </div>
       </section>
@@ -135,8 +151,8 @@
 
       <!-- ============================================================
            STEP 2  (#screen-step2)
-           선택 A → #screen-step2-suc
-           선택 B → #screen-step2-fail
+           선택 A (#btn-step2-a) → #screen-step2-suc
+           선택 B (#btn-step2-b) → #screen-step2-fail
       ============================================================ -->
       <section id="screen-step2" class="screen">
         <div class="page-canvas">
@@ -144,11 +160,28 @@
             <source media="(max-width: 768px)" srcset="image/step2/mo.png" />
             <img src="image/step2/pc.png" alt="" class="page-img" draggable="false" />
           </picture>
-          <button class="btn-pos btn-step2-a" id="btn-step2-a" aria-label="선택 A">
-            <span class="sr-only">선택 A</span>
+
+          <!-- 음파 오버레이 -->
+          <div class="phone-wave" id="wave-step2">
+            <button class="wave-play-btn" id="btn-step2-play" aria-label="음성 재생/정지" aria-pressed="false">
+              <span class="wave-play-icon"></span>
+            </button>
+          </div>
+
+          <!-- 티커 오버레이 -->
+          <div class="ticker-overlay" aria-hidden="true">
+            <div class="ticker-track">
+              <span class="ticker-text">"금융기관을 말씀해 주십시오." &nbsp;……&nbsp; "신용 예금은 있으십니까?" &nbsp;……&nbsp; "계좌 잔액은 얼마입니까?" &nbsp;……&nbsp; "피해자 보호 조사를 받으셔야 합니다." &nbsp;……&nbsp; "피해자 보호등록이라는 제도가 있습니다." &nbsp;……&nbsp; "국가에서 보상해주는 제도입니다." &nbsp;……&nbsp; "보호를 받으시려면 지금 바로 이체하셔야 합니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span class="ticker-text">"금융기관을 말씀해 주십시오." &nbsp;……&nbsp; "신용 예금은 있으십니까?" &nbsp;……&nbsp; "계좌 잔액은 얼마입니까?" &nbsp;……&nbsp; "피해자 보호 조사를 받으셔야 합니다." &nbsp;……&nbsp; "피해자 보호등록이라는 제도가 있습니다." &nbsp;……&nbsp; "국가에서 보상해주는 제도입니다." &nbsp;……&nbsp; "보호를 받으시려면 지금 바로 이체하셔야 합니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+          </div>
+
+          <!-- 선택 버튼 -->
+          <button class="btn-pos btn-step2-a" id="btn-step2-a" aria-label="일단 전화를 끊는다">
+            <span class="sr-only">일단 전화를 끊는다</span>
           </button>
-          <button class="btn-pos btn-step2-b" id="btn-step2-b" aria-label="선택 B">
-            <span class="sr-only">선택 B</span>
+          <button class="btn-pos btn-step2-b" id="btn-step2-b" aria-label="안전계좌로 자금 보호 요청에 동의한다">
+            <span class="sr-only">안전계좌로 자금 보호 요청에 동의한다</span>
           </button>
         </div>
       </section>
@@ -190,8 +223,8 @@
 
       <!-- ============================================================
            STEP 3  (#screen-step3)
-           선택 A → #screen-step3-suc
-           선택 B → #screen-step3-fail
+           선택 A (#btn-step3-a) → #screen-step3-suc
+           선택 B (#btn-step3-b) → #screen-step3-fail
       ============================================================ -->
       <section id="screen-step3" class="screen">
         <div class="page-canvas">
@@ -199,11 +232,28 @@
             <source media="(max-width: 768px)" srcset="image/step3/mo.png" />
             <img src="image/step3/pc.png" alt="" class="page-img" draggable="false" />
           </picture>
-          <button class="btn-pos btn-step3-a" id="btn-step3-a" aria-label="선택 A">
-            <span class="sr-only">선택 A</span>
+
+          <!-- 음파 오버레이 -->
+          <div class="phone-wave" id="wave-step3">
+            <button class="wave-play-btn" id="btn-step3-play" aria-label="음성 재생/정지" aria-pressed="false">
+              <span class="wave-play-icon"></span>
+            </button>
+          </div>
+
+          <!-- 티커 오버레이 -->
+          <div class="ticker-overlay" aria-hidden="true">
+            <div class="ticker-track">
+              <span class="ticker-text">"가해자인지, 피해자인지 확인해야 합니다." &nbsp;……&nbsp; "이미 피해가 시작되었습니다." &nbsp;……&nbsp; "개인정보와 계좌정보를 제공하셔야 합니다." &nbsp;……&nbsp; "앱 설치 후 인증하시면 안전하게 보호됩니다." &nbsp;……&nbsp; "지금 즉시 처리하지 않으면 계좌가 동결됩니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span class="ticker-text">"가해자인지, 피해자인지 확인해야 합니다." &nbsp;……&nbsp; "이미 피해가 시작되었습니다." &nbsp;……&nbsp; "개인정보와 계좌정보를 제공하셔야 합니다." &nbsp;……&nbsp; "앱 설치 후 인증하시면 안전하게 보호됩니다." &nbsp;……&nbsp; "지금 즉시 처리하지 않으면 계좌가 동결됩니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+          </div>
+
+          <!-- 선택 버튼 -->
+          <button class="btn-pos btn-step3-a" id="btn-step3-a" aria-label="개인정보·계좌정보를 말하지 않는다">
+            <span class="sr-only">개인정보·계좌정보를 말하지 않는다</span>
           </button>
-          <button class="btn-pos btn-step3-b" id="btn-step3-b" aria-label="선택 B">
-            <span class="sr-only">선택 B</span>
+          <button class="btn-pos btn-step3-b" id="btn-step3-b" aria-label="앱 설치 또는 계좌를 이체한다">
+            <span class="sr-only">앱 설치 또는 계좌를 이체한다</span>
           </button>
         </div>
       </section>

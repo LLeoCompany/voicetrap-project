@@ -3,7 +3,13 @@
     "allow": [
       "Bash(git add index.html css/style.css js/main.js && git commit -m \"프로젝트 초기 세팅 \\(HTML/CSS/JS 기본 구조\\)\" && git push origin main && echo \"=== 완료 ===\")",
       "Bash(git add -A && git commit -m \"전체 화면 구조 세팅 \\(13화면 HTML/CSS/JS + 이미지 폴더\\)\" && git push origin main && echo \"=== 완료 ===\")",
-      "Bash(git add -A && git commit -m \"캔버스 규격 적용 \\(mo 390×844 / pc 1920×1080\\) — 이미지 기반 반응형 구조\" && git push origin main && echo \"=== 완료 ===\")"
+      "Bash(git add -A && git commit -m \"캔버스 규격 적용 \\(mo 390×844 / pc 1920×1080\\) — 이미지 기반 반응형 구조\" && git push origin main && echo \"=== 완료 ===\")",
+      "Bash(cd \"/Users/marko/Documents/GitHub/voicetrap-project/image/pdf-file\" && mdls -name kMDItemNumberOfPages \"보이스피싱 pc용 이벤트랜딩페이지.pdf\" && mdls -name kMDItemNumberOfPages \"스마트폰용 랜딩페이지.pdf\")",
+      "Bash(python3 -c \"import subprocess; print\\('python ok'\\)\" && python3 -c \"import Quartz; print\\('Quartz ok'\\)\" 2>/dev/null || echo \"Quartz not available\")",
+      "Bash(python3 -c \"import fitz; print\\('PyMuPDF ok'\\)\" 2>/dev/null || echo \"not available\"\npython3 -c \"from pdf2image import convert_from_path; print\\('pdf2image ok'\\)\" 2>/dev/null || echo \"not available\")",
+      "Bash(pip3 install pymupdf --quiet && python3 -c \"import fitz; print\\('PyMuPDF 설치 완료'\\)\")",
+      "Bash(python3 << 'EOF'\nimport fitz\nimport os\n\nBASE = \"/Users/marko/Documents/GitHub/voicetrap-project\"\nPDF_DIR = f\"{BASE}/image/pdf-file\"\n\n# 13개 화면 순서 \\(PDF 페이지 순서와 동일하다고 가정\\)\nSCREENS = [\n    \"intro1\",\n    \"intro2\",\n    \"main\",\n    \"step1\",\n    \"step1/success\",\n    \"step1/fail\",\n    \"step2\",\n    \"step2/success\",\n    \"step2/fail\",\n    \"step3\",\n    \"step3/success\",\n    \"step3/fail\",\n    \"result\",\n]\n\ndef extract_pdf\\(pdf_path, suffix, dpi=72\\):\n    doc = fitz.open\\(pdf_path\\)\n    print\\(f\"\\\\n[{suffix}] 총 {len\\(doc\\)}페이지\"\\)\n    for i, screen in enumerate\\(SCREENS\\):\n        if i >= len\\(doc\\):\n            break\n        page = doc[i]\n        mat = fitz.Matrix\\(dpi / 72, dpi / 72\\)\n        pix = page.get_pixmap\\(matrix=mat, alpha=False\\)\n\n        out_dir = f\"{BASE}/image/{screen}\"\n        os.makedirs\\(out_dir, exist_ok=True\\)\n        out_path = f\"{out_dir}/{suffix}.png\"\n        pix.save\\(out_path\\)\n        print\\(f\"  p{i+1:02d} → image/{screen}/{suffix}.png  \\({pix.width}×{pix.height}\\)\"\\)\n    doc.close\\(\\)\n\nextract_pdf\\(f\"{PDF_DIR}/보이스피싱 pc용 이벤트랜딩페이지.pdf\", \"pc\"\\)\nextract_pdf\\(f\"{PDF_DIR}/스마트폰용 랜딩페이지.pdf\", \"mo\"\\)\n\nprint\\(\"\\\\n✓ 완료\"\\)\nEOF)",
+      "Bash(git add -A && git commit -m \"음파 웨이브폼 애니메이션 + 빨간글자 티커 슬라이드 구현 \\(step1·2·3\\)\" && git push origin main && echo \"=== 완료 ===\")"
     ]
   }
 }
