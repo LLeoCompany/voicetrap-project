@@ -12,7 +12,15 @@
       "Bash(git add -A && git commit -m \"음파 웨이브폼 애니메이션 + 빨간글자 티커 슬라이드 구현 \\(step1·2·3\\)\" && git push origin main && echo \"=== 완료 ===\")",
       "Bash(cd /Users/marko/Documents/GitHub/voicetrap-project/image/item-image && cp \"사운드 이퀄라이저 움직임용.png\" equalizer.png && cp \"유튜브재생버튼.png\" play-btn.png && echo \"완료\")",
       "Bash(git add -A && git commit -m \"main 입장하기 버튼 + step1 선택 버튼 좌표 설정 \\(A→fail, B→success\\)\" && git push origin main && echo \"=== 완료 ===\")",
-      "WebFetch(domain:lleocompany.github.io)"
+      "WebFetch(domain:lleocompany.github.io)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project log --oneline -5)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project status --short | head -30)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project diff HEAD css/style.css | head -50)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project log --oneline -10)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project ls-files image/ | head -20)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project show b7cb666 --stat | head -20)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project status)",
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project show b7cb666 -- css/style.css | head -50)"
     ]
   }
 }

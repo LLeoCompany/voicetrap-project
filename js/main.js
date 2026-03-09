@@ -298,9 +298,9 @@
     createWaveBars("wave-step3");
 
     /* ── 오디오 초기화 ── */
-    initWavePlayer("wave-step1", "btn-step1-play", "audio/stage1.m4a");
-    initWavePlayer("wave-step2", "btn-step2-play", "audio/stage2.m4a");
-    initWavePlayer("wave-step3", "btn-step3-play", "audio/stage3.m4a");
+    initWavePlayer("wave-step1", "btn-step1-play", "audio/stage1.mp3");
+    initWavePlayer("wave-step2", "btn-step2-play", "audio/stage2.mp3");
+    initWavePlayer("wave-step3", "btn-step3-play", "audio/stage3.mp3");
 
     /* ── INTRO 자동 진행 (0.5초 텀) ── */
     setTimeout(function () {
