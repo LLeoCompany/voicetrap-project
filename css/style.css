@@ -38,7 +38,6 @@
    ─────────────────────────────────────────────────────────────────────────
    ========================================================================== */
 
-
 /* ==========================================================================
    [전역] RESET
    ========================================================================== */
@@ -95,7 +94,6 @@ img {
   border: 0;
 }
 
-
 /* ==========================================================================
    [전역] CSS VARIABLES
    ========================================================================== */
@@ -103,27 +101,28 @@ img {
 :root {
   --font-main: "Noto Sans KR", sans-serif;
 
-  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 
-  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
-  --dur-screen:  0.45s;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --dur-screen: 0.45s;
 
   /* 캔버스 기준 */
-  --canvas-mo-w: 390;   /* 모바일 캔버스 너비 */
-  --canvas-mo-h: 844;   /* 모바일 캔버스 높이 */
-  --canvas-pc-w: 1920;  /* PC 캔버스 너비 */
-  --canvas-pc-h: 1080;  /* PC 캔버스 높이 */
+  --canvas-mo-w: 390; /* 모바일 캔버스 너비 */
+  --canvas-mo-h: 844; /* 모바일 캔버스 높이 */
+  --canvas-pc-w: 1920; /* PC 캔버스 너비 */
+  --canvas-pc-h: 1080; /* PC 캔버스 높이 */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root { --dur-screen: 0.01ms; }
+  :root {
+    --dur-screen: 0.01ms;
+  }
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
 }
-
 
 /* ==========================================================================
    [전역] APP WRAPPER · SCREEN 전환
@@ -157,7 +156,6 @@ img {
   opacity: 1;
   pointer-events: auto;
 }
-
 
 /* ==========================================================================
    [공통] PAGE CANVAS · IMAGE · BUTTON
@@ -212,7 +210,6 @@ img {
   -webkit-tap-highlight-color: transparent;
 }
 
-
 /* ==========================================================================
    [공통-애니] PHONE WAVE — 음파 오버레이 (step1·2·3 공통)
    폰 화면 위에 position:absolute 로 올려서 정적 이미지를 덮고 애니메이션 표시
@@ -226,22 +223,24 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;   /* 이퀄라이저 이미지 흰 배경과 맞춤 */
+  background: #000;
   border-radius: 6px;
   overflow: hidden;
   z-index: 2;
 }
 
-/* 이퀄라이저 이미지 — 컨테이너 전체 채움 + 파동 애니메이션 */
-.wave-img {
+/* SVG 이퀄라이저 */
+.wave-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  animation: wave-img-anim 1.4s ease-in-out infinite;
   pointer-events: none;
-  user-select: none;
+  overflow: visible;
+}
+
+.wave-bar {
+  will-change: transform;
 }
 
 /* 재생/정지 버튼 */
@@ -258,7 +257,9 @@ img {
   -webkit-tap-highlight-color: transparent;
   flex-shrink: 0;
 }
-.wave-play-btn:active { transform: scale(0.88); }
+.wave-play-btn:active {
+  transform: scale(0.88);
+}
 
 /* 재생 버튼 이미지 */
 .play-btn-img {
@@ -279,10 +280,10 @@ img {
    ※ 이미지 확인 후 수치 조정 필요 */
 @media (max-width: 768px) {
   .phone-wave {
-    top:    24.3%;   /* 205 / 844 */
-    left:    9.7%;   /* 38  / 390 */
-    width:  80.5%;   /* 314 / 390 */
-    height: 10.7%;   /* 90  / 844 */
+    top: 25.8%; /* 205 / 844 */
+    left: 25.7%; /* 38  / 390 */
+    width: 47.6%; /* 314 / 390 */
+    height: 8.7%; /* 90  / 844 */
   }
   .wave-play-btn {
     width: 40px;
@@ -295,17 +296,16 @@ img {
    ※ 이미지 확인 후 수치 조정 필요 */
 @media (min-width: 769px) {
   .phone-wave {
-    top:    18.1%;   /* 195 / 1080 */
-    left:   30.7%;   /* 590 / 1920 */
-    width:  38.5%;   /* 740 / 1920 */
-    height: 13.9%;   /* 150 / 1080 */
+    top: 36.1%; /* 195 / 1080 */
+    left: 38.7%; /* 590 / 1920 */
+    width: 20.5%; /* 740 / 1920 */
+    height: 15.9%; /* 150 / 1080 */
   }
   .wave-play-btn {
     width: 64px;
     height: 64px;
   }
 }
-
 
 /* ==========================================================================
    [공통-애니] TICKER OVERLAY — 빨간 글자 슬라이드 (step1·2·3 공통)
@@ -320,7 +320,7 @@ img {
   display: flex;
   align-items: center;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.82);  /* 정적 이미지 글자를 덮는 배경 */
+  background: rgba(0, 0, 0, 1); /* 정적 이미지 글자를 덮는 배경 */
 }
 
 .ticker-track {
@@ -339,23 +339,23 @@ img {
 }
 
 /* ─── MOBILE ───
-   티커 밴드: top 342/844 = 40.6%, height 28px */
+   티커 밴드: top 304/844 = 36.0%, height 28px */
 @media (max-width: 768px) {
   .ticker-overlay {
-    top:    40.6%;   /* 342 / 844 */
+    top: 47.3%; /* 304 / 844 */
     height: 28px;
   }
   .ticker-text {
-    font-size: 0.72rem;
+    font-size: 1.5rem;
     padding-right: 60px;
   }
 }
 
 /* ─── DESKTOP ───
-   티커 밴드: top 355/1080 = 32.9%, height 38px */
+   티커 밴드: top 367/1080 = 34.0%, height 38px */
 @media (min-width: 769px) {
   .ticker-overlay {
-    top:    32.9%;   /* 355 / 1080 */
+    top: 56%; /* 367 / 1080 */
     height: 38px;
   }
   .ticker-text {
@@ -364,27 +364,20 @@ img {
   }
 }
 
-
 /* ==========================================================================
    [공통-애니] KEYFRAMES
    ========================================================================== */
 
-/* 이퀄라이저 이미지 파동 애니메이션 — scaleY로 위아래 움직임 */
-@keyframes wave-img-anim {
-  0%   { transform: scaleY(0.55); }
-  15%  { transform: scaleY(1.0);  }
-  30%  { transform: scaleY(0.65); }
-  50%  { transform: scaleY(0.95); }
-  65%  { transform: scaleY(0.5);  }
-  80%  { transform: scaleY(0.85); }
-  100% { transform: scaleY(0.55); }
-}
+/* wave-img-anim 제거 — rAF SVG 방식으로 대체 */
 
 @keyframes ticker-scroll {
-  0%   { transform: translateX(0);    }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
-
 
 /* ==========================================================================
    [전역] TOAST
@@ -406,7 +399,9 @@ img {
   backdrop-filter: blur(8px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s, transform 0.25s;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
   white-space: nowrap;
   max-width: 90vw;
   overflow: hidden;
@@ -418,7 +413,6 @@ img {
   transform: translateX(-50%) translateY(0);
 }
 
-
 /* ==========================================================================
    [INTRO1]  #screen-intro1
    이미지: image/intro1/pc.png (1920×1080) / mo.png (390×844)
@@ -427,13 +421,11 @@ img {
 
 /* 전체 탭이라 별도 버튼 위치 지정 불필요 */
 
-
 /* ==========================================================================
    [INTRO2]  #screen-intro2
    이미지: image/intro2/pc.png / mo.png
    전환: 탭 전체 → #screen-main
    ========================================================================== */
-
 
 /* ==========================================================================
    [MAIN]  #screen-main
@@ -446,23 +438,22 @@ img {
 /* ─── MOBILE (≤ 768px) · 캔버스 390×844 ─── */
 @media (max-width: 768px) {
   #screen-main #btn-main-start {
-    top:    44.0%;   /* ~371 / 844  — 입장하기 버튼 상단 */
-    left:   14.1%;   /* ~55  / 390 */
-    width:  71.8%;   /* ~280 / 390 */
-    height:  5.6%;   /* ~47  / 844 */
+    top: 44%; /* ~371 / 844  — 입장하기 버튼 상단 */
+    left: 14.1%; /* ~55  / 390 */
+    width: 71.8%; /* ~280 / 390 */
+    height: 7.6%; /* ~47  / 844 */
   }
 }
 
 /* ─── DESKTOP (≥ 769px) · 캔버스 1920×1937(스크롤) ─── */
 @media (min-width: 769px) {
   #screen-main #btn-main-start {
-    top:    44.5%;   /* ~862 / 1937 */
-    left:   32.3%;   /* ~620 / 1920 */
-    width:  35.4%;   /* ~680 / 1920 */
-    height:  3.1%;   /* ~60  / 1937 */
+    top: 37.5%; /* ~862 / 1937 */
+    left: 34.3%; /* ~620 / 1920 */
+    width: 33.4%; /* ~680 / 1920 */
+    height: 8.1%; /* ~60  / 1937 */
   }
 }
-
 
 /* ==========================================================================
    [STEP1]  #screen-step1
@@ -476,35 +467,34 @@ img {
    B: 전화를 끊고 공식기관 (아래쪽 버튼) → SUCCESS  */
 @media (max-width: 768px) {
   #screen-step1 #btn-step1-a {
-    top:    62.4%;   /* ~527 / 844 */
-    left:   14.1%;   /* ~55  / 390 */
-    width:  71.8%;   /* ~280 / 390 */
-    height:  7.0%;   /* ~59  / 844 */
+    top: 67.4%; /* ~527 / 844 */
+    left: 19.1%; /* ~55  / 390 */
+    width: 57.8%; /* ~280 / 390 */
+    height: 8%; /* ~59  / 844 */
   }
   #screen-step1 #btn-step1-b {
-    top:    75.6%;   /* ~638 / 844 */
-    left:   14.1%;
-    width:  71.8%;
-    height:  7.0%;
+    top: 79.6%; /* ~638 / 844 */
+    left: 19.1%; /* ~55  / 390 */
+    width: 57.8%; /* ~280 / 390 */
+    height: 8%; /* ~59  / 844 */
   }
 }
 
 /* ─── DESKTOP (≥ 769px) · 캔버스 1920×1080 ─── */
 @media (min-width: 769px) {
   #screen-step1 #btn-step1-a {
-    top:    61.5%;   /* ~664 / 1080 */
-    left:   28.0%;   /* ~538 / 1920 */
-    width:  20.5%;   /* ~394 / 1920 */
-    height:  7.5%;   /* ~81  / 1080 */
+    top: 76.5%; /* ~664 / 1080 */
+    left: 24%; /* ~538 / 1920 */
+    width: 23.5%; /* ~394 / 1920 */
+    height: 11.5%; /* ~81  / 1080 */
   }
   #screen-step1 #btn-step1-b {
-    top:    61.5%;
-    left:   51.6%;   /* ~990 / 1920 — VS 오른쪽 */
-    width:  20.5%;
-    height:  7.5%;
+    top: 76.5%; /* ~664 / 1080 */
+    left: 52.6%; /* ~990 / 1920 — VS 오른쪽 */
+    width: 23.5%; /* ~394 / 1920 */
+    height: 11.5%; /* ~81  / 1080 */
   }
 }
-
 
 /* ==========================================================================
    [STEP1-성공]  #screen-step1-suc
@@ -515,17 +505,22 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step1-suc #btn-step1-suc-next {
-    /* TODO */
+    top: 85%;
+    left: 17%;
+    width: 65%;
+    height: 6.5%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step1-suc #btn-step1-suc-next {
-    /* TODO */
+    top: 78%;
+    left: 32.3%;
+    width: 34%;
+    height: 14%;
   }
 }
-
 
 /* ==========================================================================
    [STEP1-실패]  #screen-step1-fail
@@ -536,17 +531,22 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step1-fail #btn-step1-fail-next {
-    /* TODO */
+    top: 86%;
+    left: 17%;
+    width: 65%;
+    height: 6.7%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step1-fail #btn-step1-fail-next {
-    /* TODO */
+    top: 85%; /* PC fail 이미지 1920×1800 기준 */
+    left: 33%;
+    width: 33%;
+    height: 9%;
   }
 }
-
 
 /* ==========================================================================
    [STEP2]  #screen-step2
@@ -558,23 +558,34 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step2 #btn-step2-a {
-    /* TODO */
+    top: 66.3%;
+    left: 21%;
+    width: 57%;
+    height: 8%;
   }
   #screen-step2 #btn-step2-b {
-    /* TODO */
+    top: 80%;
+    left: 21%;
+    width: 57%;
+    height: 8%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step2 #btn-step2-a {
-    /* TODO */
+    top: 77%;
+    left: 25%;
+    width: 22.3%;
+    height: 12%;
   }
   #screen-step2 #btn-step2-b {
-    /* TODO */
+    top: 77%;
+    left: 53%;
+    width: 23%;
+    height: 12%;
   }
 }
-
 
 /* ==========================================================================
    [STEP2-성공]  #screen-step2-suc
@@ -585,17 +596,22 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step2-suc #btn-step2-suc-next {
-    /* TODO */
+    top: 85%;
+    left: 17%;
+    width: 65%;
+    height: 6.5%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step2-suc #btn-step2-suc-next {
-    /* TODO */
+    top: 78%;
+    left: 32.3%;
+    width: 34%;
+    height: 14%;
   }
 }
-
 
 /* ==========================================================================
    [STEP2-실패]  #screen-step2-fail
@@ -606,17 +622,22 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step2-fail #btn-step2-fail-next {
-    /* TODO */
+    top: 86%;
+    left: 17%;
+    width: 65%;
+    height: 6.7%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step2-fail #btn-step2-fail-next {
-    /* TODO */
+    top: 85%;
+    left: 33%;
+    width: 33%;
+    height: 9%;
   }
 }
-
 
 /* ==========================================================================
    [STEP3]  #screen-step3
@@ -628,23 +649,34 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step3 #btn-step3-a {
-    /* TODO */
+    top: 66.3%;
+    left: 21%;
+    width: 57%;
+    height: 8%;
   }
   #screen-step3 #btn-step3-b {
-    /* TODO */
+    top: 80%;
+    left: 21%;
+    width: 57%;
+    height: 8%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step3 #btn-step3-a {
-    /* TODO */
+    top: 77%;
+    left: 25%;
+    width: 22.3%;
+    height: 12%;
   }
   #screen-step3 #btn-step3-b {
-    /* TODO */
+    top: 77%;
+    left: 53%;
+    width: 23%;
+    height: 12%;
   }
 }
-
 
 /* ==========================================================================
    [STEP3-성공]  #screen-step3-suc
@@ -655,17 +687,22 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step3-suc #btn-step3-suc-next {
-    /* TODO */
+    top: 85%;
+    left: 17%;
+    width: 65%;
+    height: 6.5%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step3-suc #btn-step3-suc-next {
-    /* TODO */
+    top: 78%;
+    left: 32.3%;
+    width: 34%;
+    height: 14%;
   }
 }
-
 
 /* ==========================================================================
    [STEP3-실패]  #screen-step3-fail
@@ -676,17 +713,22 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step3-fail #btn-step3-fail-next {
-    /* TODO */
+    top: 87%;
+    left: 15.7%;
+    width: 71.3%;
+    height: 6.7%;
   }
 }
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
   #screen-step3-fail #btn-step3-fail-next {
-    /* TODO */
+    top: 88%;
+    left: 32%;
+    width: 37%;
+    height: 9%;
   }
 }
-
 
 /* ==========================================================================
    [RESULT]  #screen-result
