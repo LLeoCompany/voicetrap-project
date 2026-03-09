@@ -6,7 +6,7 @@
    │  PAGE / STATE 목차  (Ctrl+F 로 [ ] 검색)                                 │
    │                                                                           │
    │  [전역]          Reset · Variables · App · Screen 전환 · Toast            │
-   │  [공통]          screen-bg · screen-overlay · btn-overlay                 │
+   │  [공통]          page-canvas · page-img · btn-pos · btn-tap-all           │
    │  [INTRO1]        #screen-intro1                                           │
    │  [INTRO2]        #screen-intro2                                           │
    │  [MAIN]          #screen-main                                             │
@@ -21,6 +21,20 @@
    │  [STEP3-실패]    #screen-step3-fail                                       │
    │  [RESULT]        #screen-result                                           │
    └─────────────────────────────────────────────────────────────────────────┘
+
+   버튼 좌표 계산 공식
+   ─────────────────────────────────────────────────────────────────────────
+   모바일 캔버스 390 × 844px
+     top  : (버튼 Y / 844) × 100%
+     left : (버튼 X / 390) × 100%
+     width: (버튼 W / 390) × 100%
+     height 생략 가능 (aspect-ratio 또는 padding-bottom 으로 대체)
+
+   PC 캔버스 1920 × 1080px
+     top  : (버튼 Y / 1080) × 100%
+     left : (버튼 X / 1920) × 100%
+     width: (버튼 W / 1920) × 100%
+   ─────────────────────────────────────────────────────────────────────────
    ========================================================================== */
 
 
@@ -68,11 +82,6 @@ img {
   max-width: 100%;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -95,15 +104,15 @@ a {
 
   --safe-top:    env(safe-area-inset-top,    0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-left:   env(safe-area-inset-left,   0px);
-  --safe-right:  env(safe-area-inset-right,  0px);
 
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --dur-screen: 0.45s;
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --dur-screen:  0.45s;
 
-  /* 브레이크포인트 기준
-     모바일  : ≤ 768px  (이미지: mo.png)
-     데스크탑: ≥ 769px  (이미지: pc.png) */
+  /* 캔버스 기준 */
+  --canvas-mo-w: 390;   /* 모바일 캔버스 너비 */
+  --canvas-mo-h: 844;   /* 모바일 캔버스 높이 */
+  --canvas-pc-w: 1920;  /* PC 캔버스 너비 */
+  --canvas-pc-h: 1080;  /* PC 캔버스 높이 */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -129,12 +138,15 @@ a {
   overflow: hidden;
 }
 
-/* 모든 화면 공통 */
+/* 화면 공통 — 스크롤 허용 */
 .screen {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-screen) var(--ease-out);
@@ -147,52 +159,56 @@ a {
 
 
 /* ==========================================================================
-   [공통] SCREEN BG · OVERLAY · BUTTON
-   모든 화면에서 재사용되는 이미지 배경 + 오버레이 구조
+   [공통] PAGE CANVAS · IMAGE · BUTTON
+   모든 화면의 기본 구조
+   ─────────────────────────────────────────────────────────────────────────
+   .page-canvas  — 이미지 기준점 (position: relative)
+   .page-img     — 디자인 이미지 (width: 100%, height: auto)
+   .btn-pos      — 이미지 위 투명 버튼 (position: absolute, % 좌표)
+   .btn-tap-all  — 화면 전체 탭 버튼 (인트로용)
    ========================================================================== */
 
-/* 배경 이미지 — 화면 전체를 cover로 채움 */
-.screen-bg {
-  position: absolute;
-  inset: 0;
+/* 이미지 기준 컨테이너 */
+.page-canvas {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  z-index: 0;
+  /* 높이는 .page-img 가 결정 — 이미지보다 짧은 뷰포트에서 스크롤 발생 */
+}
+
+/* 디자인 이미지 */
+.page-img {
+  display: block;
+  width: 100%;
+  height: auto;
   pointer-events: none;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* 오버레이 레이어 — 버튼/UI 요소를 담는 컨테이너 */
-.screen-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-/* 전체 화면 탭 버튼 (인트로 등) */
-.tap-full {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* 투명 버튼 오버레이 공통 — 위치는 각 화면 섹션에서 지정 */
-.btn-overlay {
+/* 투명 버튼 공통 */
+.btn-pos {
   position: absolute;
   background: transparent;
   border: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.15s ease;
+  /* 위치/크기는 각 화면 섹션에서 지정 */
 }
 
-.btn-overlay:active {
-  opacity: 0.7;
+.btn-pos:active {
+  opacity: 0.75;
+}
+
+/* 전체 화면 탭 버튼 (인트로) */
+.btn-tap-all {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -231,37 +247,44 @@ a {
 
 /* ==========================================================================
    [INTRO1]  #screen-intro1
-   이미지: image/intro1/pc.png (desktop) / image/intro1/mo.png (mobile)
-   전환: 탭 → #screen-intro2
+   이미지: image/intro1/pc.png (1920×1080) / mo.png (390×844)
+   전환: 탭 전체 → #screen-intro2
    ========================================================================== */
 
-/* 버튼 위치는 이미지 확인 후 지정 */
+/* 전체 탭이라 별도 버튼 위치 지정 불필요 */
 
 
 /* ==========================================================================
    [INTRO2]  #screen-intro2
-   이미지: image/intro2/pc.png / image/intro2/mo.png
-   전환: 탭 → #screen-main
+   이미지: image/intro2/pc.png / mo.png
+   전환: 탭 전체 → #screen-main
    ========================================================================== */
 
 
 /* ==========================================================================
    [MAIN]  #screen-main
-   이미지: image/main/pc.png / image/main/mo.png
+   이미지: image/main/pc.png / mo.png
    전환: 시작 버튼 → #screen-step1
+   ─────────────────────────────────────────────────────────────────────────
+   버튼 좌표: 이미지 받은 후 아래 TODO 채우기
    ========================================================================== */
 
-/* ─── DESKTOP (≥ 769px) ─── */
-@media (min-width: 769px) {
-  #screen-main .btn-overlay.btn-main-start {
-    /* TODO: 이미지 확인 후 위치/크기 지정 */
-    /* 예시: bottom: 20%; left: 50%; transform: translateX(-50%); width: 300px; height: 70px; */
+/* ─── MOBILE (≤ 768px) · 캔버스 390×844 ─── */
+@media (max-width: 768px) {
+  #screen-main #btn-main-start {
+    /* top  : (Y / 844) * 100% */
+    /* left : (X / 390) * 100% */
+    /* width: (W / 390) * 100% */
+    /* TODO */
   }
 }
 
-/* ─── MOBILE (≤ 768px) ─── */
-@media (max-width: 768px) {
-  #screen-main .btn-overlay.btn-main-start {
+/* ─── DESKTOP (≥ 769px) · 캔버스 1920×1080 ─── */
+@media (min-width: 769px) {
+  #screen-main #btn-main-start {
+    /* top  : (Y / 1080) * 100% */
+    /* left : (X / 1920) * 100% */
+    /* width: (W / 1920) * 100% */
     /* TODO */
   }
 }
@@ -269,26 +292,27 @@ a {
 
 /* ==========================================================================
    [STEP1]  #screen-step1
-   이미지: image/step1/pc.png / image/step1/mo.png
-   선택 A → #screen-step1-suc  /  선택 B → #screen-step1-fail
+   이미지: image/step1/pc.png / mo.png
+   선택 A (#btn-step1-a) → #screen-step1-suc
+   선택 B (#btn-step1-b) → #screen-step1-fail
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step1 .btn-step1-a {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step1 #btn-step1-a {
     /* TODO */
   }
-  #screen-step1 .btn-step1-b {
+  #screen-step1 #btn-step1-b {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step1 .btn-step1-a {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step1 #btn-step1-a {
     /* TODO */
   }
-  #screen-step1 .btn-step1-b {
+  #screen-step1 #btn-step1-b {
     /* TODO */
   }
 }
@@ -297,19 +321,19 @@ a {
 /* ==========================================================================
    [STEP1-성공]  #screen-step1-suc
    이미지: image/step1/success/pc.png / mo.png
-   다음 버튼 → #screen-step2
+   다음 버튼 (#btn-step1-suc-next) → #screen-step2
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step1-suc .btn-next {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step1-suc #btn-step1-suc-next {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step1-suc .btn-next {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step1-suc #btn-step1-suc-next {
     /* TODO */
   }
 }
@@ -318,19 +342,19 @@ a {
 /* ==========================================================================
    [STEP1-실패]  #screen-step1-fail
    이미지: image/step1/fail/pc.png / mo.png
-   다음 버튼 → #screen-step2
+   다음 버튼 (#btn-step1-fail-next) → #screen-step2
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step1-fail .btn-next {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step1-fail #btn-step1-fail-next {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step1-fail .btn-next {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step1-fail #btn-step1-fail-next {
     /* TODO */
   }
 }
@@ -339,25 +363,26 @@ a {
 /* ==========================================================================
    [STEP2]  #screen-step2
    이미지: image/step2/pc.png / mo.png
-   선택 A → #screen-step2-suc  /  선택 B → #screen-step2-fail
+   선택 A (#btn-step2-a) → #screen-step2-suc
+   선택 B (#btn-step2-b) → #screen-step2-fail
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step2 .btn-step2-a {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step2 #btn-step2-a {
     /* TODO */
   }
-  #screen-step2 .btn-step2-b {
+  #screen-step2 #btn-step2-b {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step2 .btn-step2-a {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step2 #btn-step2-a {
     /* TODO */
   }
-  #screen-step2 .btn-step2-b {
+  #screen-step2 #btn-step2-b {
     /* TODO */
   }
 }
@@ -366,19 +391,19 @@ a {
 /* ==========================================================================
    [STEP2-성공]  #screen-step2-suc
    이미지: image/step2/success/pc.png / mo.png
-   다음 버튼 → #screen-step3
+   다음 버튼 (#btn-step2-suc-next) → #screen-step3
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step2-suc .btn-next {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step2-suc #btn-step2-suc-next {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step2-suc .btn-next {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step2-suc #btn-step2-suc-next {
     /* TODO */
   }
 }
@@ -387,19 +412,19 @@ a {
 /* ==========================================================================
    [STEP2-실패]  #screen-step2-fail
    이미지: image/step2/fail/pc.png / mo.png
-   다음 버튼 → #screen-step3
+   다음 버튼 (#btn-step2-fail-next) → #screen-step3
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step2-fail .btn-next {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step2-fail #btn-step2-fail-next {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step2-fail .btn-next {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step2-fail #btn-step2-fail-next {
     /* TODO */
   }
 }
@@ -408,25 +433,26 @@ a {
 /* ==========================================================================
    [STEP3]  #screen-step3
    이미지: image/step3/pc.png / mo.png
-   선택 A → #screen-step3-suc  /  선택 B → #screen-step3-fail
+   선택 A (#btn-step3-a) → #screen-step3-suc
+   선택 B (#btn-step3-b) → #screen-step3-fail
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step3 .btn-step3-a {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step3 #btn-step3-a {
     /* TODO */
   }
-  #screen-step3 .btn-step3-b {
+  #screen-step3 #btn-step3-b {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step3 .btn-step3-a {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step3 #btn-step3-a {
     /* TODO */
   }
-  #screen-step3 .btn-step3-b {
+  #screen-step3 #btn-step3-b {
     /* TODO */
   }
 }
@@ -435,19 +461,19 @@ a {
 /* ==========================================================================
    [STEP3-성공]  #screen-step3-suc
    이미지: image/step3/success/pc.png / mo.png
-   다음 버튼 → #screen-result
+   다음 버튼 (#btn-step3-suc-next) → #screen-result
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step3-suc .btn-next {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step3-suc #btn-step3-suc-next {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step3-suc .btn-next {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step3-suc #btn-step3-suc-next {
     /* TODO */
   }
 }
@@ -456,19 +482,19 @@ a {
 /* ==========================================================================
    [STEP3-실패]  #screen-step3-fail
    이미지: image/step3/fail/pc.png / mo.png
-   다음 버튼 → #screen-result
+   다음 버튼 (#btn-step3-fail-next) → #screen-result
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step3-fail .btn-next {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step3-fail #btn-step3-fail-next {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step3-fail .btn-next {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step3-fail #btn-step3-fail-next {
     /* TODO */
   }
 }
@@ -477,19 +503,19 @@ a {
 /* ==========================================================================
    [RESULT]  #screen-result
    이미지: image/result/pc.png / mo.png
-   재도전 버튼 → #screen-intro1 (처음으로)
+   재도전 버튼 (#btn-retry) → #screen-intro1
    ========================================================================== */
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-result .btn-retry {
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-result #btn-retry {
     /* TODO */
   }
 }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-result .btn-retry {
+/* ─── DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-result #btn-retry {
     /* TODO */
   }
 }

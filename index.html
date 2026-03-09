@@ -27,16 +27,16 @@
 
       <!-- ============================================================
            INTRO 1  (#screen-intro1)
-           첫 번째 인트로 화면
+           전환: 탭 전체 → #screen-intro2
       ============================================================ -->
-      <section id="screen-intro1" class="screen active" aria-label="인트로 1">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/intro1/mo.png" />
-          <img src="image/intro1/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <!-- 인터랙션 영역 -->
-        <div class="screen-overlay">
-          <button class="tap-full" id="btn-intro1-next" aria-label="다음으로">
+      <section id="screen-intro1" class="screen active">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/intro1/mo.png" />
+            <img src="image/intro1/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <!-- 전체 탭 -->
+          <button class="btn-tap-all" id="btn-intro1-next" aria-label="다음으로">
             <span class="sr-only">화면을 터치하면 다음으로 이동합니다</span>
           </button>
         </div>
@@ -45,15 +45,15 @@
 
       <!-- ============================================================
            INTRO 2  (#screen-intro2)
-           두 번째 인트로 화면
+           전환: 탭 전체 → #screen-main
       ============================================================ -->
-      <section id="screen-intro2" class="screen" aria-label="인트로 2">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/intro2/mo.png" />
-          <img src="image/intro2/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="tap-full" id="btn-intro2-next" aria-label="다음으로">
+      <section id="screen-intro2" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/intro2/mo.png" />
+            <img src="image/intro2/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-tap-all" id="btn-intro2-next" aria-label="다음으로">
             <span class="sr-only">화면을 터치하면 다음으로 이동합니다</span>
           </button>
         </div>
@@ -62,16 +62,16 @@
 
       <!-- ============================================================
            MAIN PAGE  (#screen-main)
-           메인 시작 화면
+           전환: 시작 버튼 → #screen-step1
       ============================================================ -->
-      <section id="screen-main" class="screen" aria-label="메인 화면">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/main/mo.png" />
-          <img src="image/main/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <!-- 시작 버튼 — 이미지 위 투명 오버레이 -->
-          <button class="btn-overlay" id="btn-main-start" aria-label="도전 시작하기">
+      <section id="screen-main" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/main/mo.png" />
+            <img src="image/main/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <!-- 시작 버튼 — 이미지 위 투명 오버레이, 위치는 CSS에서 지정 -->
+          <button class="btn-pos" id="btn-main-start" aria-label="도전 시작하기">
             <span class="sr-only">도전 시작하기</span>
           </button>
         </div>
@@ -80,20 +80,19 @@
 
       <!-- ============================================================
            STEP 1  (#screen-step1)
-           1단계 게임 화면
+           선택 A → #screen-step1-suc
+           선택 B → #screen-step1-fail
       ============================================================ -->
-      <section id="screen-step1" class="screen" aria-label="Step 1">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step1/mo.png" />
-          <img src="image/step1/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <!-- 선택 버튼 A -->
-          <button class="btn-overlay btn-step1-a" id="btn-step1-a" aria-label="선택 A">
+      <section id="screen-step1" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step1/mo.png" />
+            <img src="image/step1/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-step1-a" id="btn-step1-a" aria-label="선택 A">
             <span class="sr-only">선택 A</span>
           </button>
-          <!-- 선택 버튼 B -->
-          <button class="btn-overlay btn-step1-b" id="btn-step1-b" aria-label="선택 B">
+          <button class="btn-pos btn-step1-b" id="btn-step1-b" aria-label="선택 B">
             <span class="sr-only">선택 B</span>
           </button>
         </div>
@@ -102,14 +101,15 @@
 
       <!-- ============================================================
            STEP 1 — SUCCESS  (#screen-step1-suc)
+           전환: 다음 버튼 → #screen-step2
       ============================================================ -->
-      <section id="screen-step1-suc" class="screen" aria-label="Step 1 성공">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step1/success/mo.png" />
-          <img src="image/step1/success/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-next" id="btn-step1-suc-next" aria-label="다음 단계">
+      <section id="screen-step1-suc" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step1/success/mo.png" />
+            <img src="image/step1/success/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-next" id="btn-step1-suc-next" aria-label="다음 단계">
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
@@ -118,14 +118,15 @@
 
       <!-- ============================================================
            STEP 1 — FAIL  (#screen-step1-fail)
+           전환: 다음 버튼 → #screen-step2
       ============================================================ -->
-      <section id="screen-step1-fail" class="screen" aria-label="Step 1 실패">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step1/fail/mo.png" />
-          <img src="image/step1/fail/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-next" id="btn-step1-fail-next" aria-label="다음 단계">
+      <section id="screen-step1-fail" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step1/fail/mo.png" />
+            <img src="image/step1/fail/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-next" id="btn-step1-fail-next" aria-label="다음 단계">
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
@@ -134,18 +135,19 @@
 
       <!-- ============================================================
            STEP 2  (#screen-step2)
-           2단계 게임 화면
+           선택 A → #screen-step2-suc
+           선택 B → #screen-step2-fail
       ============================================================ -->
-      <section id="screen-step2" class="screen" aria-label="Step 2">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step2/mo.png" />
-          <img src="image/step2/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-step2-a" id="btn-step2-a" aria-label="선택 A">
+      <section id="screen-step2" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step2/mo.png" />
+            <img src="image/step2/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-step2-a" id="btn-step2-a" aria-label="선택 A">
             <span class="sr-only">선택 A</span>
           </button>
-          <button class="btn-overlay btn-step2-b" id="btn-step2-b" aria-label="선택 B">
+          <button class="btn-pos btn-step2-b" id="btn-step2-b" aria-label="선택 B">
             <span class="sr-only">선택 B</span>
           </button>
         </div>
@@ -154,14 +156,15 @@
 
       <!-- ============================================================
            STEP 2 — SUCCESS  (#screen-step2-suc)
+           전환: 다음 버튼 → #screen-step3
       ============================================================ -->
-      <section id="screen-step2-suc" class="screen" aria-label="Step 2 성공">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step2/success/mo.png" />
-          <img src="image/step2/success/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-next" id="btn-step2-suc-next" aria-label="다음 단계">
+      <section id="screen-step2-suc" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step2/success/mo.png" />
+            <img src="image/step2/success/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-next" id="btn-step2-suc-next" aria-label="다음 단계">
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
@@ -170,14 +173,15 @@
 
       <!-- ============================================================
            STEP 2 — FAIL  (#screen-step2-fail)
+           전환: 다음 버튼 → #screen-step3
       ============================================================ -->
-      <section id="screen-step2-fail" class="screen" aria-label="Step 2 실패">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step2/fail/mo.png" />
-          <img src="image/step2/fail/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-next" id="btn-step2-fail-next" aria-label="다음 단계">
+      <section id="screen-step2-fail" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step2/fail/mo.png" />
+            <img src="image/step2/fail/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-next" id="btn-step2-fail-next" aria-label="다음 단계">
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
@@ -186,18 +190,19 @@
 
       <!-- ============================================================
            STEP 3  (#screen-step3)
-           3단계 게임 화면
+           선택 A → #screen-step3-suc
+           선택 B → #screen-step3-fail
       ============================================================ -->
-      <section id="screen-step3" class="screen" aria-label="Step 3">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step3/mo.png" />
-          <img src="image/step3/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-step3-a" id="btn-step3-a" aria-label="선택 A">
+      <section id="screen-step3" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step3/mo.png" />
+            <img src="image/step3/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-step3-a" id="btn-step3-a" aria-label="선택 A">
             <span class="sr-only">선택 A</span>
           </button>
-          <button class="btn-overlay btn-step3-b" id="btn-step3-b" aria-label="선택 B">
+          <button class="btn-pos btn-step3-b" id="btn-step3-b" aria-label="선택 B">
             <span class="sr-only">선택 B</span>
           </button>
         </div>
@@ -206,14 +211,15 @@
 
       <!-- ============================================================
            STEP 3 — SUCCESS  (#screen-step3-suc)
+           전환: 다음 버튼 → #screen-result
       ============================================================ -->
-      <section id="screen-step3-suc" class="screen" aria-label="Step 3 성공">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step3/success/mo.png" />
-          <img src="image/step3/success/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-next" id="btn-step3-suc-next" aria-label="결과 보기">
+      <section id="screen-step3-suc" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step3/success/mo.png" />
+            <img src="image/step3/success/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-next" id="btn-step3-suc-next" aria-label="결과 보기">
             <span class="sr-only">결과 보기</span>
           </button>
         </div>
@@ -222,14 +228,15 @@
 
       <!-- ============================================================
            STEP 3 — FAIL  (#screen-step3-fail)
+           전환: 다음 버튼 → #screen-result
       ============================================================ -->
-      <section id="screen-step3-fail" class="screen" aria-label="Step 3 실패">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/step3/fail/mo.png" />
-          <img src="image/step3/fail/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <button class="btn-overlay btn-next" id="btn-step3-fail-next" aria-label="결과 보기">
+      <section id="screen-step3-fail" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/step3/fail/mo.png" />
+            <img src="image/step3/fail/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-next" id="btn-step3-fail-next" aria-label="결과 보기">
             <span class="sr-only">결과 보기</span>
           </button>
         </div>
@@ -238,16 +245,15 @@
 
       <!-- ============================================================
            RESULT  (#screen-result)
-           최종 결과 화면
+           전환: 재도전 버튼 → #screen-intro1
       ============================================================ -->
-      <section id="screen-result" class="screen" aria-label="최종 결과">
-        <picture>
-          <source media="(max-width: 768px)" srcset="image/result/mo.png" />
-          <img src="image/result/pc.png" alt="" class="screen-bg" draggable="false" />
-        </picture>
-        <div class="screen-overlay">
-          <!-- 재도전 버튼 -->
-          <button class="btn-overlay btn-retry" id="btn-retry" aria-label="다시 도전하기">
+      <section id="screen-result" class="screen">
+        <div class="page-canvas">
+          <picture>
+            <source media="(max-width: 768px)" srcset="image/result/mo.png" />
+            <img src="image/result/pc.png" alt="" class="page-img" draggable="false" />
+          </picture>
+          <button class="btn-pos btn-retry" id="btn-retry" aria-label="다시 도전하기">
             <span class="sr-only">다시 도전하기</span>
           </button>
         </div>

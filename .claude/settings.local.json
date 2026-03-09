@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git add index.html css/style.css js/main.js && git commit -m \"프로젝트 초기 세팅 \\(HTML/CSS/JS 기본 구조\\)\" && git push origin main && echo \"=== 완료 ===\")",
-      "Bash(git add -A && git commit -m \"전체 화면 구조 세팅 \\(13화면 HTML/CSS/JS + 이미지 폴더\\)\" && git push origin main && echo \"=== 완료 ===\")"
+      "Bash(git add -A && git commit -m \"전체 화면 구조 세팅 \\(13화면 HTML/CSS/JS + 이미지 폴더\\)\" && git push origin main && echo \"=== 완료 ===\")",
+      "Bash(git add -A && git commit -m \"캔버스 규격 적용 \\(mo 390×844 / pc 1920×1080\\) — 이미지 기반 반응형 구조\" && git push origin main && echo \"=== 완료 ===\")"
     ]
   }
 }
