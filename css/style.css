@@ -141,7 +141,7 @@ img {
 /* 화면 공통 — 스크롤 허용 */
 .screen {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -201,7 +201,7 @@ img {
 /* 전체 화면 탭 버튼 (인트로) */
 .btn-tap-all {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%;
   height: 100%;
   background: transparent;
@@ -232,7 +232,7 @@ img {
 /* SVG 이퀄라이저 */
 .wave-svg {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -874,7 +874,7 @@ img {
 
 .popup-overlay {
   position: fixed;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   z-index: 500;
   background: rgba(0, 0, 0, 0.75);
   display: flex;
