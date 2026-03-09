@@ -40,35 +40,11 @@
      audioSrc  : 오디오 파일 경로 (없으면 null — 비주얼만 표시)
   ═══════════════════════════════════════════════════════════════════════ */
 
-  /* 무지개 색상 배열 (초록→노랑→주황→빨강→주황→노랑→초록) */
-  var WAVE_COLORS = [
-    '#00b300','#00c800','#22cc00','#55cc00','#88cc00',
-    '#bbcc00','#eebb00','#ffaa00','#ff7700','#ff4400',
-    '#ff1100','#ff0000','#ff1100','#ff4400','#ff7700',
-    '#ffaa00','#eebb00','#bbcc00','#88cc00','#55cc00',
-    '#22cc00','#00c800','#00b300','#00c800','#22cc00',
-    '#55cc00','#88cc00','#bbcc00','#ffaa00','#ff7700',
-    '#ff4400','#ff1100'
-  ];
-
   function initWavePlayer(waveId, btnId, audioSrc) {
-    var container = document.getElementById(waveId);
-    var btn       = document.getElementById(btnId);
-    if (!container || !btn) return;
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
 
-    /* 웨이브 바 생성 */
-    var frag = document.createDocumentFragment();
-    WAVE_COLORS.forEach(function (color, i) {
-      var bar = document.createElement('div');
-      bar.className = 'wave-bar';
-      bar.style.background     = color;
-      bar.style.animationDelay = (i * 0.036) + 's';
-      frag.appendChild(bar);
-    });
-    /* btn 앞에 바들을 삽입 (btn은 z-index로 위에 뜸) */
-    container.insertBefore(frag, btn);
-
-    /* 오디오 없으면 비주얼만 */
+    /* 오디오 없으면 비주얼만 (이미지 애니메이션은 CSS로 항상 동작) */
     if (!audioSrc) return;
 
     /* iOS Safari AudioContext unlock */
