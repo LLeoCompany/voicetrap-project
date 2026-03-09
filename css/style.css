@@ -56,10 +56,13 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-html,
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   height: 100%;
-  height: -webkit-fill-available;
   overflow: hidden;
 }
 
