@@ -446,20 +446,20 @@ img {
 /* ─── MOBILE (≤ 768px) · 캔버스 390×844 ─── */
 @media (max-width: 768px) {
   #screen-main #btn-main-start {
-    /* top  : (Y / 844) * 100% */
-    /* left : (X / 390) * 100% */
-    /* width: (W / 390) * 100% */
-    /* TODO */
+    top:    44.0%;   /* ~371 / 844  — 입장하기 버튼 상단 */
+    left:   14.1%;   /* ~55  / 390 */
+    width:  71.8%;   /* ~280 / 390 */
+    height:  5.6%;   /* ~47  / 844 */
   }
 }
 
-/* ─── DESKTOP (≥ 769px) · 캔버스 1920×1080 ─── */
+/* ─── DESKTOP (≥ 769px) · 캔버스 1920×1937(스크롤) ─── */
 @media (min-width: 769px) {
   #screen-main #btn-main-start {
-    /* top  : (Y / 1080) * 100% */
-    /* left : (X / 1920) * 100% */
-    /* width: (W / 1920) * 100% */
-    /* TODO */
+    top:    44.5%;   /* ~862 / 1937 */
+    left:   32.3%;   /* ~620 / 1920 */
+    width:  35.4%;   /* ~680 / 1920 */
+    height:  3.1%;   /* ~60  / 1937 */
   }
 }
 
@@ -471,23 +471,37 @@ img {
    선택 B (#btn-step1-b) → #screen-step1-fail
    ========================================================================== */
 
-/* ─── MOBILE ─── */
+/* ─── MOBILE (≤ 768px) · 캔버스 390×844 ───
+   A: 수사관 안내에 따라 (위쪽 버튼) → FAIL
+   B: 전화를 끊고 공식기관 (아래쪽 버튼) → SUCCESS  */
 @media (max-width: 768px) {
   #screen-step1 #btn-step1-a {
-    /* TODO */
+    top:    62.4%;   /* ~527 / 844 */
+    left:   14.1%;   /* ~55  / 390 */
+    width:  71.8%;   /* ~280 / 390 */
+    height:  7.0%;   /* ~59  / 844 */
   }
   #screen-step1 #btn-step1-b {
-    /* TODO */
+    top:    75.6%;   /* ~638 / 844 */
+    left:   14.1%;
+    width:  71.8%;
+    height:  7.0%;
   }
 }
 
-/* ─── DESKTOP ─── */
+/* ─── DESKTOP (≥ 769px) · 캔버스 1920×1080 ─── */
 @media (min-width: 769px) {
   #screen-step1 #btn-step1-a {
-    /* TODO */
+    top:    61.5%;   /* ~664 / 1080 */
+    left:   28.0%;   /* ~538 / 1920 */
+    width:  20.5%;   /* ~394 / 1920 */
+    height:  7.5%;   /* ~81  / 1080 */
   }
   #screen-step1 #btn-step1-b {
-    /* TODO */
+    top:    61.5%;
+    left:   51.6%;   /* ~990 / 1920 — VS 오른쪽 */
+    width:  20.5%;
+    height:  7.5%;
   }
 }
 

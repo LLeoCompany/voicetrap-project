@@ -114,14 +114,16 @@
       goToScreen('screen-step1');
     });
 
-    /* ── STEP 1 선택 ── */
+    /* ── STEP 1 선택 ──
+       A: 수사관 안내에 따라 진행 → FAIL (속는 선택)
+       B: 전화를 끊고 공식 기관  → SUCCESS (올바른 선택) */
     var btnStep1A = document.getElementById('btn-step1-a');
     if (btnStep1A) btnStep1A.addEventListener('click', function () {
-      goToScreen('screen-step1-suc');
+      goToScreen('screen-step1-fail');
     });
     var btnStep1B = document.getElementById('btn-step1-b');
     if (btnStep1B) btnStep1B.addEventListener('click', function () {
-      goToScreen('screen-step1-fail');
+      goToScreen('screen-step1-suc');
     });
 
     /* ── STEP 1 결과 → STEP 2 ── */
