@@ -73,6 +73,10 @@
             <span class="sr-only">도전 시작하기</span>
           </button>
         </div>
+        <button class="scroll-hint" aria-label="아래로 스크롤">
+          <div class="scroll-hint-arrow"></div>
+          <div class="scroll-hint-arrow"></div>
+        </button>
       </section>
 
 
@@ -314,11 +318,53 @@
             <source media="(max-width: 768px)" srcset="image/result/mo.png" />
             <img src="image/result/pc.png" alt="" class="page-img" draggable="false" />
           </picture>
+          <!-- 재도전 버튼 -->
           <button class="btn-pos btn-retry" id="btn-retry" aria-label="다시 도전하기">
             <span class="sr-only">다시 도전하기</span>
           </button>
+          <!-- 홍보영상 재생 버튼 3개 -->
+          <button class="btn-pos btn-result-video" id="btn-video-1" aria-label="홍보영상 1 재생">
+            <span class="sr-only">영상 재생</span>
+          </button>
+          <button class="btn-pos btn-result-video" id="btn-video-2" aria-label="홍보영상 2 재생">
+            <span class="sr-only">영상 재생</span>
+          </button>
+          <button class="btn-pos btn-result-video" id="btn-video-3" aria-label="홍보영상 3 재생">
+            <span class="sr-only">영상 재생</span>
+          </button>
+          <!-- 지금 등록하고 자동 응모하기 -->
+          <button class="btn-pos" id="btn-result-register" aria-label="지금 등록하고 자동 응모하기">
+            <span class="sr-only">지금 등록하고 자동 응모하기</span>
+          </button>
+          <!-- 보이스피싱크홀 공유하기 -->
+          <button class="btn-pos" id="btn-result-share" aria-label="보이스피싱크홀 공유하기">
+            <span class="sr-only">보이스피싱크홀 공유하기</span>
+          </button>
         </div>
+        <button class="scroll-hint" aria-label="아래로 스크롤">
+          <div class="scroll-hint-arrow"></div>
+          <div class="scroll-hint-arrow"></div>
+        </button>
       </section>
+
+
+      <!-- ============================================================
+           등록 팝업
+      ============================================================ -->
+      <div class="popup-overlay" id="popup-register" role="dialog" aria-modal="true" aria-label="응모 등록">
+        <div class="popup-box">
+          <button class="popup-close" id="btn-popup-close" aria-label="닫기">✕</button>
+          <h2 class="popup-title">지금 등록하고 자동 응모!</h2>
+          <p class="popup-desc">이름과 전화번호를 입력하시면<br>자동으로 경품 응모가 완료됩니다.</p>
+          <form class="popup-form" id="form-register" novalidate>
+            <label class="popup-label" for="input-name">이름</label>
+            <input class="popup-input" id="input-name" type="text" placeholder="이름을 입력하세요" autocomplete="name" />
+            <label class="popup-label" for="input-phone">전화번호</label>
+            <input class="popup-input" id="input-phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" inputmode="numeric" />
+            <button class="popup-submit" type="submit">응모 완료</button>
+          </form>
+        </div>
+      </div>
 
 
       <!-- 전역 공통 -->

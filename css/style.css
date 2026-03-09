@@ -413,7 +413,6 @@ img {
   transform: translateX(-50%) translateY(0);
 }
 
-
 /* ==========================================================================
    [공통] SCROLL HINT — 실패 페이지 스크롤 유도 화살표
    ========================================================================== */
@@ -436,10 +435,12 @@ img {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* fail 화면이 active 일 때만 표시 */
+/* 스크롤 필요한 화면이 active 일 때만 표시 */
+#screen-main.active .scroll-hint,
 #screen-step1-fail.active .scroll-hint,
 #screen-step2-fail.active .scroll-hint,
-#screen-step3-fail.active .scroll-hint {
+#screen-step3-fail.active .scroll-hint,
+#screen-result.active .scroll-hint {
   opacity: 1;
 }
 
@@ -458,8 +459,15 @@ img {
 }
 
 @keyframes scroll-bounce {
-  0%, 100% { transform: rotate(45deg) translate(0, 0);   opacity: 1;   }
-  50%        { transform: rotate(45deg) translate(4px, 4px); opacity: 0.6; }
+  0%,
+  100% {
+    transform: rotate(45deg) translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(45deg) translate(4px, 4px);
+    opacity: 0.6;
+  }
 }
 
 /* ==========================================================================
@@ -781,20 +789,185 @@ img {
 
 /* ==========================================================================
    [RESULT]  #screen-result
-   이미지: image/result/pc.png / mo.png
-   재도전 버튼 (#btn-retry) → #screen-intro1
+   이미지: image/result/mo.png(390×1442) / pc.png(1920×3300)
    ========================================================================== */
 
-/* ─── MOBILE ─── */
+/* ─── MOBILE (캔버스 390×1442) ─── */
 @media (max-width: 768px) {
   #screen-result #btn-retry {
     /* TODO */
   }
+
+  #screen-result #btn-video-1 {
+    top: 46.3%;
+    left: 29%;
+    width: 42.5%;
+    height: 6.4%;
+  }
+  #screen-result #btn-video-2 {
+    top: 55.1%;
+    left: 29%;
+    width: 42.5%;
+    height: 6.4%;
+  }
+  #screen-result #btn-video-3 {
+    top: 63.8%;
+    left: 29%;
+    width: 42.5%;
+    height: 6.4%;
+  }
+  #screen-result #btn-result-register {
+    top: 87.5%;
+    left: 19%;
+    width: 60%;
+    height: 2.5%;
+  }
+  #screen-result #btn-result-share {
+    top: 93%;
+    left: 19%;
+    width: 60%;
+    height: 2.5%;
+  }
 }
 
-/* ─── DESKTOP ─── */
+/* ─── DESKTOP (캔버스 1920×3300) ─── */
 @media (min-width: 769px) {
   #screen-result #btn-retry {
     /* TODO */
   }
+
+  #screen-result #btn-video-1 {
+    top: 59.8%;
+    left: 19.5%;
+    width: 19%;
+    height: 6.4%;
+  }
+  #screen-result #btn-video-2 {
+    top: 59.8%;
+    left: 40.5%;
+    width: 19%;
+    height: 6.4%;
+  }
+  #screen-result #btn-video-3 {
+    top: 59.8%;
+    left: 61.5%;
+    width: 19%;
+    height: 6.4%;
+  }
+  #screen-result #btn-result-register {
+    top: 88.6%;
+    left: 33%;
+    width: 32%;
+    height: 3.3%;
+  }
+  #screen-result #btn-result-share {
+    top: 94.1%;
+    left: 33%;
+    width: 32%;
+    height: 3.3%;
+  }
+}
+
+/* ==========================================================================
+   [POPUP] 등록 팝업
+   ========================================================================== */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  padding: 20px;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-box {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 28px 28px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #555;
+  line-height: 1;
+}
+
+.popup-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.popup-desc {
+  font-size: 0.85rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: -4px;
+}
+
+.popup-input {
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.popup-input:focus {
+  border-color: #e02020;
+}
+
+.popup-submit {
+  margin-top: 8px;
+  background: #e02020;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.popup-submit:active {
+  background: #b01010;
 }
