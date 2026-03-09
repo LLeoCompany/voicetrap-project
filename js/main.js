@@ -214,36 +214,28 @@
      audioSrc  : 오디오 파일 경로 (없으면 null — 비주얼만 표시)
   ═══════════════════════════════════════════════════════════════════════ */
 
+  /* 전역 AudioContext 싱글톤 — 클릭 이후 최초 1회 생성 (iOS 정책) */
+  var _audioCtx = null;
+  function getAudioContext() {
+    if (!_audioCtx) {
+      _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return _audioCtx;
+  }
+
   function initWavePlayer(waveId, btnId, audioSrc) {
     var btn = document.getElementById(btnId);
     if (!btn) return;
 
-    /* 오디오 없으면 비주얼만 (이미지 애니메이션은 CSS로 항상 동작) */
     if (!audioSrc) return;
 
-    /* iOS Safari AudioContext unlock */
     var audio = new Audio(audioSrc);
-    var unlocked = false;
-
-    function unlockAudio() {
-      if (unlocked) return;
-      try {
-        var ctx = new (window.AudioContext || window.webkitAudioContext)();
-        var buf = ctx.createBuffer(1, 1, 22050);
-        var src = ctx.createBufferSource();
-        src.buffer = buf;
-        src.connect(ctx.destination);
-        src.start(0);
-        ctx.resume().then(function () {
-          unlocked = true;
-        });
-      } catch (e) {
-        unlocked = true;
-      }
-    }
 
     btn.addEventListener("click", function () {
-      unlockAudio();
+      var ctx = getAudioContext();
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
       if (audio.paused) {
         audio.play().catch(function () {});
         btn.classList.add("playing");
