@@ -6,12 +6,58 @@
   "use strict";
 
   /* ── 화면 전환 ─────────────────────────────────────────────────────────── */
+
+  /* 성공/실패 효과음 */
+  var sucAudio  = new Audio("image/step1/success/audio/05. 박수5(웃음+공연장).mp3");
+  var failAudio = new Audio("image/step1/fail/audio/[Track 01] Building Collapse Sound Effect.wav");
+
+  /* 전체 오디오 풀 — 화면 이동 시 일괄 정지용 (glitchAudio·wavePlayers는 아래서 추가) */
+  var allAudios = [sucAudio, failAudio];
+  var wavePlayers = []; /* { audio, btn } 쌍 — 버튼 UI 리셋 포함 */
+
+  function stopAllAudio() {
+    allAudios.forEach(function (a) {
+      a.pause();
+      a.currentTime = 0;
+    });
+    wavePlayers.forEach(function (p) {
+      p.audio.pause();
+      p.audio.currentTime = 0;
+      p.btn.classList.remove("playing");
+      p.btn.setAttribute("aria-pressed", "false");
+    });
+  }
+
+  function playScreenAudio(audio) {
+    stopAllAudio();
+    audio.currentTime = 0;
+    audio.muted = false;
+    audio.play().catch(function () {
+      audio.muted = true;
+      audio.play().then(function () {
+        audio.muted = false;
+      }).catch(function () {});
+    });
+  }
+
+  var sucScreens  = ["screen-step1-suc",  "screen-step2-suc",  "screen-step3-suc"];
+  var failScreens = ["screen-step1-fail", "screen-step2-fail", "screen-step3-fail"];
+
   function goToScreen(nextId) {
     var current = document.querySelector(".screen.active");
     var next = document.getElementById(nextId);
     if (!next || next === current) return;
 
     if (current) current.classList.remove("active");
+
+    /* 성공/실패 화면: 효과음 교체 재생 / 그 외 화면: 모든 오디오 정지 */
+    if (sucScreens.indexOf(nextId) !== -1) {
+      playScreenAudio(sucAudio);
+    } else if (failScreens.indexOf(nextId) !== -1) {
+      playScreenAudio(failAudio);
+    } else {
+      stopAllAudio();
+    }
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
@@ -230,6 +276,7 @@
     if (!audioSrc) return;
 
     var audio = new Audio(audioSrc);
+    wavePlayers.push({ audio: audio, btn: btn });
 
     btn.addEventListener("click", function () {
       var ctx = getAudioContext();
@@ -258,6 +305,7 @@
   /* 파일명 기준 타이밍: 1s(클린) → 0.05s(글리치A) → 0.1s(글리치B) → 0.1s(글리치C) → 유지(클린) */
   var glitchTimers = [];
   var glitchAudio = new Audio("image/intro1/audio/Digital TV Glitch 2.mp3");
+  allAudios.push(glitchAudio);
 
   function playGlitchAudio() {
     glitchAudio.currentTime = 0;
