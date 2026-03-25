@@ -319,7 +319,7 @@ img {
     top: 36.1%; /* 195 / 1080 */
     left: 38.7%; /* 590 / 1920 */
     width: 20.5%; /* 740 / 1920 */
-    height: 15.9%; /* 150 / 1080 */
+    height: 13.7%; /* 150 / 1080 */
   }
   .wave-play-btn {
     width: 64px;
@@ -574,14 +574,32 @@ img {
 }
 
 /* ==========================================================================
-   [STEP1-성공]  #screen-step1-suc
-   이미지: image/step1/success/pc.png / mo.png
-   다음 버튼 (#btn-step1-suc-next) → #screen-step2
+   [STEP1·2·3-성공] 공통 — suc-layer 오버레이
+   캔버스: pc.png 1920×1801 / mo.png 390×844
+   item 구성:
+     stage1 여자배경 복사.(jpg|png) — 노란 쿠션 배경   (1920×1465)
+     여자.png / 성공 남자만.png / 성공노인들.png       — 캐릭터    (1920×1465 or 1080)
+     폭죽.png                                        — 금색 컨페티 (1920×1465)
+     폭죽2.png                                       — 쏟아지는 컨페티 (1920×1465)
+     button1 복사.png                               — 네온 버튼   (1000×564)
    ========================================================================== */
 
-/* ─── MOBILE ─── */
+/* ─── MOBILE: suc 레이어 숨김 ─── */
+.suc-layer {
+  display: none;
+}
+
+/* 성공 페이지도 overflow: hidden (캐릭터 float 애니가 스크롤 높이에 영향 안 주도록) */
+#screen-step1-suc .page-canvas,
+#screen-step2-suc .page-canvas,
+#screen-step3-suc .page-canvas {
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
-  #screen-step1-suc #btn-step1-suc-next {
+  #screen-step1-suc #btn-step1-suc-next,
+  #screen-step2-suc #btn-step2-suc-next,
+  #screen-step3-suc #btn-step3-suc-next {
     top: 85%;
     left: 17%;
     width: 65%;
@@ -591,13 +609,112 @@ img {
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
-  #screen-step1-suc #btn-step1-suc-next {
-    top: 78%;
-    left: 32.3%;
-    width: 34%;
-    height: 14%;
+  /* 공통 베이스 */
+  .suc-layer {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* 배경: 노란 쿠션 — 가장 아래, 전체 너비 */
+  .suc-bg {
+    z-index: 1;
+  }
+
+  /* 캐릭터 — 기본: 화면 위 대기 */
+  .suc-char {
+    z-index: 2;
+    transform-origin: center bottom;
+    transform: translateY(-32%);
+    opacity: 0;
+  }
+
+  /* 화면 진입 시 낙하 시작 (screen fade-in 0.45s 후 딜레이) */
+  #screen-step1-suc.active .suc-char,
+  #screen-step2-suc.active .suc-char,
+  #screen-step3-suc.active .suc-char {
+    animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
+  }
+
+  /* 금색 컨페티 — 투명 PNG, 흔들림 */
+  .suc-confetti1 {
+    z-index: 3;
+    animation: suc-confetti-drift 3.5s ease-in-out infinite;
+  }
+
+  /* 쏟아지는 컨페티 — 흰 배경 제거 후 느린 흔들림 */
+  .suc-confetti2 {
+    z-index: 4;
+    mix-blend-mode: multiply;
+    animation: suc-confetti-drift 4.8s ease-in-out infinite reverse;
+    animation-delay: 0.7s;
+  }
+
+  /* 네온 버튼 이미지 — fail과 동일 좌표
+     button1 복사.png: 1000×564, canvas: 1920×1801
+     width: 35% → 672px, height: 379px
+     top: (1801-379-80)/1801 ≈ 74% */
+  .suc-button-img {
+    z-index: 5;
+    top: 74%;
+    left: 32.5%;
+    width: 35%;
+  }
+
+  /* 투명 클릭 버튼 — suc-button-img 전체 커버 (3스텝 공통) */
+  #screen-step1-suc #btn-step1-suc-next,
+  #screen-step2-suc #btn-step2-suc-next,
+  #screen-step3-suc #btn-step3-suc-next {
+    top: 74%;
+    left: 32.5%;
+    width: 35%;
+    height: 21%; /* 379/1801 ≈ 21% */
+    z-index: 10;
+  }
+
+  #screen-step1-suc #btn-step1-suc-next:active,
+  #screen-step2-suc #btn-step2-suc-next:active,
+  #screen-step3-suc #btn-step3-suc-next:active {
+    opacity: 0.7;
   }
 }
+
+/* ── 성공 키프레임 ── */
+@keyframes suc-char-fall {
+  0%   { transform: translateY(-32%) scaleY(1);    opacity: 0; }
+  8%   { transform: translateY(-28%) scaleY(1);    opacity: 1; }
+  /* 쿠션 도달 */
+  62%  { transform: translateY(0)    scaleY(1);    animation-timing-function: ease-out; }
+  /* 착지 충격 */
+  72%  { transform: translateY(2%)   scaleY(0.82); }
+  /* 반동 */
+  82%  { transform: translateY(-4%)  scaleY(1.08); }
+  /* 재착지 */
+  90%  { transform: translateY(0.5%) scaleY(0.96); }
+  /* 안착 — 이 상태로 멈춤 */
+  100% { transform: translateY(0)    scaleY(1);    opacity: 1; }
+}
+
+@keyframes suc-confetti-drift {
+  0%   { transform: translateY(0) rotate(0deg); }
+  35%  { transform: translateY(-12px) rotate(-2deg); }
+  70%  { transform: translateY(8px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* ==========================================================================
+   [STEP1-성공]  #screen-step1-suc  (개별 규칙 없음 — 공통으로 통합)
+   ========================================================================== */
+
+/* ==========================================================================
+   [STEP2-성공] #screen-step2-suc (개별 규칙 없음 — 공통으로 통합)
+   ========================================================================== */
 
 /* ==========================================================================
    [STEP1-실패]  #screen-step1-fail
@@ -606,10 +723,16 @@ img {
    ========================================================================== */
 
 /* ─── MOBILE: 낙하 레이어 숨김 (mo.png에 포함) ─── */
-.fail-layer { display: none; }
+.fail-layer {
+  display: none;
+}
 
 /* 낙하 애니메이션이 translateY로 캔버스 아래 삐져나와 스크롤 높이 변동 → 튕김 방지 */
-#screen-step1-fail .page-canvas { overflow: hidden; }
+#screen-step1-fail .page-canvas,
+#screen-step2-fail .page-canvas,
+#screen-step3-fail .page-canvas {
+  overflow: hidden;
+}
 
 @media (max-width: 768px) {
   #screen-step1-fail #btn-step1-fail-next {
@@ -622,6 +745,7 @@ img {
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
+  /* 공통 베이스 (모든 fail-layer) */
   .fail-layer {
     display: block;
     position: absolute;
@@ -634,44 +758,118 @@ img {
     -webkit-user-drag: none;
   }
 
+  /* 사운드 이퀄라이저 — 전체 너비 상단 오버레이, 흰 배경 제거 */
+  .fail-equalizer {
+    z-index: 1;
+    mix-blend-mode: multiply;
+    animation: eq-pulse 0.45s ease-in-out infinite alternate;
+    transform-origin: center 35%;
+  }
+
+  /* 실버 명판 — 하단 정보 영역 상단에 중앙 정렬 */
+  /* back.png: 1500×688, canvas: 1920×1801
+     top: 1080/1801 ≈ 60% (이퀄라이저 이미지 하단 기준)
+     left: (1920-1500)/2/1920 ≈ 10.94%
+     width: 1500/1920 ≈ 78.13% */
+  .fail-back {
+    z-index: 2;
+    top: 60%;
+    left: 10.94%;
+    width: 78.13%;
+  }
+
+  /* 떨어지는 돌 — 전체 너비, 흔들림 애니 */
   .fail-rocks {
     z-index: 3;
     transform-origin: center 35%;
     animation: fall-rocks 3.2s ease-in-out infinite;
   }
 
+  /* 떨어지는 사람 — 전체 너비, 낙하+소실 애니 */
   .fail-people {
     z-index: 4;
+    transform-origin: center 80%;
     animation: fall-people 4.5s ease-in-out infinite;
     animation-delay: 0.6s;
   }
 
-  #screen-step1-fail #btn-step1-fail-next {
-    top: 85%;
-    left: 33%;
-    width: 33%;
-    height: 9%;
+  /* 네온 버튼 이미지 — 하단 중앙
+     button1 복사.png: 1000×564, canvas: 1920×1801
+     width: 35% → 672px, height: 379px
+     left: (1920-672)/2/1920 ≈ 32.5%
+     top: (1801-379-80)/1801 ≈ 74% (하단 80px 여백) */
+  .fail-button-img {
+    z-index: 5;
+    top: 74%;
+    left: 32.5%;
+    width: 35%;
+  }
+
+  /* 투명 클릭 버튼 — fail-button-img 전체 커버 */
+  #screen-step1-fail #btn-step1-fail-next,
+  #screen-step2-fail #btn-step2-fail-next,
+  #screen-step3-fail #btn-step3-fail-next {
+    top: 74%;
+    left: 32.5%;
+    width: 35%;
+    height: 21%; /* 379/1801 ≈ 21% */
     z-index: 10;
   }
 
-  #screen-step1-fail #btn-step1-fail-next:active {
+  #screen-step1-fail #btn-step1-fail-next:active,
+  #screen-step2-fail #btn-step2-fail-next:active,
+  #screen-step3-fail #btn-step3-fail-next:active {
     opacity: 0.7;
   }
 }
 
 /* ── 낙하 키프레임 ── */
 @keyframes fall-rocks {
-  0%   { transform: translateY(0)    rotate(0deg);  }
-  40%  { transform: translateY(14px) rotate(4deg);  }
-  75%  { transform: translateY(5px)  rotate(-2deg); }
-  100% { transform: translateY(0)    rotate(0deg);  }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(14px) rotate(4deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes fall-people {
-  0%   { transform: translateY(0);    }
-  45%  { transform: translateY(24px); }
-  80%  { transform: translateY(8px);  }
-  100% { transform: translateY(0);    }
+  0% {
+    transform: translateY(0)   scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(60px) scale(0.55);
+    opacity: 0.6;
+  }
+  85% {
+    transform: translateY(80px) scale(0.3);
+    opacity: 0;
+  }
+  86% {
+    transform: translateY(0)   scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0)   scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── 이퀄라이저 맥동 키프레임 ── */
+@keyframes eq-pulse {
+  0% {
+    transform: scaleY(0.65);
+  }
+  100% {
+    transform: scaleY(1.35);
+  }
 }
 
 /* ==========================================================================
@@ -714,30 +912,8 @@ img {
 }
 
 /* ==========================================================================
-   [STEP2-성공]  #screen-step2-suc
-   이미지: image/step2/success/pc.png / mo.png
-   다음 버튼 (#btn-step2-suc-next) → #screen-step3
+   [STEP2-성공]  #screen-step2-suc  (btn·레이어 위치 → 공통 블록으로 통합)
    ========================================================================== */
-
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step2-suc #btn-step2-suc-next {
-    top: 85%;
-    left: 17%;
-    width: 65%;
-    height: 6.5%;
-  }
-}
-
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step2-suc #btn-step2-suc-next {
-    top: 78%;
-    left: 32.3%;
-    width: 34%;
-    height: 14%;
-  }
-}
 
 /* ==========================================================================
    [STEP2-실패]  #screen-step2-fail
@@ -755,15 +931,7 @@ img {
   }
 }
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step2-fail #btn-step2-fail-next {
-    top: 85%;
-    left: 33%;
-    width: 33%;
-    height: 9%;
-  }
-}
+/* ─── DESKTOP ─── (btn 위치는 [STEP1-실패] 섹션 공통 규칙으로 통합) */
 
 /* ==========================================================================
    [STEP3]  #screen-step3
@@ -805,30 +973,8 @@ img {
 }
 
 /* ==========================================================================
-   [STEP3-성공]  #screen-step3-suc
-   이미지: image/step3/success/pc.png / mo.png
-   다음 버튼 (#btn-step3-suc-next) → #screen-result
+   [STEP3-성공]  #screen-step3-suc  (btn·레이어 위치 → 공통 블록으로 통합)
    ========================================================================== */
-
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  #screen-step3-suc #btn-step3-suc-next {
-    top: 85%;
-    left: 17%;
-    width: 65%;
-    height: 6.5%;
-  }
-}
-
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step3-suc #btn-step3-suc-next {
-    top: 78%;
-    left: 32.3%;
-    width: 34%;
-    height: 14%;
-  }
-}
 
 /* ==========================================================================
    [STEP3-실패]  #screen-step3-fail
@@ -846,15 +992,7 @@ img {
   }
 }
 
-/* ─── DESKTOP ─── */
-@media (min-width: 769px) {
-  #screen-step3-fail #btn-step3-fail-next {
-    top: 88%;
-    left: 32%;
-    width: 37%;
-    height: 9%;
-  }
-}
+/* ─── DESKTOP ─── (btn 위치는 [STEP1-실패] 섹션 공통 규칙으로 통합) */
 
 /* ==========================================================================
    [RESULT]  #screen-result
