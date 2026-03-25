@@ -346,7 +346,7 @@ img {
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 22s linear infinite;
+  animation: ticker-scroll 80s linear infinite;
 }
 
 .ticker-text {

@@ -38,7 +38,8 @@
       "Bash(echo \"=== $step/$type/item ===\")",
       "Bash(echo \"=== $step/$type/item-mobile ===\")",
       "Bash(done)",
-      "Bash(echo \"=== $step/$type demo ===\")"
+      "Bash(echo \"=== $step/$type demo ===\")",
+      "Bash(node:*)"
     ]
   }
 }
