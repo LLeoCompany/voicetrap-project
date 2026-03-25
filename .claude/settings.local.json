@@ -27,7 +27,18 @@
       "Bash(python3:*)",
       "Bash(sips -g pixelWidth -g pixelHeight /Users/marko/Documents/GitHub/voicetrap-project/image/step1/fail/pc.png /Users/marko/Documents/GitHub/voicetrap-project/image/step2/fail/pc.png /Users/marko/Documents/GitHub/voicetrap-project/image/step3/fail/pc.png)",
       "Bash(sips:*)",
-      "Bash(/dev/null -type f)"
+      "Bash(/dev/null -type f)",
+      "Bash(node --check /Users/marko/Documents/GitHub/voicetrap-project/js/main.js)",
+      "Bash(ls:*)",
+      "Bash(for step:*)",
+      "Bash(do)",
+      "Bash(for type:*)",
+      "Bash(echo \"=== $step/$type/demo ===\")",
+      "Read(//Users/marko/Documents/GitHub/voicetrap-project/image/$step/$type/**)",
+      "Bash(echo \"=== $step/$type/item ===\")",
+      "Bash(echo \"=== $step/$type/item-mobile ===\")",
+      "Bash(done)",
+      "Bash(echo \"=== $step/$type demo ===\")"
     ]
   }
 }

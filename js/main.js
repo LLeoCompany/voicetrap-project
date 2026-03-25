@@ -254,6 +254,62 @@
     });
   }
 
+  /* ── 글리치 텍스트 시퀀스 ─────────────────────────────────────────────── */
+  /* 파일명 기준 타이밍: 1s(클린) → 0.05s(글리치A) → 0.1s(글리치B) → 0.1s(글리치C) → 유지(클린) */
+  var glitchTimers = [];
+  var glitchAudio = new Audio("image/intro1/audio/Digital TV Glitch 2.mp3");
+
+  function playGlitchAudio() {
+    glitchAudio.currentTime = 0;
+    /* 1차: 소리 있는 자동재생 시도 */
+    glitchAudio.muted = false;
+    glitchAudio.play().catch(function () {
+      /* 실패 시: muted 자동재생 → 즉시 unmute (Chrome 정책 우회) */
+      glitchAudio.muted = true;
+      glitchAudio.play().then(function () {
+        glitchAudio.muted = false;
+      }).catch(function () {
+        /* 모두 실패 시 첫 인터랙션에서 재시도 */
+        var retry = function () {
+          glitchAudio.currentTime = 0;
+          glitchAudio.muted = false;
+          glitchAudio.play().catch(function () {});
+        };
+        document.addEventListener("click",      retry, { once: true });
+        document.addEventListener("touchstart", retry, { once: true });
+      });
+    });
+  }
+
+  function runGlitch() {
+    var container = document.getElementById("intro1-glitch");
+    if (!container) return;
+
+    /* 진행 중인 타이머 초기화 */
+    for (var t = 0; t < glitchTimers.length; t++) clearTimeout(glitchTimers[t]);
+    glitchTimers = [];
+
+    /* 글리치 효과음 재생 */
+    playGlitchAudio();
+
+    var isMo = window.matchMedia("(max-width: 768px)").matches;
+    var frames = container.querySelectorAll(isMo ? ".glitch-mo" : ".glitch-pc");
+
+    /* 전체 숨김 */
+    for (var i = 0; i < frames.length; i++) frames[i].classList.remove("gf-active");
+
+    /* 순서대로 표시 — 이전 프레임 숨기고 다음 표시 */
+    var delays = [0, 1000, 1050, 1150, 1250];
+    for (var idx = 0; idx < frames.length; idx++) {
+      (function (cur, prev, delay) {
+        glitchTimers.push(setTimeout(function () {
+          if (prev) prev.classList.remove("gf-active");
+          cur.classList.add("gf-active");
+        }, delay));
+      })(frames[idx], idx > 0 ? frames[idx - 1] : null, delays[idx]);
+    }
+  }
+
   /* ── DOMContentLoaded ──────────────────────────────────────────────────── */
   document.addEventListener("DOMContentLoaded", function () {
     /* ── 스크롤 힌트 — 클릭 시 맨 아래로, 최하단 도달 시 숨김 ── */
@@ -283,6 +339,9 @@
         hint.style.pointerEvents = remaining < 40 ? "none" : "";
       });
     });
+
+    /* ── 글리치 시퀀스 시작 (intro1이 초기 화면) ── */
+    runGlitch();
 
     /* ── SVG 이퀄라이저 생성 ── */
     createWaveBars("wave-step1");
@@ -402,6 +461,7 @@
     if (btnRetry)
       btnRetry.addEventListener("click", function () {
         goToScreen("screen-intro1");
+        setTimeout(runGlitch, 50); /* 화면 전환 후 글리치 재시작 */
       });
 
     /* ── RESULT: 유튜브 영상 버튼 ── */
