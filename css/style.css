@@ -42,6 +42,15 @@
    [전역] RESET
    ========================================================================== */
 
+/* G마켓 산스 불러오기 */
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
@@ -143,7 +152,10 @@ img {
 /* 화면 공통 — 스크롤 허용 */
 .screen {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -203,7 +215,10 @@ img {
 /* 전체 화면 탭 버튼 (인트로) */
 .btn-tap-all {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: transparent;
@@ -234,7 +249,10 @@ img {
 /* SVG 이퀄라이저 */
 .wave-svg {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -583,11 +601,16 @@ img {
 
 /* ==========================================================================
    [STEP1-실패]  #screen-step1-fail
-   이미지: image/step1/fail/pc.png / mo.png
+   이미지: image/step1/fail/pc.png (1920×1801) / mo.png (390×844)
    다음 버튼 (#btn-step1-fail-next) → #screen-step2
    ========================================================================== */
 
-/* ─── MOBILE ─── */
+/* ─── MOBILE: 낙하 레이어 숨김 (mo.png에 포함) ─── */
+.fail-layer { display: none; }
+
+/* 낙하 애니메이션이 translateY로 캔버스 아래 삐져나와 스크롤 높이 변동 → 튕김 방지 */
+#screen-step1-fail .page-canvas { overflow: hidden; }
+
 @media (max-width: 768px) {
   #screen-step1-fail #btn-step1-fail-next {
     top: 86%;
@@ -599,12 +622,56 @@ img {
 
 /* ─── DESKTOP ─── */
 @media (min-width: 769px) {
+  .fail-layer {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .fail-rocks {
+    z-index: 3;
+    transform-origin: center 35%;
+    animation: fall-rocks 3.2s ease-in-out infinite;
+  }
+
+  .fail-people {
+    z-index: 4;
+    animation: fall-people 4.5s ease-in-out infinite;
+    animation-delay: 0.6s;
+  }
+
   #screen-step1-fail #btn-step1-fail-next {
-    top: 85%; /* PC fail 이미지 1920×1800 기준 */
+    top: 85%;
     left: 33%;
     width: 33%;
     height: 9%;
+    z-index: 10;
   }
+
+  #screen-step1-fail #btn-step1-fail-next:active {
+    opacity: 0.7;
+  }
+}
+
+/* ── 낙하 키프레임 ── */
+@keyframes fall-rocks {
+  0%   { transform: translateY(0)    rotate(0deg);  }
+  40%  { transform: translateY(14px) rotate(4deg);  }
+  75%  { transform: translateY(5px)  rotate(-2deg); }
+  100% { transform: translateY(0)    rotate(0deg);  }
+}
+
+@keyframes fall-people {
+  0%   { transform: translateY(0);    }
+  45%  { transform: translateY(24px); }
+  80%  { transform: translateY(8px);  }
+  100% { transform: translateY(0);    }
 }
 
 /* ==========================================================================
@@ -876,7 +943,10 @@ img {
 
 .popup-overlay {
   position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 500;
   background: rgba(0, 0, 0, 0.75);
   display: flex;

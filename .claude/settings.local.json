@@ -23,7 +23,10 @@
       "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project show b7cb666 -- css/style.css | head -50)",
       "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project status --short)",
       "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project diff HEAD css/style.css | head -30)",
-      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project log --oneline -3)"
+      "Bash(git -C /Users/marko/Documents/GitHub/voicetrap-project log --oneline -3)",
+      "Bash(python3:*)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/marko/Documents/GitHub/voicetrap-project/image/step1/fail/pc.png /Users/marko/Documents/GitHub/voicetrap-project/image/step2/fail/pc.png /Users/marko/Documents/GitHub/voicetrap-project/image/step3/fail/pc.png)",
+      "Bash(sips:*)"
     ]
   }
 }

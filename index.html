@@ -8,15 +8,21 @@
     />
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
     <title>보이스피싱크홀 — 당신은 피할 수 있습니까?</title>
-    <meta name="description" content="금융감독원 보이스피싱 예방 캠페인. 실제 수법을 직접 체험하고 판단하세요." />
+    <meta
+      name="description"
+      content="금융감독원 보이스피싱 예방 캠페인. 실제 수법을 직접 체험하고 판단하세요."
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Gowun+Dodum&display=swap"
       rel="stylesheet"
     />
 
@@ -24,7 +30,6 @@
   </head>
   <body>
     <div id="app">
-
       <!-- ============================================================
            INTRO 1  (#screen-intro1)
            전환: 탭 전체 → #screen-intro2
@@ -33,14 +38,22 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/intro1/mo.png" />
-            <img src="image/intro1/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/intro1/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-tap-all" id="btn-intro1-next" aria-label="다음으로">
+          <button
+            class="btn-tap-all"
+            id="btn-intro1-next"
+            aria-label="다음으로"
+          >
             <span class="sr-only">화면을 터치하면 다음으로 이동합니다</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            INTRO 2  (#screen-intro2)
@@ -50,14 +63,22 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/intro2/mo.png" />
-            <img src="image/intro2/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/intro2/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-tap-all" id="btn-intro2-next" aria-label="다음으로">
+          <button
+            class="btn-tap-all"
+            id="btn-intro2-next"
+            aria-label="다음으로"
+          >
             <span class="sr-only">화면을 터치하면 다음으로 이동합니다</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            MAIN PAGE  (#screen-main)
@@ -67,9 +88,18 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/main/mo.png" />
-            <img src="image/main/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/main/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos" id="btn-main-start" aria-label="도전 시작하기">
+          <button
+            class="btn-pos"
+            id="btn-main-start"
+            aria-label="도전 시작하기"
+          >
             <span class="sr-only">도전 시작하기</span>
           </button>
         </div>
@@ -78,7 +108,6 @@
           <div class="scroll-hint-arrow"></div>
         </button>
       </section>
-
 
       <!-- ============================================================
            STEP 1  (#screen-step1)
@@ -89,34 +118,72 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/step1/mo.png" />
-            <img src="image/step1/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/step1/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
 
           <!-- 음파 오버레이 — 폰 화면 위 -->
           <div class="phone-wave" id="wave-step1">
-            <button class="wave-play-btn" id="btn-step1-play" aria-label="음성 재생/정지" aria-pressed="false">
-              <img src="image/item-image/play-btn.png" alt="" class="play-btn-img" draggable="false" />
+            <button
+              class="wave-play-btn"
+              id="btn-step1-play"
+              aria-label="음성 재생/정지"
+              aria-pressed="false"
+            >
+              <img
+                src="image/item-image/play-btn.png"
+                alt=""
+                class="play-btn-img"
+                draggable="false"
+              />
             </button>
           </div>
 
           <!-- 빨간 글자 티커 오버레이 -->
           <div class="ticker-overlay" aria-hidden="true">
             <div class="ticker-track">
-              <span class="ticker-text">"있으시죠? 지금부터 절차대로 진행합니다." &nbsp;……&nbsp; "아시면 안다, 모르시면 모른다. 간단하면 진술하세요." &nbsp;……&nbsp; "현 시간부로 약식 조치 진행하겠습니다." &nbsp;……&nbsp; "불필요한 질문 하지 마시고, 질문은 제가 안내한 다음에 하세요." &nbsp;……&nbsp; "전 서울중앙지검 합동수사… 박영도 수사관" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span class="ticker-text">"있으시죠? 지금부터 절차대로 진행합니다." &nbsp;……&nbsp; "아시면 안다, 모르시면 모른다. 간단하면 진술하세요." &nbsp;……&nbsp; "현 시간부로 약식 조치 진행하겠습니다." &nbsp;……&nbsp; "불필요한 질문 하지 마시고, 질문은 제가 안내한 다음에 하세요." &nbsp;……&nbsp; "전 서울중앙지검 합동수사… 박영도 수사관" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span class="ticker-text"
+                >"있으시죠? 지금부터 절차대로 진행합니다." &nbsp;……&nbsp;
+                "아시면 안다, 모르시면 모른다. 간단하면 진술하세요."
+                &nbsp;……&nbsp; "현 시간부로 약식 조치 진행하겠습니다."
+                &nbsp;……&nbsp; "불필요한 질문 하지 마시고, 질문은 제가 안내한
+                다음에 하세요." &nbsp;……&nbsp; "전 서울중앙지검 합동수사… 박영도
+                수사관" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
+              <span class="ticker-text"
+                >"있으시죠? 지금부터 절차대로 진행합니다." &nbsp;……&nbsp;
+                "아시면 안다, 모르시면 모른다. 간단하면 진술하세요."
+                &nbsp;……&nbsp; "현 시간부로 약식 조치 진행하겠습니다."
+                &nbsp;……&nbsp; "불필요한 질문 하지 마시고, 질문은 제가 안내한
+                다음에 하세요." &nbsp;……&nbsp; "전 서울중앙지검 합동수사… 박영도
+                수사관" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
             </div>
           </div>
 
           <!-- 선택 버튼 -->
-          <button class="btn-pos btn-step1-a" id="btn-step1-a" aria-label="수사관의 안내에 따라 절차를 진행한다">
+          <button
+            class="btn-pos btn-step1-a"
+            id="btn-step1-a"
+            aria-label="수사관의 안내에 따라 절차를 진행한다"
+          >
             <span class="sr-only">수사관의 안내에 따라 절차를 진행한다</span>
           </button>
-          <button class="btn-pos btn-step1-b" id="btn-step1-b" aria-label="전화를 끊고 공식 기관 번호로 직접 확인한다">
-            <span class="sr-only">전화를 끊고 공식 기관 번호로 직접 확인한다</span>
+          <button
+            class="btn-pos btn-step1-b"
+            id="btn-step1-b"
+            aria-label="전화를 끊고 공식 기관 번호로 직접 확인한다"
+          >
+            <span class="sr-only"
+              >전화를 끊고 공식 기관 번호로 직접 확인한다</span
+            >
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            STEP 1 — SUCCESS  (#screen-step1-suc)
@@ -125,15 +192,26 @@
       <section id="screen-step1-suc" class="screen">
         <div class="page-canvas">
           <picture>
-            <source media="(max-width: 768px)" srcset="image/step1/success/mo.png" />
-            <img src="image/step1/success/pc.png" alt="" class="page-img" draggable="false" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/step1/success/mo.png"
+            />
+            <img
+              src="image/step1/success/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos btn-next" id="btn-step1-suc-next" aria-label="다음 단계">
+          <button
+            class="btn-pos btn-next"
+            id="btn-step1-suc-next"
+            aria-label="다음 단계"
+          >
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            STEP 1 — FAIL  (#screen-step1-fail)
@@ -142,10 +220,25 @@
       <section id="screen-step1-fail" class="screen">
         <div class="page-canvas">
           <picture>
-            <source media="(max-width: 768px)" srcset="image/step1/fail/mo.png" />
-            <img src="image/step1/fail/pc.png" alt="" class="page-img" draggable="false" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/step1/fail/mo.png"
+            />
+            <img
+              src="image/step1/fail/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos btn-next" id="btn-step1-fail-next" aria-label="다음 단계">
+          <!-- PC 전용: 낙하 애니메이션 오버레이 -->
+          <img class="fail-layer fail-rocks"  src="image/step1/fail/item/떨어지는 돌들.png"   alt="" aria-hidden="true" draggable="false" />
+          <img class="fail-layer fail-people" src="image/step1/fail/item/떨어지는 사람들.png" alt="" aria-hidden="true" draggable="false" />
+          <button
+            class="btn-pos btn-next"
+            id="btn-step1-fail-next"
+            aria-label="다음 단계"
+          >
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
@@ -154,7 +247,6 @@
           <div class="scroll-hint-arrow"></div>
         </button>
       </section>
-
 
       <!-- ============================================================
            STEP 2  (#screen-step2)
@@ -165,34 +257,72 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/step2/mo.png" />
-            <img src="image/step2/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/step2/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
 
           <!-- 음파 오버레이 -->
           <div class="phone-wave" id="wave-step2">
-            <button class="wave-play-btn" id="btn-step2-play" aria-label="음성 재생/정지" aria-pressed="false">
-              <img src="image/item-image/play-btn.png" alt="" class="play-btn-img" draggable="false" />
+            <button
+              class="wave-play-btn"
+              id="btn-step2-play"
+              aria-label="음성 재생/정지"
+              aria-pressed="false"
+            >
+              <img
+                src="image/item-image/play-btn.png"
+                alt=""
+                class="play-btn-img"
+                draggable="false"
+              />
             </button>
           </div>
 
           <!-- 티커 오버레이 -->
           <div class="ticker-overlay" aria-hidden="true">
             <div class="ticker-track">
-              <span class="ticker-text">"금융기관을 말씀해 주십시오." &nbsp;……&nbsp; "신용 예금은 있으십니까?" &nbsp;……&nbsp; "계좌 잔액은 얼마입니까?" &nbsp;……&nbsp; "피해자 보호 조사를 받으셔야 합니다." &nbsp;……&nbsp; "피해자 보호등록이라는 제도가 있습니다." &nbsp;……&nbsp; "국가에서 보상해주는 제도입니다." &nbsp;……&nbsp; "보호를 받으시려면 지금 바로 이체하셔야 합니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span class="ticker-text">"금융기관을 말씀해 주십시오." &nbsp;……&nbsp; "신용 예금은 있으십니까?" &nbsp;……&nbsp; "계좌 잔액은 얼마입니까?" &nbsp;……&nbsp; "피해자 보호 조사를 받으셔야 합니다." &nbsp;……&nbsp; "피해자 보호등록이라는 제도가 있습니다." &nbsp;……&nbsp; "국가에서 보상해주는 제도입니다." &nbsp;……&nbsp; "보호를 받으시려면 지금 바로 이체하셔야 합니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span class="ticker-text"
+                >"금융기관을 말씀해 주십시오." &nbsp;……&nbsp; "신용 예금은
+                있으십니까?" &nbsp;……&nbsp; "계좌 잔액은 얼마입니까?"
+                &nbsp;……&nbsp; "피해자 보호 조사를 받으셔야 합니다."
+                &nbsp;……&nbsp; "피해자 보호등록이라는 제도가 있습니다."
+                &nbsp;……&nbsp; "국가에서 보상해주는 제도입니다." &nbsp;……&nbsp;
+                "보호를 받으시려면 지금 바로 이체하셔야 합니다."
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
+              <span class="ticker-text"
+                >"금융기관을 말씀해 주십시오." &nbsp;……&nbsp; "신용 예금은
+                있으십니까?" &nbsp;……&nbsp; "계좌 잔액은 얼마입니까?"
+                &nbsp;……&nbsp; "피해자 보호 조사를 받으셔야 합니다."
+                &nbsp;……&nbsp; "피해자 보호등록이라는 제도가 있습니다."
+                &nbsp;……&nbsp; "국가에서 보상해주는 제도입니다." &nbsp;……&nbsp;
+                "보호를 받으시려면 지금 바로 이체하셔야 합니다."
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
             </div>
           </div>
 
           <!-- 선택 버튼 -->
-          <button class="btn-pos btn-step2-a" id="btn-step2-a" aria-label="일단 전화를 끊는다">
+          <button
+            class="btn-pos btn-step2-a"
+            id="btn-step2-a"
+            aria-label="일단 전화를 끊는다"
+          >
             <span class="sr-only">일단 전화를 끊는다</span>
           </button>
-          <button class="btn-pos btn-step2-b" id="btn-step2-b" aria-label="안전계좌로 자금 보호 요청에 동의한다">
+          <button
+            class="btn-pos btn-step2-b"
+            id="btn-step2-b"
+            aria-label="안전계좌로 자금 보호 요청에 동의한다"
+          >
             <span class="sr-only">안전계좌로 자금 보호 요청에 동의한다</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            STEP 2 — SUCCESS  (#screen-step2-suc)
@@ -201,15 +331,26 @@
       <section id="screen-step2-suc" class="screen">
         <div class="page-canvas">
           <picture>
-            <source media="(max-width: 768px)" srcset="image/step2/success/mo.png" />
-            <img src="image/step2/success/pc.png" alt="" class="page-img" draggable="false" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/step2/success/mo.png"
+            />
+            <img
+              src="image/step2/success/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos btn-next" id="btn-step2-suc-next" aria-label="다음 단계">
+          <button
+            class="btn-pos btn-next"
+            id="btn-step2-suc-next"
+            aria-label="다음 단계"
+          >
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            STEP 2 — FAIL  (#screen-step2-fail)
@@ -218,10 +359,22 @@
       <section id="screen-step2-fail" class="screen">
         <div class="page-canvas">
           <picture>
-            <source media="(max-width: 768px)" srcset="image/step2/fail/mo.png" />
-            <img src="image/step2/fail/pc.png" alt="" class="page-img" draggable="false" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/step2/fail/mo.png"
+            />
+            <img
+              src="image/step2/fail/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos btn-next" id="btn-step2-fail-next" aria-label="다음 단계">
+          <button
+            class="btn-pos btn-next"
+            id="btn-step2-fail-next"
+            aria-label="다음 단계"
+          >
             <span class="sr-only">다음 단계로</span>
           </button>
         </div>
@@ -230,7 +383,6 @@
           <div class="scroll-hint-arrow"></div>
         </button>
       </section>
-
 
       <!-- ============================================================
            STEP 3  (#screen-step3)
@@ -241,34 +393,70 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/step3/mo.png" />
-            <img src="image/step3/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/step3/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
 
           <!-- 음파 오버레이 -->
           <div class="phone-wave" id="wave-step3">
-            <button class="wave-play-btn" id="btn-step3-play" aria-label="음성 재생/정지" aria-pressed="false">
-              <img src="image/item-image/play-btn.png" alt="" class="play-btn-img" draggable="false" />
+            <button
+              class="wave-play-btn"
+              id="btn-step3-play"
+              aria-label="음성 재생/정지"
+              aria-pressed="false"
+            >
+              <img
+                src="image/item-image/play-btn.png"
+                alt=""
+                class="play-btn-img"
+                draggable="false"
+              />
             </button>
           </div>
 
           <!-- 티커 오버레이 -->
           <div class="ticker-overlay" aria-hidden="true">
             <div class="ticker-track">
-              <span class="ticker-text">"가해자인지, 피해자인지 확인해야 합니다." &nbsp;……&nbsp; "이미 피해가 시작되었습니다." &nbsp;……&nbsp; "개인정보와 계좌정보를 제공하셔야 합니다." &nbsp;……&nbsp; "앱 설치 후 인증하시면 안전하게 보호됩니다." &nbsp;……&nbsp; "지금 즉시 처리하지 않으면 계좌가 동결됩니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span class="ticker-text">"가해자인지, 피해자인지 확인해야 합니다." &nbsp;……&nbsp; "이미 피해가 시작되었습니다." &nbsp;……&nbsp; "개인정보와 계좌정보를 제공하셔야 합니다." &nbsp;……&nbsp; "앱 설치 후 인증하시면 안전하게 보호됩니다." &nbsp;……&nbsp; "지금 즉시 처리하지 않으면 계좌가 동결됩니다." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span class="ticker-text"
+                >"가해자인지, 피해자인지 확인해야 합니다." &nbsp;……&nbsp; "이미
+                피해가 시작되었습니다." &nbsp;……&nbsp; "개인정보와 계좌정보를
+                제공하셔야 합니다." &nbsp;……&nbsp; "앱 설치 후 인증하시면
+                안전하게 보호됩니다." &nbsp;……&nbsp; "지금 즉시 처리하지 않으면
+                계좌가 동결됩니다."
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
+              <span class="ticker-text"
+                >"가해자인지, 피해자인지 확인해야 합니다." &nbsp;……&nbsp; "이미
+                피해가 시작되었습니다." &nbsp;……&nbsp; "개인정보와 계좌정보를
+                제공하셔야 합니다." &nbsp;……&nbsp; "앱 설치 후 인증하시면
+                안전하게 보호됩니다." &nbsp;……&nbsp; "지금 즉시 처리하지 않으면
+                계좌가 동결됩니다."
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+              >
             </div>
           </div>
 
           <!-- 선택 버튼 -->
-          <button class="btn-pos btn-step3-a" id="btn-step3-a" aria-label="개인정보·계좌정보를 말하지 않는다">
+          <button
+            class="btn-pos btn-step3-a"
+            id="btn-step3-a"
+            aria-label="개인정보·계좌정보를 말하지 않는다"
+          >
             <span class="sr-only">개인정보·계좌정보를 말하지 않는다</span>
           </button>
-          <button class="btn-pos btn-step3-b" id="btn-step3-b" aria-label="앱 설치 또는 계좌를 이체한다">
+          <button
+            class="btn-pos btn-step3-b"
+            id="btn-step3-b"
+            aria-label="앱 설치 또는 계좌를 이체한다"
+          >
             <span class="sr-only">앱 설치 또는 계좌를 이체한다</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            STEP 3 — SUCCESS  (#screen-step3-suc)
@@ -277,15 +465,26 @@
       <section id="screen-step3-suc" class="screen">
         <div class="page-canvas">
           <picture>
-            <source media="(max-width: 768px)" srcset="image/step3/success/mo.png" />
-            <img src="image/step3/success/pc.png" alt="" class="page-img" draggable="false" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/step3/success/mo.png"
+            />
+            <img
+              src="image/step3/success/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos btn-next" id="btn-step3-suc-next" aria-label="결과 보기">
+          <button
+            class="btn-pos btn-next"
+            id="btn-step3-suc-next"
+            aria-label="결과 보기"
+          >
             <span class="sr-only">결과 보기</span>
           </button>
         </div>
       </section>
-
 
       <!-- ============================================================
            STEP 3 — FAIL  (#screen-step3-fail)
@@ -294,10 +493,22 @@
       <section id="screen-step3-fail" class="screen">
         <div class="page-canvas">
           <picture>
-            <source media="(max-width: 768px)" srcset="image/step3/fail/mo.png" />
-            <img src="image/step3/fail/pc.png" alt="" class="page-img" draggable="false" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/step3/fail/mo.png"
+            />
+            <img
+              src="image/step3/fail/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
-          <button class="btn-pos btn-next" id="btn-step3-fail-next" aria-label="결과 보기">
+          <button
+            class="btn-pos btn-next"
+            id="btn-step3-fail-next"
+            aria-label="결과 보기"
+          >
             <span class="sr-only">결과 보기</span>
           </button>
         </div>
@@ -306,7 +517,6 @@
           <div class="scroll-hint-arrow"></div>
         </button>
       </section>
-
 
       <!-- ============================================================
            RESULT  (#screen-result)
@@ -316,28 +526,57 @@
         <div class="page-canvas">
           <picture>
             <source media="(max-width: 768px)" srcset="image/result/mo.png" />
-            <img src="image/result/pc.png" alt="" class="page-img" draggable="false" />
+            <img
+              src="image/result/pc.png"
+              alt=""
+              class="page-img"
+              draggable="false"
+            />
           </picture>
           <!-- 재도전 버튼 -->
-          <button class="btn-pos btn-retry" id="btn-retry" aria-label="다시 도전하기">
+          <button
+            class="btn-pos btn-retry"
+            id="btn-retry"
+            aria-label="다시 도전하기"
+          >
             <span class="sr-only">다시 도전하기</span>
           </button>
           <!-- 홍보영상 재생 버튼 3개 -->
-          <button class="btn-pos btn-result-video" id="btn-video-1" aria-label="홍보영상 1 재생">
+          <button
+            class="btn-pos btn-result-video"
+            id="btn-video-1"
+            aria-label="홍보영상 1 재생"
+          >
             <span class="sr-only">영상 재생</span>
           </button>
-          <button class="btn-pos btn-result-video" id="btn-video-2" aria-label="홍보영상 2 재생">
+          <button
+            class="btn-pos btn-result-video"
+            id="btn-video-2"
+            aria-label="홍보영상 2 재생"
+          >
             <span class="sr-only">영상 재생</span>
           </button>
-          <button class="btn-pos btn-result-video" id="btn-video-3" aria-label="홍보영상 3 재생">
+          <button
+            class="btn-pos btn-result-video"
+            id="btn-video-3"
+            aria-label="홍보영상 3 재생"
+          >
             <span class="sr-only">영상 재생</span>
           </button>
           <!-- 지금 등록하고 자동 응모하기 -->
-          <button class="btn-pos" id="btn-result-register" aria-label="지금 등록하고 자동 응모하기">
+          <button
+            class="btn-pos"
+            id="btn-result-register"
+            aria-label="지금 등록하고 자동 응모하기"
+          >
             <span class="sr-only">지금 등록하고 자동 응모하기</span>
           </button>
           <!-- 보이스피싱크홀 공유하기 -->
-          <button class="btn-pos" id="btn-result-share" aria-label="보이스피싱크홀 공유하기">
+          <button
+            class="btn-pos"
+            id="btn-result-share"
+            aria-label="보이스피싱크홀 공유하기"
+          >
             <span class="sr-only">보이스피싱크홀 공유하기</span>
           </button>
         </div>
@@ -347,31 +586,58 @@
         </button>
       </section>
 
-
       <!-- ============================================================
            등록 팝업
       ============================================================ -->
-      <div class="popup-overlay" id="popup-register" role="dialog" aria-modal="true" aria-label="응모 등록">
+      <div
+        class="popup-overlay"
+        id="popup-register"
+        role="dialog"
+        aria-modal="true"
+        aria-label="응모 등록"
+      >
         <div class="popup-box">
-          <button class="popup-close" id="btn-popup-close" aria-label="닫기">✕</button>
+          <button class="popup-close" id="btn-popup-close" aria-label="닫기">
+            ✕
+          </button>
           <h2 class="popup-title">지금 등록하고 자동 응모!</h2>
-          <p class="popup-desc">이름과 전화번호를 입력하시면<br>자동으로 경품 응모가 완료됩니다.</p>
+          <p class="popup-desc">
+            이름과 전화번호를 입력하시면<br />자동으로 경품 응모가 완료됩니다.
+          </p>
           <form class="popup-form" id="form-register" novalidate>
             <label class="popup-label" for="input-name">이름</label>
-            <input class="popup-input" id="input-name" type="text" placeholder="이름을 입력하세요" autocomplete="name" />
+            <input
+              class="popup-input"
+              id="input-name"
+              type="text"
+              placeholder="이름을 입력하세요"
+              autocomplete="name"
+            />
             <label class="popup-label" for="input-phone">전화번호</label>
-            <input class="popup-input" id="input-phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" inputmode="numeric" />
+            <input
+              class="popup-input"
+              id="input-phone"
+              type="tel"
+              placeholder="010-0000-0000"
+              autocomplete="tel"
+              inputmode="numeric"
+            />
             <button class="popup-submit" type="submit">응모 완료</button>
           </form>
         </div>
       </div>
 
-
       <!-- 전역 공통 -->
-      <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+      <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
       <span class="sr-only" id="sr-announce" aria-live="assertive"></span>
-
-    </div><!-- /#app -->
+    </div>
+    <!-- /#app -->
 
     <script src="js/main.js"></script>
   </body>
