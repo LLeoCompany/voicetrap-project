@@ -59,6 +59,13 @@
       stopAllAudio();
     }
 
+    /* intro 벗어날 때 glitch 오디오 정지 */
+    var introScreens = ["screen-intro1", "screen-intro2"];
+    if (introScreens.indexOf(nextId) === -1) {
+      glitchAudio.pause();
+      glitchAudio.currentTime = 0;
+    }
+
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         next.classList.add("active");
@@ -324,7 +331,7 @@
   /* 파일명 기준 타이밍: 1s(클린) → 0.05s(글리치A) → 0.1s(글리치B) → 0.1s(글리치C) → 유지(클린) */
   var glitchTimers = [];
   var glitchAudio = new Audio("image/intro1/audio/Digital TV Glitch 2.mp3");
-  allAudios.push(glitchAudio);
+  /* glitchAudio는 allAudios에 넣지 않음 — intro 구간에서 계속 재생되어야 하므로 별도 관리 */
 
   function playGlitchAudio() {
     glitchAudio.currentTime = 0;
@@ -427,6 +434,19 @@
         goToScreen("screen-main");
       }, 2000);
     }, 2000);
+
+    /* ── intro1 첫 터치/클릭 시 glitch 오디오 재시도 (autoplay 정책 우회) ── */
+    var intro1Screen = document.getElementById("screen-intro1");
+    if (intro1Screen) {
+      var glitchRetry = function () {
+        if (glitchAudio.paused) {
+          glitchAudio.currentTime = 0;
+          glitchAudio.play().catch(function () {});
+        }
+      };
+      intro1Screen.addEventListener("click",      glitchRetry, { once: true });
+      intro1Screen.addEventListener("touchstart", glitchRetry, { once: true, passive: true });
+    }
 
     /* ── INTRO 1 → INTRO 2 (클릭도 유지) ── */
     var btnIntro1 = document.getElementById("btn-intro1-next");

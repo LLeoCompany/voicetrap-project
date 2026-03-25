@@ -1183,6 +1183,7 @@ img {
     transform-origin: center 80%;
     animation: fall-people 4.5s ease-in-out infinite;
     animation-delay: 0.6s;
+    top: -15%;
   }
 
   /* 실패 텍스트 오버레이 — 1920×1800, 전체 캔버스 커버 */
@@ -1694,6 +1695,7 @@ img {
     transform-origin: center 80%;
     animation: fall-people 4.5s ease-in-out infinite;
     animation-delay: 0.6s;
+    top: -15%;
   }
 
   /* 텍스트 오버레이 */
