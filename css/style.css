@@ -610,7 +610,6 @@ img {
     left: 14.1%; /* ~55  / 390 */
     width: 71.8%; /* ~280 / 390 */
     height: 7.6%; /* ~47  / 844 */
-    background: rgba(255, 80, 80, 0.35); /* 위치 확인용 — 완료 후 제거 */
   }
 }
 
@@ -698,10 +697,9 @@ img {
   }
 }
 
-/* ─── MOBILE (≤768px) ─── */
+/* ─── STEP1-성공 MOBILE ─── */
 @media (max-width: 768px) {
-  /* 모바일 레이어 공통 베이스 */
-  .suc-mo-layer {
+  #screen-step1-suc .suc-mo-layer {
     display: block;
     position: absolute;
     top: 0;
@@ -712,112 +710,143 @@ img {
     user-select: none;
     -webkit-user-drag: none;
   }
-
-  /* 배경 — 노란 쿠션 (390×844, full canvas) */
-  .suc-mo-bg {
+  #screen-step1-suc .suc-mo-bg {
     z-index: 1;
   }
-
-  /* 캐릭터 — 기본: 위에서 대기 */
-  .suc-mo-char {
+  #screen-step1-suc .suc-mo-char {
     z-index: 2;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
-    width: auto; /* 개별 규칙으로 덮어씀 */
-  }
-
-  /* 진입 시 낙하 애니 */
-  #screen-step1-suc.active .suc-mo-char,
-  #screen-step2-suc.active .suc-mo-char {
-    animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
-  }
-
-  /* 여자.png — step1 */
-  #screen-step1-suc .suc-mo-char {
     top: 0;
     left: 0;
     width: 100%;
   }
-
-  /* 생존남누끼.png (286×228) — step2
-     left: (390-286)/2/390 ≈ 13.3%, width: 286/390 ≈ 73.3% */
-  #screen-step2-suc .suc-mo-char {
-    top: 6%;
-    left: 13.3%;
-    width: 73.3%;
+  #screen-step1-suc.active .suc-mo-char {
+    animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
   }
-
-  /* 노인만세.png (300×253) — step3
-     left: (390-300)/2/390 ≈ 11.5%, width: 300/390 ≈ 76.9% */
-  #screen-step3-suc .suc-mo-char {
-    top: 3%;
-    left: 11.5%;
-    width: 76.9%;
-  }
-
-  /* 금 컨페티 — 흰 배경 제거, 드리프트 애니 */
-  .suc-mo-confetti1 {
+  #screen-step1-suc .suc-mo-confetti1 {
     z-index: 3;
     mix-blend-mode: multiply;
     animation: suc-confetti-drift 3.5s ease-in-out infinite;
   }
-
-  /* 폭발 컨페티 — 흰 배경 제거, 역방향 드리프트 */
-  .suc-mo-confetti2 {
+  #screen-step1-suc .suc-mo-confetti2 {
     z-index: 4;
     mix-blend-mode: multiply;
     animation: suc-confetti-drift 4.8s ease-in-out infinite reverse;
     animation-delay: 0.7s;
   }
-
-  /* 하얀 배경 박스 */
-  .suc-mo-whitebg {
+  #screen-step1-suc .suc-mo-whitebg {
     z-index: 5;
     top: 50%;
     left: 3%;
     width: 94%;
   }
-
-  /* 글자 배경 1.png — 하얀박스 위 */
-  .suc-mo-img1 {
+  #screen-step1-suc .suc-mo-img1 {
     z-index: 6;
-    top: 46.3%;
-    left: -15%;
-    width: 130%;
-  }
-
-  /* 글자 배경 2.png — 1.png 위 */
-  .suc-mo-img2 {
-    z-index: 7;
-    top: 60.3%;
+    top: 48%;
     left: -7%;
     width: 100%;
   }
-
-  /* 텍스트 오버레이 — 전체 캔버스 투명 PNG */
-  .suc-mo-text {
+  #screen-step1-suc .suc-mo-img2 {
+    z-index: 7;
+    top: 60.2%;
+    left: -7%;
+    width: 100%;
+  }
+  #screen-step1-suc .suc-mo-text {
     z-index: 8;
     top: 0;
     width: 90%;
   }
-
-  /* 네온 버튼 이미지 (432×201 → 88%로 축소, 중앙 정렬)
-     width: 88%=343px, height: 159px → top: (844-159-30)/844 ≈ 78% */
-  .suc-mo-button {
-    z-index: 2;
+  #screen-step1-suc .suc-mo-button {
+    z-index: 1;
     top: 72.5%;
-    left: -0.3%;
-    width: 99%;
+    left: -0.1%;
+    width: 100%;
   }
+  #screen-step1-suc #btn-step1-suc-next {
+    top: 78%;
+    left: 6%;
+    width: 88%;
+    height: 19%;
+    z-index: 10;
+  }
+}
 
-  /* 투명 클릭 버튼 — suc-mo-button 전체 커버 (step1·2 공통) */
-  #screen-step1-suc #btn-step1-suc-next,
+/* ─── STEP2-성공 MOBILE ─── */
+@media (max-width: 768px) {
+  #screen-step2-suc .suc-mo-layer {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  #screen-step2-suc .suc-mo-bg {
+    z-index: 1;
+  }
+  #screen-step2-suc .suc-mo-char {
+    z-index: 2;
+    transform-origin: center bottom;
+    transform: translateY(-32%);
+    opacity: 0;
+    top: 6%;
+    left: 13.3%;
+    width: 73.3%;
+  }
+  #screen-step2-suc.active .suc-mo-char {
+    animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
+  }
+  #screen-step2-suc .suc-mo-confetti1 {
+    z-index: 3;
+    mix-blend-mode: multiply;
+    animation: suc-confetti-drift 3.5s ease-in-out infinite;
+  }
+  #screen-step2-suc .suc-mo-confetti2 {
+    z-index: 4;
+    mix-blend-mode: multiply;
+    animation: suc-confetti-drift 4.8s ease-in-out infinite reverse;
+    animation-delay: 0.7s;
+  }
+  #screen-step2-suc .suc-mo-whitebg {
+    z-index: 5;
+    top: 50%;
+    left: 3%;
+    width: 94%;
+  }
+  #screen-step2-suc .suc-mo-img1 {
+    z-index: 6;
+    top: 48%;
+    left: -7%;
+    width: 100%;
+  }
+  #screen-step2-suc .suc-mo-img2 {
+    z-index: 7;
+    top: 58.3%;
+    left: -7%;
+    width: 100%;
+  }
+  #screen-step2-suc .suc-mo-text {
+    z-index: 8;
+    top: 0;
+    width: 90%;
+  }
+  #screen-step2-suc .suc-mo-button {
+    z-index: 1;
+    top: 72.5%;
+    left: -0.1%;
+    width: 100%;
+  }
   #screen-step2-suc #btn-step2-suc-next {
     top: 78%;
     left: 6%;
     width: 88%;
-    height: 19%; /* 159/844 ≈ 19% */
+    height: 19%;
     z-index: 10;
   }
 }
@@ -1251,7 +1280,7 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step2-fail #btn-step2-fail-next {
-    top: 86%;
+    top: 79%;
     left: 17%;
     width: 65%;
     height: 6.7%;
@@ -1380,20 +1409,41 @@ img {
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-mo-whitebg {
     z-index: 5;
-    top: 50%;
+    top: 45.9%;
     left: 5%;
-    width: 90%;
+    width: 94%;
+  }
+
+  /* 글자 배경 1.png */
+  #screen-step3-suc .suc-mo-img1 {
+    z-index: 6;
+    top: 43.8%;
+    left: -4%;
+    width: 100%;
+  }
+
+  /* 글자 배경 2.png */
+  #screen-step3-suc .suc-mo-img2 {
+    z-index: 7;
+    top: 55%;
+    left: -4%;
+    width: 100%;
   }
 
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-mo-text {
-    z-index: 6;
-    top: 10%;
+    z-index: 8;
+    top: 0;
+    left: 6%;
+    width: 83%;
   }
 
-  /* 네온 버튼 z-index 상향 (whitebg/text 위) */
+  /* 네온 버튼 */
   #screen-step3-suc .suc-mo-button {
-    z-index: 7;
+    z-index: 1;
+    top: 70.1%;
+    left: 2%;
+    width: 120%;
   }
 }
 
@@ -1514,6 +1564,7 @@ img {
     transform-origin: center 80%;
     animation: fall-people 4.5s ease-in-out infinite;
     animation-delay: 0.6s;
+    width: 100%;
   }
 
   /* 추락 돌 */
@@ -1527,28 +1578,31 @@ img {
   /* 명판 배경 */
   #screen-step3-fail .fail-mo-back {
     z-index: 4;
-    top: 52%;
+    top: 43%;
     left: 2.5%;
     width: 95%;
+    height: 31%;
   }
 
   /* 텍스트 오버레이 */
   #screen-step3-fail .fail-mo-text {
     z-index: 6;
     top: 0;
+    left: 3%;
+    width: 83%;
   }
 
   /* 네온 버튼 */
   #screen-step3-fail .fail-mo-button {
     z-index: 5;
-    top: 76%;
-    left: 6%;
-    width: 88%;
+    top: 69%;
+    left: -0.1%;
+    width: 100%;
   }
 
   /* 투명 클릭 버튼 */
   #screen-step3-fail #btn-step3-fail-next {
-    top: 87%;
+    top: 74%;
     left: 15.7%;
     width: 71.3%;
     height: 6.7%;
@@ -1678,18 +1732,16 @@ img {
     height: 6.4%;
   }
   #screen-result #btn-result-register {
-    top: 87.5%;
+    top: 86%;
     left: 19%;
-    width: 60%;
+    width: 65%;
     height: 2.5%;
-    background: rgba(80, 255, 150, 0.35); /* 위치 확인용 */
   }
   #screen-result #btn-result-share {
-    top: 93%;
+    top: 92%;
     left: 19%;
-    width: 60%;
+    width: 65%;
     height: 2.5%;
-    background: rgba(255, 200, 80, 0.35); /* 위치 확인용 */
   }
 }
 
