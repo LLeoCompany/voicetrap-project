@@ -45,8 +45,7 @@
 /* G마켓 산스 불러오기 */
 @font-face {
   font-family: "GmarketSansBold";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
-    format("woff");
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -399,6 +398,43 @@ img {
   }
 }
 
+@keyframes ticker-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ─── 성공 티커: 캐릭터 안착 후 등장 (0.45s 화면전환 + 2.2s 낙하 = 2.65s) ─── */
+#screen-step1-suc .ticker-overlay,
+#screen-step2-suc .ticker-overlay,
+#screen-step3-suc .ticker-overlay {
+  opacity: 0;
+  animation: ticker-fadein 0.6s ease forwards;
+  animation-delay: 2.65s;
+}
+#screen-step1-suc .ticker-track,
+#screen-step2-suc .ticker-track,
+#screen-step3-suc .ticker-track {
+  animation-delay: 2.65s;
+}
+
+/* ─── 실패 티커: 낙하 소실 후 등장 (0.6s delay + 4.5s×85% ≈ 4.5s) ─── */
+#screen-step1-fail .ticker-overlay,
+#screen-step2-fail .ticker-overlay,
+#screen-step3-fail .ticker-overlay {
+  opacity: 0;
+  animation: ticker-fadein 0.6s ease forwards;
+  animation-delay: 4.5s;
+}
+#screen-step1-fail .ticker-track,
+#screen-step2-fail .ticker-track,
+#screen-step3-fail .ticker-track {
+  animation-delay: 4.5s;
+}
+
 /* ==========================================================================
    [전역] TOAST
    ========================================================================== */
@@ -549,6 +585,7 @@ img {
   }
   .glitch-mo {
     display: block;
+    width: 130%;
   }
 }
 
@@ -690,9 +727,17 @@ img {
     width: auto; /* 개별 규칙으로 덮어씀 */
   }
 
-  /* 진입 시 낙하 애니 (PC 동일 키프레임 재사용) */
+  /* 진입 시 낙하 애니 */
+  #screen-step1-suc.active .suc-mo-char,
   #screen-step2-suc.active .suc-mo-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
+  }
+
+  /* 여자.png — step1 */
+  #screen-step1-suc .suc-mo-char {
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 
   /* 생존남누끼.png (286×228) — step2
@@ -726,13 +771,44 @@ img {
     animation-delay: 0.7s;
   }
 
+  /* 하얀 배경 박스 */
+  .suc-mo-whitebg {
+    z-index: 5;
+    top: 50%;
+    left: 3%;
+    width: 94%;
+  }
+
+  /* 글자 배경 1.png — 하얀박스 위 */
+  .suc-mo-img1 {
+    z-index: 6;
+    top: 46.3%;
+    left: -15%;
+    width: 130%;
+  }
+
+  /* 글자 배경 2.png — 1.png 위 */
+  .suc-mo-img2 {
+    z-index: 7;
+    top: 60.3%;
+    left: -7%;
+    width: 100%;
+  }
+
+  /* 텍스트 오버레이 — 전체 캔버스 투명 PNG */
+  .suc-mo-text {
+    z-index: 8;
+    top: 0;
+    width: 90%;
+  }
+
   /* 네온 버튼 이미지 (432×201 → 88%로 축소, 중앙 정렬)
      width: 88%=343px, height: 159px → top: (844-159-30)/844 ≈ 78% */
   .suc-mo-button {
-    z-index: 5;
-    top: 78%;
-    left: 6%;
-    width: 88%;
+    z-index: 2;
+    top: 72.5%;
+    left: -0.3%;
+    width: 99%;
   }
 
   /* 투명 클릭 버튼 — suc-mo-button 전체 커버 (step1·2 공통) */
@@ -938,7 +1014,8 @@ img {
      흰 배경 제거 + 낙하+소실 애니 재사용 */
   .fail-mo-people {
     z-index: 2;
-    mix-blend-mode: multiply;
+    width: 170%;
+    left: -20%;
     transform-origin: center 80%;
     animation: fall-people 4.5s ease-in-out infinite;
     animation-delay: 0.6s;
@@ -956,18 +1033,26 @@ img {
      top: 하단 정보 영역 시작 ≈ 52% */
   .fail-mo-back {
     z-index: 4;
-    top: 52%;
+    top: 48%;
     left: 2.5%;
     width: 95%;
+    height: 32%;
+  }
+
+  /* 텍스트 오버레이 — 전체 캔버스 투명 PNG */
+  .fail-mo-text {
+    z-index: 5;
+    top: 0;
+    width: 91%;
   }
 
   /* 네온 버튼 (432×201 → 88% 축소)
      width: 343px, height: 159px → top: (844-159-30)/844 ≈ 78% */
   .fail-mo-button {
-    z-index: 5;
-    top: 76%;
-    left: 6%;
-    width: 88%;
+    z-index: 3;
+    top: 72.3%;
+    left: 1%;
+    width: 99%;
   }
 
   /* 투명 클릭 버튼 — fail-mo-button 커버 (step1·2 공통) */
@@ -1292,14 +1377,23 @@ img {
     z-index: 10;
   }
 
-  /* 텍스트 오버레이 */
-  #screen-step3-suc .suc-mo-text {
-    top: 0;
-  }
-
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-mo-whitebg {
-    top: 56.1%;
+    z-index: 5;
+    top: 50%;
+    left: 5%;
+    width: 90%;
+  }
+
+  /* 텍스트 오버레이 */
+  #screen-step3-suc .suc-mo-text {
+    z-index: 6;
+    top: 10%;
+  }
+
+  /* 네온 버튼 z-index 상향 (whitebg/text 위) */
+  #screen-step3-suc .suc-mo-button {
+    z-index: 7;
   }
 }
 
@@ -1540,8 +1634,26 @@ img {
    이미지: image/result/mo.png(390×1442) / pc.png(1920×3300)
    ========================================================================== */
 
+/* 10계명 오버레이 — 기본 숨김 */
+#result-mo-10 {
+  display: none;
+}
+
 /* ─── MOBILE (캔버스 390×1442) ─── */
 @media (max-width: 768px) {
+  #result-mo-10 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 200%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    z-index: 3;
+  }
+
   #screen-result #btn-retry {
     /* TODO */
     background: rgba(255, 80, 80, 0.35); /* 위치 확인용 */

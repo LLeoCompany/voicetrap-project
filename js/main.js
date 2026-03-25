@@ -63,6 +63,22 @@
       requestAnimationFrame(function () {
         next.classList.add("active");
         next.scrollTop = 0;
+
+        /* 성공/실패 화면: 티커 애니메이션 처음부터 재시작 */
+        if (sucScreens.indexOf(nextId) !== -1 || failScreens.indexOf(nextId) !== -1) {
+          var ticker = next.querySelector(".ticker-overlay");
+          var track = next.querySelector(".ticker-track");
+          if (ticker) {
+            ticker.style.animation = "none";
+            ticker.offsetHeight; /* reflow */
+            ticker.style.animation = "";
+          }
+          if (track) {
+            track.style.animation = "none";
+            track.offsetHeight; /* reflow */
+            track.style.animation = "";
+          }
+        }
       });
     });
   }
