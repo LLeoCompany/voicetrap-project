@@ -365,7 +365,7 @@ img {
     height: 28px;
   }
   .ticker-text {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-right: 60px;
   }
 }
@@ -433,6 +433,46 @@ img {
 #screen-step2-fail .ticker-track,
 #screen-step3-fail .ticker-track {
   animation-delay: 4.5s;
+}
+
+/* ─── 성공·실패 텍스트/박스 요소: 0.5s 후 스르륵 등장 (모바일+PC 공통) ─── */
+
+/* 성공 — 모바일 */
+.suc-mo-whitebg,
+.suc-mo-img1,
+.suc-mo-img2,
+.suc-mo-text,
+.suc-mo-button {
+  opacity: 0;
+  animation: ticker-fadein 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* 성공 — PC */
+.suc-whitebg,
+.suc-text,
+.suc-button-img {
+  opacity: 0;
+  animation: ticker-fadein 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* 실패 — 모바일 */
+.fail-mo-back,
+.fail-mo-text,
+.fail-mo-button {
+  opacity: 0;
+  animation: ticker-fadein 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* 실패 — PC */
+.fail-back,
+.fail-text,
+.fail-button-img {
+  opacity: 0;
+  animation: ticker-fadein 0.8s ease forwards;
+  animation-delay: 0.5s;
 }
 
 /* ==========================================================================

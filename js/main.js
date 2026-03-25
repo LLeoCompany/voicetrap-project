@@ -64,20 +64,23 @@
         next.classList.add("active");
         next.scrollTop = 0;
 
-        /* 성공/실패 화면: 티커 애니메이션 처음부터 재시작 */
+        /* 성공/실패 화면: 티커 + 텍스트/박스 요소 애니메이션 처음부터 재시작 */
         if (sucScreens.indexOf(nextId) !== -1 || failScreens.indexOf(nextId) !== -1) {
-          var ticker = next.querySelector(".ticker-overlay");
-          var track = next.querySelector(".ticker-track");
-          if (ticker) {
-            ticker.style.animation = "none";
-            ticker.offsetHeight; /* reflow */
-            ticker.style.animation = "";
-          }
-          if (track) {
-            track.style.animation = "none";
-            track.offsetHeight; /* reflow */
-            track.style.animation = "";
-          }
+          var resetSelectors = [
+            ".ticker-overlay", ".ticker-track",
+            ".suc-mo-whitebg", ".suc-mo-img1", ".suc-mo-img2", ".suc-mo-text", ".suc-mo-button",
+            ".suc-whitebg", ".suc-text", ".suc-button-img",
+            ".fail-mo-back", ".fail-mo-text", ".fail-mo-button",
+            ".fail-back", ".fail-text", ".fail-button-img"
+          ];
+          resetSelectors.forEach(function (sel) {
+            var el = next.querySelector(sel);
+            if (el) {
+              el.style.animation = "none";
+              el.offsetHeight; /* reflow */
+              el.style.animation = "";
+            }
+          });
         }
       });
     });
