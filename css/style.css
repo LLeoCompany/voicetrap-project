@@ -359,7 +359,7 @@ img {
 
 /* 이미지 자막 — 티커 높이에 맞게 자동 조정 */
 .ticker-img {
-  height: 23px;
+  height: 25px;
   width: 100%;
   display: block;
   flex-shrink: 0;
@@ -743,19 +743,20 @@ img {
 }
 
 @media (min-width: 769px) {
+  /* 이미지 자연 높이(1080px) 기준으로 캔버스 고정 — fail page와 동일 방식
+     zoom이 비례 스케일하므로 오버레이 % 위치가 항상 안정적 */
   #screen-step1-suc .page-canvas,
   #screen-step2-suc .page-canvas,
   #screen-step3-suc .page-canvas {
-    height: 100vh;
+    height: 1080px;
     overflow: hidden;
   }
 
   #screen-step1-suc .page-img,
   #screen-step2-suc .page-img,
   #screen-step3-suc .page-img {
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -1000,7 +1001,7 @@ img {
   /* 성공 텍스트 오버레이 — 1920×1080, 상단 14% 오프셋으로 표 위치 정렬 */
   .suc-text {
     z-index: 8;
-    top: 1%;
+    top: 0%;
   }
 
   /* 네온 버튼 이미지 — fail과 동일 좌표

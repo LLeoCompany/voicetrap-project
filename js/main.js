@@ -635,4 +635,30 @@
       document.body.removeChild(ta);
     }
   });
+
+  /* ── 데스크탑 반응형 스케일 ──────────────────────────────────────────────── */
+  /* 기준 1920px 디자인을 모든 데스크탑 해상도에 맞게 zoom으로 축소/확대 */
+  function applyDesktopScale() {
+    var app = document.getElementById("app");
+    if (!app) return;
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+
+    if (vw < 769) {
+      /* 모바일: 스케일 리셋 */
+      app.style.zoom = "";
+      app.style.width = "";
+      app.style.height = "";
+      return;
+    }
+
+    var scale = vw / 1920;
+    app.style.width = "1920px";
+    app.style.height = Math.ceil(vh / scale) + "px";
+    app.style.zoom = scale;
+  }
+
+  applyDesktopScale();
+  window.addEventListener("resize", applyDesktopScale);
+
 })();
