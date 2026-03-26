@@ -1234,9 +1234,9 @@ img {
 
   #screen-step1-fail .fail-button-img {
     z-index: 6;
-    top: 79.3%;
-    left: 32.5%;
-    width: 35%;
+    top: 81.3%;
+    left: 35.5%;
+    width: 28%;
   }
 
   #screen-step1-fail #btn-step1-fail-next {
@@ -1301,9 +1301,9 @@ img {
 
   #screen-step2-fail .fail-button-img {
     z-index: 6;
-    top: 79.3%;
-    left: 32.5%;
-    width: 35%;
+    top: 81.3%;
+    left: 35.5%;
+    width: 28%;
   }
 
   #screen-step2-fail #btn-step2-fail-next {
@@ -1813,9 +1813,9 @@ img {
   /* 네온 버튼 이미지 */
   #screen-step3-fail .fail-button-img {
     z-index: 6;
-    top: 79.3%;
+    top: 80.3%;
     left: 32.5%;
-    width: 35%;
+    width: 32%;
   }
 
   /* 투명 클릭 버튼 */
