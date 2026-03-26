@@ -357,12 +357,23 @@ img {
   text-shadow: 0 0 8px rgba(200, 0, 0, 0.5);
 }
 
+/* 이미지 자막 — 티커 높이에 맞게 자동 조정 */
+.ticker-img {
+  height: 23px;
+  width: 100%;
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 /* ─── MOBILE ───
    티커 밴드: top 304/844 = 36.0%, height 28px */
 @media (max-width: 768px) {
   .ticker-overlay {
     top: 47.3%; /* 304 / 844 */
-    height: 28px;
+    height: 56px;
   }
   .ticker-text {
     font-size: 1rem;
@@ -374,8 +385,8 @@ img {
    티커 밴드: top 367/1080 = 34.0%, height 38px */
 @media (min-width: 769px) {
   .ticker-overlay {
-    top: 56%; /* 367 / 1080 */
-    height: 38px;
+    top: 57%; /* 367 / 1080 */
+    height: 30px;
   }
   .ticker-text {
     font-size: 0.92rem;
@@ -964,16 +975,16 @@ img {
      top: 텍스트 이미지 기준 표 시작 위치 */
   .suc-whitebg {
     z-index: 4;
-    top: 50.1%;
+    top: 53.1%;
     width: 70%;
-    height: 35.3%;
+    height: 33.3%;
     left: 15%;
   }
 
   /* 글자 배경 1 — 하얀박스 위 왼쪽 컬럼 */
   .suc-img1 {
     z-index: 5;
-    top: 48.3%;
+    top: 52.3%;
     left: 11%;
     width: 37%;
   }
@@ -981,7 +992,7 @@ img {
   /* 글자 배경 2 — 하얀박스 위 오른쪽 컬럼 */
   .suc-img2 {
     z-index: 6;
-    top: 47.3%;
+    top: 51.3%;
     left: 45%;
     width: 37%;
   }
@@ -989,7 +1000,7 @@ img {
   /* 성공 텍스트 오버레이 — 1920×1080, 상단 14% 오프셋으로 표 위치 정렬 */
   .suc-text {
     z-index: 8;
-    top: -3%;
+    top: 1%;
   }
 
   /* 네온 버튼 이미지 — fail과 동일 좌표
@@ -998,7 +1009,7 @@ img {
      top: (1801-379-80)/1801 ≈ 74% */
   .suc-button-img {
     z-index: 7;
-    top: 69.8%;
+    top: 72.8%;
     left: 35%;
     width: 28.9%;
   }
@@ -1611,16 +1622,16 @@ img {
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-whitebg {
     z-index: 4;
-    top: 50.1%;
+    top: 54.1%;
     width: 70%;
-    height: 35.3%;
+    height: 33.3%;
     left: 15%;
   }
 
   /* 글자 배경 1 */
   #screen-step3-suc .suc-img1 {
     z-index: 5;
-    top: 48.3%;
+    top: 53.3%;
     left: 11%;
     width: 37%;
   }
@@ -1628,7 +1639,7 @@ img {
   /* 글자 배경 2 */
   #screen-step3-suc .suc-img2 {
     z-index: 6;
-    top: 47.3%;
+    top: 52.3%;
     left: 45%;
     width: 37%;
   }
@@ -1636,13 +1647,13 @@ img {
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-text {
     z-index: 8;
-    top: -3%;
+    top: 2%;
   }
 
   /* 네온 버튼 이미지 */
   #screen-step3-suc .suc-button-img {
     z-index: 7;
-    top: 70%;
+    top: 74%;
     left: 33.5%;
     width: 31.9%;
   }
