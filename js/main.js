@@ -76,9 +76,9 @@
           var resetSelectors = [
             ".ticker-overlay", ".ticker-track",
             ".suc-mo-whitebg", ".suc-mo-img1", ".suc-mo-img2", ".suc-mo-text", ".suc-mo-button",
-            ".suc-whitebg", ".suc-text", ".suc-button-img",
-            ".fail-mo-back", ".fail-mo-text", ".fail-mo-button",
-            ".fail-back", ".fail-text", ".fail-button-img"
+            ".suc-whitebg", ".suc-img1", ".suc-img2", ".suc-text", ".suc-button-img",
+            ".fail-mo-people", ".fail-mo-back", ".fail-mo-text", ".fail-mo-button",
+            ".fail-people", ".fail-back", ".fail-text", ".fail-button-img"
           ];
           resetSelectors.forEach(function (sel) {
             var el = next.querySelector(sel);

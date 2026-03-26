@@ -450,6 +450,8 @@ img {
 
 /* 성공 — PC */
 .suc-whitebg,
+.suc-img1,
+.suc-img2,
 .suc-text,
 .suc-button-img {
   opacity: 0;
@@ -723,17 +725,26 @@ img {
   display: none;
 }
 
-/* 성공 페이지 overflow: hidden — 캐릭터 낙하 애니가 스크롤 높이에 영향 안 주도록 */
+/* 성공 페이지 — page-canvas 뷰포트 꽉 채우기 */
 #screen-step1-suc .page-canvas,
 #screen-step2-suc .page-canvas {
   overflow: hidden;
 }
 
-/* PC: 성공 배경 하단 빈 어두운 영역 제거 */
 @media (min-width: 769px) {
   #screen-step1-suc .page-canvas,
-  #screen-step2-suc .page-canvas {
-    max-height: 75vw; /* 1920×1801 → 콘텐츠 끝 ≈ 75% 지점 클리핑 */
+  #screen-step2-suc .page-canvas,
+  #screen-step3-suc .page-canvas {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #screen-step1-suc .page-img,
+  #screen-step2-suc .page-img,
+  #screen-step3-suc .page-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
   }
 }
 
@@ -897,7 +908,7 @@ img {
   .suc-layer {
     display: block;
     position: absolute;
-    top: 0;
+    top: 0%;
     left: 0;
     width: 100%;
     height: auto;
@@ -906,21 +917,31 @@ img {
     -webkit-user-drag: none;
   }
 
-  /* 배경: 노란 쿠션 — 가장 아래, 전체 너비 */
+  /* 배경: 노란 쿠션 — pc.png가 커버로 채우므로 데스크탑에서 숨김 */
   .suc-bg {
-    z-index: 1;
+    top: -25%;
   }
 
-  /* 캐릭터 — 기본: 화면 위 대기 */
-  .suc-char {
+  /* STEP1 캐릭터 — 기본: 화면 위 대기 */
+  #screen-step1-suc .suc-char {
     z-index: 2;
+    top: -25%;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
   }
+  #screen-step1-suc.active .suc-char {
+    animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
+  }
 
-  /* 화면 진입 시 낙하 시작 (screen fade-in 0.45s 후 딜레이) */
-  #screen-step1-suc.active .suc-char,
+  /* STEP2 캐릭터 — 기본: 화면 위 대기 */
+  #screen-step2-suc .suc-char {
+    z-index: 2;
+    top: -5%;
+    transform-origin: center bottom;
+    transform: translateY(-32%);
+    opacity: 0;
+  }
   #screen-step2-suc.active .suc-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
   }
@@ -943,16 +964,32 @@ img {
      top: 텍스트 이미지 기준 표 시작 위치 */
   .suc-whitebg {
     z-index: 4;
-    top: 55.1%;
+    top: 50.1%;
     width: 70%;
-    height: 23.3%;
+    height: 35.3%;
     left: 15%;
+  }
+
+  /* 글자 배경 1 — 하얀박스 위 왼쪽 컬럼 */
+  .suc-img1 {
+    z-index: 5;
+    top: 48.3%;
+    left: 11%;
+    width: 37%;
+  }
+
+  /* 글자 배경 2 — 하얀박스 위 오른쪽 컬럼 */
+  .suc-img2 {
+    z-index: 6;
+    top: 47.3%;
+    left: 45%;
+    width: 37%;
   }
 
   /* 성공 텍스트 오버레이 — 1920×1080, 상단 14% 오프셋으로 표 위치 정렬 */
   .suc-text {
     z-index: 8;
-    top: 14.5%;
+    top: -3%;
   }
 
   /* 네온 버튼 이미지 — fail과 동일 좌표
@@ -1054,7 +1091,9 @@ img {
 }
 
 /* 낙하 애니메이션 translateY 튕김 방지 */
-#screen-step1-fail .page-canvas,
+#screen-step1-fail .page-canvas {
+  overflow: hidden;
+}
 #screen-step2-fail .page-canvas {
   overflow: hidden;
 }
@@ -1086,7 +1125,7 @@ img {
     width: 170%;
     left: -20%;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out infinite;
+    animation: fall-people 4.5s ease-in-out 1 forwards;
     animation-delay: 0.6s;
   }
 
@@ -1135,10 +1174,9 @@ img {
   }
 }
 
-/* ─── DESKTOP ─── */
+/* ─── STEP1 DESKTOP ─── */
 @media (min-width: 769px) {
-  /* 공통 베이스 (모든 fail-layer) */
-  .fail-layer {
+  #screen-step1-fail .fail-layer {
     display: block;
     position: absolute;
     top: 0;
@@ -1150,71 +1188,121 @@ img {
     -webkit-user-drag: none;
   }
 
-  /* 사운드 이퀄라이저 — 전체 너비 상단 오버레이, 흰 배경 제거 */
-  .fail-equalizer {
+  #screen-step1-fail .fail-equalizer {
     z-index: 1;
     mix-blend-mode: multiply;
     animation: eq-pulse 0.45s ease-in-out infinite alternate;
     transform-origin: center 35%;
   }
 
-  /* 실버 명판 — 하단 정보 영역 상단에 중앙 정렬 */
-  /* back.png: 1500×688, canvas: 1920×1801
-     top: 1080/1801 ≈ 60% (이퀄라이저 이미지 하단 기준)
-     left: (1920-1500)/2/1920 ≈ 10.94%
-     width: 1500/1920 ≈ 78.13% */
-  .fail-back {
+  #screen-step1-fail .fail-back {
     z-index: 2;
-    top: 60%;
-    left: 10.94%;
-    width: 78.13%;
+    top: 68%;
+    left: 16.94%;
+    width: 66.13%;
   }
 
-  /* 떨어지는 돌 — 전체 너비, 흔들림 애니 */
-  .fail-rocks {
+  #screen-step1-fail .fail-rocks {
     z-index: 3;
     transform-origin: center 35%;
     animation: fall-rocks 3.2s ease-in-out infinite;
   }
 
-  /* 떨어지는 사람 — 전체 너비, 낙하+소실 애니 */
-  .fail-people {
+  #screen-step1-fail .fail-people {
     z-index: 4;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out infinite;
+    animation: fall-people 4.5s ease-in-out 1 forwards;
     animation-delay: 0.6s;
     top: -15%;
   }
 
-  /* 실패 텍스트 오버레이 — 1920×1800, 전체 캔버스 커버 */
-  .fail-text {
+  #screen-step1-fail .fail-text {
     z-index: 7;
     top: -1%;
   }
 
-  /* 네온 버튼 이미지 — 하단 중앙
-     button1 복사.png: 1000×564, canvas: 1920×1801
-     width: 35% → 672px, height: 379px
-     left: (1920-672)/2/1920 ≈ 32.5%
-     top: (1801-379-80)/1801 ≈ 74% (하단 80px 여백) */
-  .fail-button-img {
+  #screen-step1-fail .fail-button-img {
     z-index: 6;
     top: 79.3%;
     left: 32.5%;
     width: 35%;
   }
 
-  /* 투명 클릭 버튼 — fail-button-img 전체 커버 (step1·2 공통) */
-  #screen-step1-fail #btn-step1-fail-next,
+  #screen-step1-fail #btn-step1-fail-next {
+    top: 74%;
+    left: 32.5%;
+    width: 35%;
+    height: 21%;
+    z-index: 20;
+  }
+
+  #screen-step1-fail #btn-step1-fail-next:active {
+    opacity: 0.7;
+  }
+}
+
+/* ─── STEP2 DESKTOP ─── */
+@media (min-width: 769px) {
+  #screen-step2-fail .fail-layer {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  #screen-step2-fail .fail-equalizer {
+    z-index: 1;
+    mix-blend-mode: multiply;
+    animation: eq-pulse 0.45s ease-in-out infinite alternate;
+    transform-origin: center 35%;
+  }
+
+  #screen-step2-fail .fail-back {
+    z-index: 2;
+    top: 67%;
+    left: 16.94%;
+    width: 66.13%;
+  }
+
+  #screen-step2-fail .fail-rocks {
+    z-index: 3;
+    transform-origin: center 35%;
+    animation: fall-rocks 3.2s ease-in-out infinite;
+  }
+
+  #screen-step2-fail .fail-people {
+    z-index: 4;
+    transform-origin: center 80%;
+    animation: fall-people 4.5s ease-in-out 1 forwards;
+    animation-delay: 0.6s;
+    top: -15%;
+  }
+
+  #screen-step2-fail .fail-text {
+    z-index: 7;
+    top: -1%;
+  }
+
+  #screen-step2-fail .fail-button-img {
+    z-index: 6;
+    top: 79.3%;
+    left: 32.5%;
+    width: 35%;
+  }
+
   #screen-step2-fail #btn-step2-fail-next {
     top: 74%;
     left: 32.5%;
     width: 35%;
-    height: 21%; /* 379/1801 ≈ 21% */
+    height: 21%;
     z-index: 20;
   }
 
-  #screen-step1-fail #btn-step1-fail-next:active,
   #screen-step2-fail #btn-step2-fail-next:active {
     opacity: 0.7;
   }
@@ -1245,16 +1333,8 @@ img {
     transform: translateY(60px) scale(0.55);
     opacity: 0.6;
   }
-  85% {
-    transform: translateY(80px) scale(0.3);
-    opacity: 0;
-  }
-  86% {
-    transform: translateY(0) scale(1);
-    opacity: 0;
-  }
   100% {
-    transform: translateY(0) scale(1);
+    transform: translateY(80px) scale(0.3);
     opacity: 1;
   }
 }
@@ -1377,11 +1457,7 @@ img {
 #screen-step3-suc .page-canvas {
   overflow: hidden;
 }
-@media (min-width: 769px) {
-  #screen-step3-suc .page-canvas {
-    max-height: 75vw;
-  }
-}
+/* step3 desktop page-canvas — 공통 블록에서 height:100vh 적용 */
 
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
@@ -1503,14 +1579,15 @@ img {
     -webkit-user-drag: none;
   }
 
-  /* 배경 */
+  /* 배경: pc.png 커버로 대체 — 숨김 */
   #screen-step3-suc .suc-bg {
-    z-index: 1;
+    top: -25%;
   }
 
   /* 캐릭터 */
   #screen-step3-suc .suc-char {
     z-index: 2;
+    top: -10%;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
@@ -1534,16 +1611,32 @@ img {
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-whitebg {
     z-index: 4;
-    top: 55.1%;
+    top: 50.1%;
     width: 70%;
-    height: 24.3%;
+    height: 35.3%;
     left: 15%;
+  }
+
+  /* 글자 배경 1 */
+  #screen-step3-suc .suc-img1 {
+    z-index: 5;
+    top: 48.3%;
+    left: 11%;
+    width: 37%;
+  }
+
+  /* 글자 배경 2 */
+  #screen-step3-suc .suc-img2 {
+    z-index: 6;
+    top: 47.3%;
+    left: 45%;
+    width: 37%;
   }
 
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-text {
     z-index: 8;
-    top: 14.2%;
+    top: -3%;
   }
 
   /* 네온 버튼 이미지 */
@@ -1603,7 +1696,7 @@ img {
     z-index: 2;
     mix-blend-mode: multiply;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out infinite;
+    animation: fall-people 4.5s ease-in-out 1 forwards;
     animation-delay: 0.6s;
     width: 100%;
   }
@@ -1677,9 +1770,9 @@ img {
   /* 명판 */
   #screen-step3-fail .fail-back {
     z-index: 2;
-    top: 60%;
-    left: 10.94%;
-    width: 78.13%;
+    top: 67%;
+    left: 14.94%;
+    width: 69.13%;
   }
 
   /* 돌 */
@@ -1693,7 +1786,7 @@ img {
   #screen-step3-fail .fail-people {
     z-index: 4;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out infinite;
+    animation: fall-people 4.5s ease-in-out 1 forwards;
     animation-delay: 0.6s;
     top: -15%;
   }
@@ -1701,7 +1794,9 @@ img {
   /* 텍스트 오버레이 */
   #screen-step3-fail .fail-text {
     z-index: 7;
-    top: -1%;
+    top: 3%;
+    left: 2%;
+    width: 95%;
   }
 
   /* 네온 버튼 이미지 */
