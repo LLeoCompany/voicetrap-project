@@ -653,9 +653,18 @@
     }
 
     var scale = vw / 1920;
+    var scaledH = Math.ceil(vh / scale);
     app.style.width = "1920px";
-    app.style.height = Math.ceil(vh / scale) + "px";
+    app.style.height = scaledH + "px";
     app.style.zoom = scale;
+
+    /* success page-canvas 높이를 직접 설정 (CSS zoom 환경에서 height:100% 체인 불안정) */
+    ["screen-step1-suc", "screen-step2-suc", "screen-step3-suc"].forEach(function (id) {
+      var sc = document.getElementById(id);
+      if (!sc) return;
+      var canvas = sc.querySelector(".page-canvas");
+      if (canvas) canvas.style.height = scaledH + "px";
+    });
   }
 
   applyDesktopScale();

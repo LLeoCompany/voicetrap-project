@@ -359,7 +359,7 @@ img {
 
 /* 이미지 자막 — 티커 높이에 맞게 자동 조정 */
 .ticker-img {
-  height: 25px;
+  height: 18px;
   width: 100%;
   display: block;
   flex-shrink: 0;
@@ -743,30 +743,24 @@ img {
 }
 
 @media (min-width: 769px) {
-  /* 스크린 자체에 배경이미지 cover — 어떤 해상도에서도 검은화면 없음 */
-  #screen-step1-suc {
-    background: url("../image/step1/success/pc.png") top center / cover no-repeat;
-  }
-  #screen-step2-suc {
-    background: url("../image/step2/success/pc.png") top center / cover no-repeat;
-  }
-  #screen-step3-suc {
-    background: url("../image/step3/success/pc.png") top center / cover no-repeat;
-  }
-
-  /* canvas는 1080px 고정 — 오버레이 % 위치가 항상 같은 px 기준 = 안정적 */
+  /* canvas 높이는 JS(applyDesktopScale)가 scaledH(=vh/scale)로 직접 지정 */
   #screen-step1-suc .page-canvas,
   #screen-step2-suc .page-canvas,
   #screen-step3-suc .page-canvas {
-    height: 1080px;
     overflow: hidden;
   }
 
-  /* page-img 숨김 — 배경은 screen background-image가 담당 */
+  /* page-img: position:absolute — <picture> 인라인 간섭 없이 canvas 100% 커버 */
   #screen-step1-suc .page-img,
   #screen-step2-suc .page-img,
   #screen-step3-suc .page-img {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
   }
 }
 
@@ -944,10 +938,10 @@ img {
     top: -25%;
   }
 
-  /* STEP1 캐릭터 — 기본: 화면 위 대기 */
+  /* STEP1 캐릭터 — 기본: 화면 위 대기 (1080px 기준 -25% → -270px) */
   #screen-step1-suc .suc-char {
     z-index: 2;
-    top: -25%;
+    top: -270px;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
@@ -956,10 +950,10 @@ img {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
   }
 
-  /* STEP2 캐릭터 — 기본: 화면 위 대기 */
+  /* STEP2 캐릭터 — 기본: 화면 위 대기 (1080px 기준 -5% → -54px) */
   #screen-step2-suc .suc-char {
     z-index: 2;
-    top: -5%;
+    top: -54px;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
@@ -982,56 +976,52 @@ img {
     animation-delay: 0.7s;
   }
 
-  /* 하얀 배경 박스 — 텍스트 표 뒤 (1374×339 → width:100%)
-     top: 텍스트 이미지 기준 표 시작 위치 */
+  /* 하얀 배경 박스 — 수직 위치를 1080px 기준 px로 고정 (zoom 비례 스케일) */
   .suc-whitebg {
     z-index: 4;
-    top: 53.1%;
+    top: 573px; /* 53.1% × 1080 */
     width: 70%;
-    height: 33.3%;
+    height: 360px; /* 33.3% × 1080 */
     left: 15%;
   }
 
-  /* 글자 배경 1 — 하얀박스 위 왼쪽 컬럼 */
+  /* 글자 배경 1 */
   .suc-img1 {
     z-index: 5;
-    top: 52.3%;
+    top: 565px; /* 52.3% × 1080 */
     left: 11%;
     width: 37%;
   }
 
-  /* 글자 배경 2 — 하얀박스 위 오른쪽 컬럼 */
+  /* 글자 배경 2 */
   .suc-img2 {
     z-index: 6;
-    top: 51.3%;
+    top: 554px; /* 51.3% × 1080 */
     left: 45%;
     width: 37%;
   }
 
-  /* 성공 텍스트 오버레이 — 1920×1080, 상단 14% 오프셋으로 표 위치 정렬 */
+  /* 성공 텍스트 오버레이 — 1920×1080 이미지, top:0 고정 */
   .suc-text {
     z-index: 8;
-    top: 0%;
+    top: 0;
   }
 
-  /* 네온 버튼 이미지 — fail과 동일 좌표
-     button1 복사.png: 1000×564, canvas: 1920×1801
-     width: 35% → 672px, height: 379px
-     top: (1801-379-80)/1801 ≈ 74% */
+  /* 네온 버튼 이미지 — 1080px 기준 px 고정 */
   .suc-button-img {
     z-index: 7;
-    top: 72.8%;
+    top: 786px; /* 72.8% × 1080 */
     left: 35%;
     width: 28.9%;
   }
 
-  /* 투명 클릭 버튼 — suc-button-img 전체 커버 (step1·2 공통) */
+  /* 투명 클릭 버튼 — 1080px 기준 px 고정 */
   #screen-step1-suc #btn-step1-suc-next,
   #screen-step2-suc #btn-step2-suc-next {
-    top: 74%;
+    top: 799px; /* 74% × 1080 */
     left: 32.5%;
     width: 35%;
-    height: 21%; /* 379/1801 ≈ 21% */
+    height: 227px; /* 21% × 1080 */
     z-index: 20;
   }
 
@@ -1630,19 +1620,19 @@ img {
     animation-delay: 0.7s;
   }
 
-  /* 하얀 배경 박스 */
+  /* 하얀 배경 박스 — 1080px 기준 px 고정 */
   #screen-step3-suc .suc-whitebg {
     z-index: 4;
-    top: 54.1%;
+    top: 584px; /* 54.1% × 1080 */
     width: 70%;
-    height: 33.3%;
+    height: 360px; /* 33.3% × 1080 */
     left: 15%;
   }
 
   /* 글자 배경 1 */
   #screen-step3-suc .suc-img1 {
     z-index: 5;
-    top: 53.3%;
+    top: 576px; /* 53.3% × 1080 */
     left: 11%;
     width: 37%;
   }
@@ -1650,7 +1640,7 @@ img {
   /* 글자 배경 2 */
   #screen-step3-suc .suc-img2 {
     z-index: 6;
-    top: 52.3%;
+    top: 565px; /* 52.3% × 1080 */
     left: 45%;
     width: 37%;
   }
@@ -1658,23 +1648,23 @@ img {
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-text {
     z-index: 8;
-    top: 2%;
+    top: 22px; /* 2% × 1080 */
   }
 
   /* 네온 버튼 이미지 */
   #screen-step3-suc .suc-button-img {
     z-index: 7;
-    top: 74%;
+    top: 799px; /* 74% × 1080 */
     left: 33.5%;
     width: 31.9%;
   }
 
   /* 투명 클릭 버튼 */
   #screen-step3-suc #btn-step3-suc-next {
-    top: 74%;
+    top: 799px; /* 74% × 1080 */
     left: 32.5%;
     width: 35%;
-    height: 21%;
+    height: 227px; /* 21% × 1080 */
     z-index: 20;
   }
   #screen-step3-suc #btn-step3-suc-next:active {
