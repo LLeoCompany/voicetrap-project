@@ -743,8 +743,18 @@ img {
 }
 
 @media (min-width: 769px) {
-  /* 이미지 자연 높이(1080px) 기준으로 캔버스 고정 — fail page와 동일 방식
-     zoom이 비례 스케일하므로 오버레이 % 위치가 항상 안정적 */
+  /* 스크린 자체에 배경이미지 cover — 어떤 해상도에서도 검은화면 없음 */
+  #screen-step1-suc {
+    background: url("../image/step1/success/pc.png") top center / cover no-repeat;
+  }
+  #screen-step2-suc {
+    background: url("../image/step2/success/pc.png") top center / cover no-repeat;
+  }
+  #screen-step3-suc {
+    background: url("../image/step3/success/pc.png") top center / cover no-repeat;
+  }
+
+  /* canvas는 1080px 고정 — 오버레이 % 위치가 항상 같은 px 기준 = 안정적 */
   #screen-step1-suc .page-canvas,
   #screen-step2-suc .page-canvas,
   #screen-step3-suc .page-canvas {
@@ -752,11 +762,11 @@ img {
     overflow: hidden;
   }
 
+  /* page-img 숨김 — 배경은 screen background-image가 담당 */
   #screen-step1-suc .page-img,
   #screen-step2-suc .page-img,
   #screen-step3-suc .page-img {
-    width: 100%;
-    height: auto;
+    display: none;
   }
 }
 
