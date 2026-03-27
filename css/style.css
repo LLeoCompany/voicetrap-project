@@ -359,9 +359,8 @@ img {
 
 /* 이미지 자막 — 티커 높이에 맞게 자동 조정 */
 .ticker-img {
-  height: 18px;
-  width: 100%;
-  display: block;
+  height: 30px;
+  width: 5000px;
   flex-shrink: 0;
   pointer-events: none;
   user-select: none;
