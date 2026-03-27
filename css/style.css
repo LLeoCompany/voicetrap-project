@@ -650,11 +650,20 @@ img {
 
 /* ==========================================================================
    [MAIN]  #screen-main
-   이미지: image/main/pc.png / mo.png
-   전환: 시작 버튼 → #screen-step1
-   ─────────────────────────────────────────────────────────────────────────
-   버튼 좌표: 이미지 받은 후 아래 TODO 채우기
+   모바일: image/main/mo.png (390×844)
+   PC 배경: image/main/item/인트로3배경이미지.jpg (1920×2160) → 1937px 크롭
+   PC 버튼: image/main/item/이벤트입장하기버튼.png (1093×473)
+   ref demo: image/main/pc1.png (1920×1937)
    ========================================================================== */
+
+/* PC 전용 레이어 — 기본 숨김 */
+.main-layer {
+  display: none;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
 /* ─── MOBILE (≤ 768px) · 캔버스 390×844 ─── */
 @media (max-width: 768px) {
@@ -666,13 +675,68 @@ img {
   }
 }
 
-/* ─── DESKTOP (≥ 769px) · 캔버스 1920×1937(스크롤) ─── */
+/* ─── DESKTOP (≥ 769px) · 캔버스 1920×2160 ─── */
 @media (min-width: 769px) {
+  /* PC 전용 레이어 표시 */
+  .main-layer {
+    display: block;
+  }
+
+  /* 입장하기 버튼 이미지 (1093×473) */
+  .main-btn-layer {
+    top: 28%; /* TODO: 조정 필요 */
+    left: 24.5%; /* (1920-1093)/2/1920 */
+    width: 56.9%; /* 1093/1920 */
+    z-index: 10;
+  }
+
+  /* 경품 박스 배경 (978×827) — 중앙 배치 */
+  .main-prize-box {
+    top: 62%; /* TODO: 조정 필요 */
+    left: 24.5%; /* (1920-978)/2/1920 */
+    width: 50.9%; /* 978/1920 */
+    height: 50%;
+    z-index: 20;
+  }
+
+  /* 경품 1~4 (각 757×549) — 2×2 배치 */
+  .main-prize {
+    width: 23%; /* ~442/1920 */
+    z-index: 30;
+  }
+  .main-prize-1 {
+    top: 66%;
+    left: 26%;
+  } /* TODO: 조정 필요 */
+  .main-prize-2 {
+    top: 66%;
+    left: 52%;
+  } /* TODO: 조정 필요 */
+  .main-prize-3 {
+    top: 79%;
+    left: 26%;
+  } /* TODO: 조정 필요 */
+  .main-prize-4 {
+    top: 79%;
+    left: 52%;
+  } /* TODO: 조정 필요 */
+
+  /* 텍스트 오버레이 (1920×2160) — 전체 캔버스 최상단 */
+  .main-text-layer {
+    top: 0;
+    left: 7%;
+    width: 86%;
+    z-index: 40;
+    pointer-events: none;
+  }
+
+  /* 투명 클릭 버튼 — 텍스트 레이어 위 */
   #screen-main #btn-main-start {
-    top: 32.5%; /* ~862 / 1937 */
-    left: 34.3%; /* ~620 / 1920 */
-    width: 33.4%; /* ~680 / 1920 */
-    height: 8.1%; /* ~60  / 1937 */
+    top: 31%; /* TODO: 조정 필요 */
+    left: 34%;
+    width: 33%;
+    height: 5.5%;
+    z-index: 50;
   }
 }
 
@@ -1649,7 +1713,7 @@ img {
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-text {
     z-index: 8;
-    top: 22px;
+    top: 0.7%;
   }
 
   /* 네온 버튼 이미지 */
