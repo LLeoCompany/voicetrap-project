@@ -329,6 +329,30 @@
 
   /* ── 글리치 텍스트 시퀀스 ─────────────────────────────────────────────── */
   /* 파일명 기준 타이밍: 1s(클린) → 0.05s(글리치A) → 0.1s(글리치B) → 0.1s(글리치C) → 유지(클린) */
+  /* ── BGM (인트로→메인 구간 반복 재생) ── */
+  var bgmAudio = new Audio("image/intro1/audio/theblackwaltz.mp3");
+  bgmAudio.loop = true;
+
+  function playBgmAudio() {
+    bgmAudio.currentTime = 0;
+    bgmAudio.muted = false;
+    bgmAudio.play().catch(function () {
+      bgmAudio.muted = true;
+      bgmAudio.play().then(function () {
+        bgmAudio.muted = false;
+      }).catch(function () {
+        var retry = function () {
+          bgmAudio.muted = false;
+          bgmAudio.play().catch(function () {});
+        };
+        document.addEventListener("click",      retry, { once: true });
+        document.addEventListener("touchstart", retry, { once: true });
+      });
+    });
+  }
+
+  playBgmAudio();
+
   var glitchTimers = [];
   var glitchAudio = new Audio("image/intro1/audio/Digital TV Glitch 2.mp3");
   /* glitchAudio는 allAudios에 넣지 않음 — intro 구간에서 계속 재생되어야 하므로 별도 관리 */
@@ -458,6 +482,8 @@
     var btnMainStart = document.getElementById("btn-main-start");
     if (btnMainStart)
       btnMainStart.addEventListener("click", function () {
+        bgmAudio.pause();
+        bgmAudio.currentTime = 0;
         goToScreen("screen-step1");
       });
 
@@ -541,6 +567,7 @@
       btnRetry.addEventListener("click", function () {
         goToScreen("screen-intro1");
         setTimeout(runGlitch, 50); /* 화면 전환 후 글리치 재시작 */
+        playBgmAudio(); /* BGM 재시작 */
       });
 
     /* ── RESULT: 유튜브 영상 버튼 ── */
