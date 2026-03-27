@@ -478,14 +478,28 @@ img {
   animation-delay: 0.5s;
 }
 
-/* 실패 — PC */
+/* 실패 — PC: 기본 숨김 */
 .fail-back,
 .fail-emoji-bar,
 .fail-text,
 .fail-button-img {
   opacity: 0;
-  animation: ticker-fadein 0.8s ease forwards;
-  animation-delay: 0.5s;
+}
+
+/* 실패 — PC: .active 진입 시 페이드인 */
+#screen-step1-fail.active .fail-back,
+#screen-step1-fail.active .fail-emoji-bar,
+#screen-step1-fail.active .fail-text,
+#screen-step1-fail.active .fail-button-img,
+#screen-step2-fail.active .fail-back,
+#screen-step2-fail.active .fail-emoji-bar,
+#screen-step2-fail.active .fail-text,
+#screen-step2-fail.active .fail-button-img,
+#screen-step3-fail.active .fail-back,
+#screen-step3-fail.active .fail-emoji-bar,
+#screen-step3-fail.active .fail-text,
+#screen-step3-fail.active .fail-button-img {
+  animation: ticker-fadein 0.8s ease 0.5s both;
 }
 
 /* ==========================================================================
@@ -1284,7 +1298,7 @@ img {
 
   #screen-step1-fail .fail-back {
     z-index: 2;
-    top: 66.8%;
+    top: 67.8%;
     left: 15.94%;
     width: 67.98%; /* 1286/1920 */
     height: 26%;
