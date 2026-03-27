@@ -471,6 +471,8 @@ img {
 
 /* 실패 — 모바일 */
 .fail-mo-back,
+.fail-mo-emoji-bar1,
+.fail-mo-emoji-bar2,
 .fail-mo-text,
 .fail-mo-button {
   opacity: 0;
@@ -1258,13 +1260,31 @@ img {
     height: 32%;
   }
 
-  /* 명판 위 하얀바+이모지 */
-  .fail-mo-emoji-bar {
+  /* 명판 위 하얀바+이모지 — 스테이지별 */
+  #screen-step1-fail .fail-mo-emoji-bar1 {
     z-index: 6;
-    top: 48.4%; /* TODO: 조정 필요 */
-    left: 98;
-    width: 79%;
-    height: 24%;
+    top: 49.2%; /* TODO: 조정 필요 */
+    left: 10.5%;
+    width: 68%;
+  }
+  #screen-step1-fail .fail-mo-emoji-bar2 {
+    z-index: 6;
+    top: 61.8%; /* TODO: 조정 필요 */
+    left: 11.9%;
+    width: 68%;
+  }
+
+  #screen-step2-fail .fail-mo-emoji-bar1 {
+    z-index: 6;
+    top: 49.5%; /* TODO: 조정 필요 */
+    left: 10.5%;
+    width: 68%;
+  }
+  #screen-step2-fail .fail-mo-emoji-bar2 {
+    z-index: 6;
+    top: 61.3%; /* TODO: 조정 필요 */
+    left: 11.9%;
+    width: 68%;
   }
 
   /* 텍스트 오버레이 — 전체 캔버스 투명 PNG */
@@ -1855,8 +1875,8 @@ img {
   #screen-step3-fail .fail-mo-back {
     z-index: 4;
     top: 43%;
-    left: 2.5%;
-    width: 95%;
+    left: -1%;
+    width: 100%;
     height: 31%;
   }
 
@@ -1874,6 +1894,20 @@ img {
     top: 69%;
     left: -0.1%;
     width: 100%;
+  }
+
+  /* 명판 위 하얀바+이모지 */
+  #screen-step3-fail .fail-mo-emoji-bar1 {
+    z-index: 6;
+    top: 44.3%; /* TODO: 조정 필요 */
+    left: 11.8%;
+    width: 68%;
+  }
+  #screen-step3-fail .fail-mo-emoji-bar2 {
+    z-index: 6;
+    top: 56%; /* TODO: 조정 필요 */
+    left: 12.6%;
+    width: 68%;
   }
 
   /* 투명 클릭 버튼 */
@@ -1986,6 +2020,14 @@ img {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* 버튼 그룹 div와 내부 버튼은 클릭 가능 */
+.result-btn-group {
+  pointer-events: auto;
+}
+.result-btn-group .btn-pos {
+  pointer-events: auto;
 }
 
 /* PC 전용 — 기본 숨김 */
