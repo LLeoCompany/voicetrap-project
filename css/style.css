@@ -1864,25 +1864,40 @@ img {
 
 /* ─── MOBILE (캔버스 390×1630) ─── */
 @media (max-width: 768px) {
+  /* 배경 이미지 — 캔버스 전체 커버 (텍스트 PNG 투명 영역 대비) */
+  #screen-result .page-canvas {
+    background-image: url("../image/result/mobile-item/마지막%20수고페이지%20배경.jpg");
+    background-size: 100% 100%;
+  }
+
+  /* 텍스트 이미지(page-img)를 모든 레이어 위로 */
+  #screen-result .page-img {
+    position: relative;
+    z-index: 10;
+    width: 80%;
+    left: 13%;
+  }
+
   /* 피해예방 10계명 (487×554) */
   .result-commandments {
-    top: 17%; /* TODO: 조정 필요 */
-    left: 5%;
-    width: 90%;
+    top: 6%; /* TODO: 조정 필요 */
+    left: 12%;
+    width: 100%;
   }
 
   /* 유튜브+경품 박스 배경 (387×824) */
   .result-yt-prize-box {
-    top: 36%; /* TODO: 조정 필요 */
-    left: 0;
-    width: 100%;
+    top: 35%; /* TODO: 조정 필요 */
+    left: 7%;
+    width: 90%;
+    height: 52%;
   }
 
   /* 비디오 썸네일 (190×396) */
   .result-mo-thumbnail {
-    top: 37.5%; /* TODO: 조정 필요 */
-    left: 4%;
-    width: 48.7%;
+    top: 41.5%; /* TODO: 조정 필요 */
+    left: 23%;
+    width: 28.7%;
   }
 
   /* 선물 장식 (404×292) */
@@ -1896,22 +1911,32 @@ img {
   .result-prize-bg-mo {
     top: 76%; /* TODO: 조정 필요 */
     left: -2%;
-    width: 105%;
+    width: 119%;
   }
 
-  /* 경품 아이콘 (218×92) */
-  .result-prize-icon-mo {
-    top: 78%; /* TODO: 조정 필요 */
-    left: 22%;
-    width: 55.9%;
+  /* 경품 1~4 (757×549) — 2×2 배치 */
+  .result-prize-mo {
+    width: 46%;
   }
-
-  /* 등록·공유 버튼 이미지 (422×254) */
-  .result-btn-img {
-    top: 87%; /* TODO: 조정 필요 */
-    left: -4%;
-    width: 108%;
-  }
+  .result-prize-mo-1 {
+    top: 63.2%;
+    left: 11%;
+  } /* TODO: 조정 필요 */
+  .result-prize-mo-2 {
+    top: 64.7%;
+    left: 51%;
+    width: 40%;
+  } /* TODO: 조정 필요 */
+  .result-prize-mo-3 {
+    top: 69.7%;
+    left: 6%;
+    width: 60%;
+  } /* TODO: 조정 필요 */
+  .result-prize-mo-4 {
+    top: 70.5%;
+    left: 41%;
+    width: 60%;
+  } /* TODO: 조정 필요 */
 
   /* 재도전 버튼 */
   #screen-result #btn-retry {
@@ -1920,36 +1945,56 @@ img {
 
   /* 영상 재생 버튼 3개 — 썸네일 행별 배치 */
   #screen-result #btn-video-1 {
-    top: 38.5%; /* TODO: 조정 필요 */
-    left: 4%;
+    top: 41.9%; /* TODO: 조정 필요 */
+    left: 12%;
     width: 48.7%;
     height: 5.5%;
   }
   #screen-result #btn-video-2 {
-    top: 45%; /* TODO: 조정 필요 */
-    left: 4%;
+    top: 47.5%; /* TODO: 조정 필요 */
+    left: 12%;
     width: 48.7%;
     height: 5.5%;
   }
   #screen-result #btn-video-3 {
-    top: 51.5%; /* TODO: 조정 필요 */
-    left: 4%;
+    top: 53%; /* TODO: 조정 필요 */
+    left: 12%;
     width: 48.7%;
     height: 5.5%;
   }
 
-  /* 등록 / 공유 버튼 */
-  #screen-result #btn-result-register {
-    top: 88%; /* TODO: 조정 필요 */
-    left: 10%;
-    width: 80%;
-    height: 3%;
+  /* ── 등록·공유 버튼 그룹 ──
+     top 하나만 바꾸면 이미지+버튼 전체가 함께 이동 */
+  .result-btn-group {
+    top: 80.9%; /* ← 여기만 조정하면 됨 */
+    left: 8%;
+    width: 100%;
   }
+
+  /* 버튼 배경 이미지 — 그룹 너비 100% 채움 */
+  .result-btn-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* 공유하기 버튼 — 그룹 내 상단 (422×254 기준 상단 버튼) */
   #screen-result #btn-result-share {
-    top: 93%; /* TODO: 조정 필요 */
-    left: 10%;
-    width: 80%;
-    height: 3%;
+    top: 40%;
+    left: 5%;
+    width: 90%;
+    height: 42%;
+  }
+
+  /* 응모하기 버튼 — 그룹 내 하단 */
+  #screen-result #btn-result-register {
+    top: 35%;
+    left: 5%;
+    width: 90%;
+    height: 42%;
   }
 }
 
@@ -1960,7 +2005,7 @@ img {
   .result-mo-thumbnail,
   .result-gift-deco,
   .result-prize-bg-mo,
-  .result-prize-icon-mo {
+  .result-prize-mo {
     display: none;
   }
 
@@ -2027,13 +2072,6 @@ img {
     left: 61.3%;
   }
 
-  /* 등록·공유 버튼 이미지 (422×254) */
-  .result-btn-img {
-    top: 83%; /* TODO: 조정 필요 */
-    left: 38.9%;
-    width: 22%;
-  }
-
   /* 재도전 버튼 */
   #screen-result #btn-retry {
     /* TODO: 위치 설정 필요 */
@@ -2059,18 +2097,27 @@ img {
     height: 6.4%;
   }
 
-  /* 등록 / 공유 버튼 */
-  #screen-result #btn-result-register {
-    top: 83.9%; /* TODO: 조정 필요 */
-    left: 33%;
-    width: 32%;
-    height: 3.3%;
+  /* ── 등록·공유 버튼 그룹 ── */
+  .result-btn-group {
+    top: 73%; /* ← 여기만 조정하면 됨 */
+    left: 38.9%;
+    width: 22%;
   }
+
+  /* 공유하기 버튼 — 그룹 내 상단 */
   #screen-result #btn-result-share {
-    top: 90.3%; /* TODO: 조정 필요 */
-    left: 33%;
-    width: 32%;
-    height: 3.3%;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 42%;
+  }
+
+  /* 응모하기 버튼 — 그룹 내 하단 */
+  #screen-result #btn-result-register {
+    top: 55%;
+    left: 5%;
+    width: 90%;
+    height: 42%;
   }
 }
 
