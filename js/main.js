@@ -619,6 +619,28 @@
         }
       });
 
+    /* ── PC 전용 버튼 위임 ── */
+    var btnRegPc = document.getElementById("btn-result-register-pc");
+    if (btnRegPc) btnRegPc.addEventListener("click", openPopup);
+
+    var btnSharePc = document.getElementById("btn-result-share-pc");
+    if (btnSharePc)
+      btnSharePc.addEventListener("click", function () {
+        var url = window.location.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(url)
+            .then(function () {
+              showToast("링크가 복사되었습니다. 공유하세요!", 3000);
+            })
+            .catch(function () {
+              fallbackCopy(url);
+            });
+        } else {
+          fallbackCopy(url);
+        }
+      });
+
     function fallbackCopy(text) {
       var ta = document.createElement("textarea");
       ta.value = text;
@@ -658,13 +680,7 @@
     app.style.height = scaledH + "px";
     app.style.zoom = scale;
 
-    /* success page-canvas 높이를 직접 설정 (CSS zoom 환경에서 height:100% 체인 불안정) */
-    ["screen-step1-suc", "screen-step2-suc", "screen-step3-suc"].forEach(function (id) {
-      var sc = document.getElementById(id);
-      if (!sc) return;
-      var canvas = sc.querySelector(".page-canvas");
-      if (canvas) canvas.style.height = scaledH + "px";
-    });
+    /* success page-canvas 높이는 CSS(1080px 고정)가 담당 — JS 개입 없음 */
   }
 
   applyDesktopScale();

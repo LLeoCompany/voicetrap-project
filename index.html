@@ -1194,7 +1194,7 @@
           <!-- ── PC 전용: 전체 텍스트·장식 오버레이 (1920×3300) ── -->
           <img
             class="result-layer result-text-layer"
-            src="image/result/pc-item/보이스피싱 이벤트랜딩텍스트수고 이미지.png"
+            src="image/result/pc-item/보이스피싱 이벤트최종수고 이미지.png"
             alt=""
             aria-hidden="true"
             draggable="false"
@@ -1213,6 +1213,24 @@
               draggable="false"
             />
           </picture>
+
+          <!-- ── PC 전용: 유튜브+경품 박스 배경 (1440×1067) ── -->
+          <img
+            class="result-layer result-yt-prize-box-pc"
+            src="image/result/pc-item/경품 유튜브 박스.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <!-- ── PC 전용: 유튜브 썸네일 3개 (1115×236) ── -->
+          <img
+            class="result-layer result-pc-thumbnail"
+            src="image/result/pc-item/유튜브 썸네일.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
 
           <!-- ── 모바일 전용: 유튜브+경품 박스 배경 (387×824) ── -->
           <img
@@ -1236,13 +1254,6 @@
           <img
             class="result-layer result-gift-deco"
             src="image/result/mobile-item/선물장식.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-          <img
-            class="result-layer result-prize-bg-mo"
-            src="image/result/mobile-item/경품하얀배경.png"
             alt=""
             aria-hidden="true"
             draggable="false"
@@ -1277,17 +1288,10 @@
             draggable="false"
           />
 
-          <!-- ── PC 전용: 경품 장식 / 경품 배경 / 경품 1~4 ── -->
+          <!-- ── PC 전용: 경품 장식 / 경품 1~4 ── -->
           <img
             class="result-layer result-prize-deco-pc"
             src="image/result/pc-item/경품 장식.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-          <img
-            class="result-layer result-prize-bg-pc"
-            src="image/result/pc-item/경품하얀배경.png"
             alt=""
             aria-hidden="true"
             draggable="false"
@@ -1368,21 +1372,15 @@
             />
           </button>
 
-          <!-- ── 등록·공유 버튼 그룹 (이미지 + 투명 버튼 묶음) ── -->
-          <div class="result-layer result-btn-group">
-            <picture>
-              <source
-                media="(max-width: 768px)"
-                srcset="image/result/mobile-item/등록:공유버튼.png"
-              />
-              <img
-                class="result-btn-img"
-                src="image/result/pc-item/등록:공유버튼.png"
-                alt=""
-                aria-hidden="true"
-                draggable="false"
-              />
-            </picture>
+          <!-- ── 모바일 전용: 등록·공유 버튼 그룹 (combined 이미지 + 투명 버튼 묶음) ── -->
+          <div class="result-layer result-btn-group result-btn-group-mo">
+            <img
+              class="result-btn-img"
+              src="image/result/mobile-item/등록:공유버튼.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
             <!-- 보이스피싱크홀 공유하기 -->
             <button
               class="btn-pos"
@@ -1398,6 +1396,42 @@
               aria-label="지금 등록하고 자동 응모하기"
             >
               <span class="sr-only">지금 등록하고 자동 응모하기</span>
+            </button>
+          </div>
+
+          <!-- ── PC 전용: 경품 응모하기 버튼 (1133×380) ── -->
+          <div class="result-layer result-btn-group result-register-group-pc">
+            <img
+              class="result-btn-img"
+              src="image/result/pc-item/경품응모하기버튼 복사.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
+            <button
+              class="btn-pos"
+              id="btn-result-register-pc"
+              aria-label="지금 등록하고 자동 응모하기"
+            >
+              <span class="sr-only">지금 등록하고 자동 응모하기</span>
+            </button>
+          </div>
+
+          <!-- ── PC 전용: 보이스피싱크홀 공유하기 버튼 (1133×384) ── -->
+          <div class="result-layer result-btn-group result-share-group-pc">
+            <img
+              class="result-btn-img"
+              src="image/result/pc-item/공유하기 복사.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
+            <button
+              class="btn-pos"
+              id="btn-result-share-pc"
+              aria-label="보이스피싱크홀 공유하기"
+            >
+              <span class="sr-only">보이스피싱크홀 공유하기</span>
             </button>
           </div>
         </div>
