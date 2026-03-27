@@ -339,7 +339,7 @@ img {
   display: flex;
   align-items: center;
   z-index: 2;
-  background: rgba(0, 0, 0, 1); /* 정적 이미지 글자를 덮는 배경 */
+  background: rgba(0, 0, 0, 0.75); /* 반투명 검정 배경 */
 }
 
 .ticker-track {
@@ -371,7 +371,7 @@ img {
    티커 밴드: top 304/844 = 36.0%, height 28px */
 @media (max-width: 768px) {
   .ticker-overlay {
-    top: 47.3%; /* 304 / 844 */
+    top: 45.8%; /* 304 / 844 */
     height: 56px;
   }
   .ticker-text {
