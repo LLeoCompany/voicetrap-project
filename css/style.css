@@ -691,9 +691,9 @@ img {
 
   /* 경품 장식 (675×197) — 경품 박스 위 */
   .main-prize-deco {
-    top: 39%; /* TODO: 조정 필요 */
+    top: 41.3%; /* TODO: 조정 필요 */
     left: 32.4%; /* (1920-675)/2/1920 */
-    width: 35.2%; /* 675/1920 */
+    width: 36.2%; /* 675/1920 */
     z-index: 45;
   }
 
@@ -742,10 +742,10 @@ img {
 
   /* 투명 클릭 버튼 — 텍스트 레이어 위 */
   #screen-main #btn-main-start {
-    top: 31%; /* TODO: 조정 필요 */
+    top: 34%; /* TODO: 조정 필요 */
     left: 34%;
     width: 33%;
-    height: 5.5%;
+    height: 6.5%;
     z-index: 50;
   }
 }
