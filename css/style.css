@@ -480,6 +480,7 @@ img {
 
 /* 실패 — PC */
 .fail-back,
+.fail-emoji-bar,
 .fail-text,
 .fail-button-img {
   opacity: 0;
@@ -1283,9 +1284,16 @@ img {
 
   #screen-step1-fail .fail-back {
     z-index: 2;
-    top: 68%;
-    left: 16.94%;
-    width: 66.13%;
+    top: 66.8%;
+    left: 15.94%;
+    width: 67.98%; /* 1286/1920 */
+    height: 26%;
+  }
+  #screen-step1-fail .fail-emoji-bar {
+    z-index: 3;
+    top: 68%; /* TODO: 조정 필요 */
+    left: 17.58%; /* (1920-1245)/2/1920 */
+    width: 64.84%; /* 1245/1920 */
   }
 
   #screen-step1-fail .fail-rocks {
@@ -1355,9 +1363,16 @@ img {
 
   #screen-step2-fail .fail-back {
     z-index: 2;
-    top: 67%;
-    left: 16.94%;
-    width: 66.13%;
+    top: 66.8%;
+    left: 15.94%;
+    width: 67.98%; /* 1286/1920 */
+    height: 26.7%;
+  }
+  #screen-step2-fail .fail-emoji-bar {
+    z-index: 3;
+    top: 67.3%; /* TODO: 조정 필요 */
+    left: 17.58%;
+    width: 64.84%; /* 1245/1920 */
   }
 
   #screen-step2-fail .fail-rocks {
@@ -1865,9 +1880,16 @@ img {
   /* 명판 */
   #screen-step3-fail .fail-back {
     z-index: 2;
-    top: 67%;
+    top: 68%;
     left: 14.94%;
-    width: 69.13%;
+    width: 69.98%; /* 1286/1920 */
+    height: 27%;
+  }
+  #screen-step3-fail .fail-emoji-bar {
+    z-index: 3;
+    top: 68.3%; /* TODO: 조정 필요 */
+    left: 16.58%;
+    width: 64.84%; /* 1245/1920 */
   }
 
   /* 돌 */
@@ -1894,7 +1916,7 @@ img {
   /* 텍스트 오버레이 */
   #screen-step3-fail .fail-text {
     z-index: 7;
-    top: 3%;
+    top: 3.5%;
     left: 2%;
     width: 95%;
   }
@@ -1902,7 +1924,7 @@ img {
   /* 네온 버튼 이미지 */
   #screen-step3-fail .fail-button-img {
     z-index: 6;
-    top: 80.3%;
+    top: 80.6%;
     left: 32.5%;
     width: 32%;
   }
