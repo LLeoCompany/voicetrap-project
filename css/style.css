@@ -684,15 +684,15 @@ img {
 
   /* 입장하기 버튼 이미지 (1093×473) */
   .main-btn-layer {
-    top: 23.8%; /* TODO: 조정 필요 */
-    left: 26.5%; /* (1920-1093)/2/1920 */
+    top: 29%; /* TODO: 조정 필요 */
+    left: 26%; /* (1920-1093)/2/1920 */
     width: 51.9%; /* 1093/1920 */
     z-index: 10;
   }
 
   /* 경품 장식 (675×197) — 경품 박스 위 */
   .main-prize-deco {
-    top: 35%; /* TODO: 조정 필요 */
+    top: 39%; /* TODO: 조정 필요 */
     left: 32.4%; /* (1920-675)/2/1920 */
     width: 35.2%; /* 675/1920 */
     z-index: 45;
@@ -700,10 +700,10 @@ img {
 
   /* 경품 박스 배경 (978×827) — 중앙 배치 */
   .main-prize-box {
-    top: 43%; /* TODO: 조정 필요 */
-    left: 25%; /* (1920-978)/2/1920 */
-    width: 50.9%; /* 978/1920 */
-    height: 35%;
+    top: 51%; /* TODO: 조정 필요 */
+    left: 19.5%; /* (1920-978)/2/1920 */
+    width: 60.9%; /* 978/1920 */
+    height: 39%;
     z-index: 20;
   }
 
@@ -713,28 +713,30 @@ img {
     z-index: 30;
   }
   .main-prize-1 {
-    top: 39%;
-    left: 24%;
+    top: 48%;
+    left: 22%;
   } /* TODO: 조정 필요 */
   .main-prize-2 {
     width: 26%; /* ~442/1920 */
-    top: 42.3%;
+    top: 51%;
     left: 49%;
   } /* TODO: 조정 필요 */
   .main-prize-3 {
-    top: 54%;
-    left: 24%;
+    top: 62.5%;
+    left: 18%;
+    width: 38%; /* ~442/1920 */
   } /* TODO: 조정 필요 */
   .main-prize-4 {
-    top: 55%;
-    left: 46%;
+    top: 64%;
+    left: 43%;
+    width: 38%; /* ~442/1920 */
   } /* TODO: 조정 필요 */
 
   /* 텍스트 오버레이 (1920×2160) — 전체 캔버스 최상단 */
   .main-text-layer {
     top: 0;
-    left: 7%;
-    width: 86%;
+    left: -1%;
+    width: 130%;
     z-index: 40;
     pointer-events: none;
   }
