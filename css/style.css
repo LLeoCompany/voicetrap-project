@@ -1012,10 +1012,11 @@ img {
   /* STEP1 캐릭터 — 기본: 화면 위 대기 */
   #screen-step1-suc .suc-char {
     z-index: 2;
-    top: -270px;
+    top: -240px;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
+    left: -1%;
   }
   #screen-step1-suc.active .suc-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
@@ -1051,7 +1052,7 @@ img {
   /* 하얀 배경 박스 */
   .suc-whitebg {
     z-index: 4;
-    top: 573px;
+    top: 49%;
     width: 70%;
     height: 360px;
     left: 15%;
@@ -1060,31 +1061,32 @@ img {
   /* 글자 배경 1 */
   .suc-img1 {
     z-index: 5;
-    top: 565px;
+    top: 45.3%;
     left: 11%;
-    width: 37%;
+    width: 40%;
   }
 
   /* 글자 배경 2 */
   .suc-img2 {
     z-index: 6;
-    top: 554px;
-    left: 45%;
-    width: 37%;
+    top: 44.3%;
+    left: 44%;
+    width: 40%;
   }
 
   /* 성공 텍스트 오버레이 */
   .suc-text {
     z-index: 8;
-    top: -0.3%;
+    top: -6%;
+    width: 100%;
   }
 
   /* 네온 버튼 이미지 */
   .suc-button-img {
     z-index: 7;
-    top: 786px;
-    left: 35%;
-    width: 28.9%;
+    top: 68.5%;
+    left: 36%;
+    width: 26.9%;
   }
 
   /* 투명 클릭 버튼 */
@@ -1679,7 +1681,7 @@ img {
   /* 캐릭터 */
   #screen-step3-suc .suc-char {
     z-index: 2;
-    top: -10%;
+    top: -6%;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
@@ -1703,7 +1705,7 @@ img {
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-whitebg {
     z-index: 4;
-    top: 584px;
+    top: 56%;
     width: 70%;
     height: 360px;
     left: 15%;
@@ -1712,17 +1714,17 @@ img {
   /* 글자 배경 1 */
   #screen-step3-suc .suc-img1 {
     z-index: 5;
-    top: 576px;
-    left: 11%;
-    width: 37%;
+    top: 52%;
+    left: 10.5%;
+    width: 40%;
   }
 
   /* 글자 배경 2 */
   #screen-step3-suc .suc-img2 {
     z-index: 6;
-    top: 565px;
-    left: 45%;
-    width: 37%;
+    top: 51%;
+    left: 44.2%;
+    width: 40%;
   }
 
   /* 텍스트 오버레이 */
@@ -1734,7 +1736,7 @@ img {
   /* 네온 버튼 이미지 */
   #screen-step3-suc .suc-button-img {
     z-index: 7;
-    top: 799px;
+    top: 74.5%;
     left: 33.5%;
     width: 31.9%;
   }
