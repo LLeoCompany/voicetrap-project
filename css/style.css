@@ -1241,29 +1241,30 @@ img {
     transform-origin: center 35%;
     opacity: 0;
   }
+  #screen-step1-fail.active .fail-mo-rocks,
+  #screen-step2-fail.active .fail-mo-rocks,
+  #screen-step3-fail.active .fail-mo-rocks {
+    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation-delay: 0.6s;
+  }
 
   /* 예방안내배경.png (414×252) — 실버 명판, 95% 축소 중앙 정렬
      top: 하단 정보 영역 시작 ≈ 52% */
   .fail-mo-back {
     z-index: 4;
     top: 48%;
-    left: 2.5%;
-    width: 95%;
+    left: -2%;
+    width: 100%;
     height: 32%;
   }
 
-  /* 명판 위 아이템 이미지 (1.png, 2.png) */
-  .fail-mo-item1 {
+  /* 명판 위 하얀바+이모지 */
+  .fail-mo-emoji-bar {
     z-index: 6;
-    top: 52%; /* TODO: 조정 필요 */
-    left: 4%;
-    width: 1500px;
-  }
-  .fail-mo-item2 {
-    z-index: 6;
-    top: 52%; /* TODO: 조정 필요 */
-    left: 52%;
-    width: 44%;
+    top: 48.4%; /* TODO: 조정 필요 */
+    left: 98;
+    width: 79%;
+    height: 24%;
   }
 
   /* 텍스트 오버레이 — 전체 캔버스 투명 PNG */
@@ -1848,8 +1849,6 @@ img {
     z-index: 3;
     mix-blend-mode: multiply;
     transform-origin: center 35%;
-    animation: fall-rocks 3.2s ease-in-out 1 forwards;
-    animation-delay: 0.6s;
   }
 
   /* 명판 배경 */
@@ -2021,28 +2020,28 @@ img {
     position: relative;
     z-index: 10;
     width: 80%;
-    left: 13%;
+    left: 8%;
   }
 
   /* 피해예방 10계명 (487×554) */
   .result-commandments {
     top: 6%; /* TODO: 조정 필요 */
-    left: 12%;
+    left: 8%;
     width: 100%;
   }
 
   /* 유튜브+경품 박스 배경 (387×824) */
   .result-yt-prize-box {
     top: 35%; /* TODO: 조정 필요 */
-    left: 7%;
+    left: 6%;
     width: 90%;
-    height: 52%;
+    height: 51%;
   }
 
   /* 비디오 썸네일 (190×396) */
   .result-mo-thumbnail {
-    top: 41.5%; /* TODO: 조정 필요 */
-    left: 23%;
+    top: 42%; /* TODO: 조정 필요 */
+    left: 20%;
     width: 28.7%;
   }
 
@@ -2059,21 +2058,21 @@ img {
   }
   .result-prize-mo-1 {
     top: 63.2%;
-    left: 11%;
+    left: 8%;
   } /* TODO: 조정 필요 */
   .result-prize-mo-2 {
     top: 64.7%;
-    left: 51%;
+    left: 46%;
     width: 40%;
   } /* TODO: 조정 필요 */
   .result-prize-mo-3 {
     top: 69.7%;
-    left: 6%;
+    left: 1%;
     width: 60%;
   } /* TODO: 조정 필요 */
   .result-prize-mo-4 {
     top: 70.5%;
-    left: 41%;
+    left: 36%;
     width: 60%;
   } /* TODO: 조정 필요 */
 
@@ -2084,20 +2083,20 @@ img {
 
   /* 영상 재생 버튼 3개 — 썸네일 행별 배치 */
   #screen-result #btn-video-1 {
-    top: 41.9%; /* TODO: 조정 필요 */
-    left: 12%;
+    top: 42.2%; /* TODO: 조정 필요 */
+    left: 11%;
     width: 48.7%;
     height: 5.5%;
   }
   #screen-result #btn-video-2 {
-    top: 47.5%; /* TODO: 조정 필요 */
-    left: 12%;
+    top: 48.1%; /* TODO: 조정 필요 */
+    left: 11%;
     width: 48.7%;
     height: 5.5%;
   }
   #screen-result #btn-video-3 {
-    top: 53%; /* TODO: 조정 필요 */
-    left: 12%;
+    top: 53.6%; /* TODO: 조정 필요 */
+    left: 11%;
     width: 48.7%;
     height: 5.5%;
   }
@@ -2105,8 +2104,8 @@ img {
   /* ── 모바일 전용: 등록·공유 버튼 그룹 ──
      top 하나만 바꾸면 이미지+버튼 전체가 함께 이동 */
   .result-btn-group-mo {
-    top: 81%; /* ← 여기만 조정하면 됨 */
-    left: 8%;
+    top: 81.1%; /* ← 여기만 조정하면 됨 */
+    left: 2%;
     width: 100%;
   }
 
