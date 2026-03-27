@@ -893,32 +893,34 @@ img {
   }
   #screen-step1-suc .suc-mo-whitebg {
     z-index: 5;
-    top: 50%;
+    top: 55.9%;
     left: 3%;
     width: 94%;
+    height: 30%;
   }
   #screen-step1-suc .suc-mo-img1 {
     z-index: 6;
-    top: 48%;
-    left: -7%;
+    top: 53.2%;
+    left: -5%;
     width: 100%;
   }
   #screen-step1-suc .suc-mo-img2 {
     z-index: 7;
-    top: 60.2%;
-    left: -7%;
+    top: 66%;
+    left: -5%;
     width: 100%;
   }
   #screen-step1-suc .suc-mo-text {
     z-index: 8;
-    top: 0;
-    width: 90%;
+    top: 3%;
+    width: 93.5%;
+    left: 3.6%;
   }
   #screen-step1-suc .suc-mo-button {
     z-index: 1;
-    top: 72.5%;
-    left: -0.1%;
-    width: 100%;
+    top: 78.8%;
+    left: 5%;
+    width: 120%;
   }
   #screen-step1-suc #btn-step1-suc-next {
     top: 78%;
@@ -968,32 +970,34 @@ img {
   }
   #screen-step2-suc .suc-mo-whitebg {
     z-index: 5;
-    top: 50%;
+    top: 55.9%;
     left: 3%;
     width: 94%;
+    height: 30%;
   }
   #screen-step2-suc .suc-mo-img1 {
     z-index: 6;
-    top: 48%;
-    left: -7%;
+    top: 53.2%;
+    left: -5%;
     width: 100%;
   }
   #screen-step2-suc .suc-mo-img2 {
     z-index: 7;
-    top: 58.3%;
-    left: -7%;
+    top: 64.1%;
+    left: -5%;
     width: 100%;
   }
   #screen-step2-suc .suc-mo-text {
     z-index: 8;
-    top: 0;
-    width: 90%;
+    top: 3%;
+    width: 93.5%;
+    left: 3.6%;
   }
   #screen-step2-suc .suc-mo-button {
     z-index: 1;
-    top: 72.5%;
-    left: -0.1%;
-    width: 100%;
+    top: 78.8%;
+    left: 5%;
+    width: 120%;
   }
   #screen-step2-suc #btn-step2-suc-next {
     top: 78%;
@@ -1663,40 +1667,41 @@ img {
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-mo-whitebg {
     z-index: 5;
-    top: 45.9%;
-    left: 5%;
+    top: 54.9%;
+    left: 3%;
     width: 94%;
+    height: 29%;
   }
 
   /* 글자 배경 1.png */
   #screen-step3-suc .suc-mo-img1 {
     z-index: 6;
-    top: 43.8%;
-    left: -4%;
+    top: 51.9%;
+    left: -5%;
     width: 100%;
   }
 
   /* 글자 배경 2.png */
   #screen-step3-suc .suc-mo-img2 {
     z-index: 7;
-    top: 55%;
-    left: -4%;
+    top: 63.3%;
+    left: -5%;
     width: 100%;
   }
 
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-mo-text {
     z-index: 8;
-    top: 0;
-    left: 6%;
-    width: 83%;
+    top: 8%;
+    width: 83.5%;
+    left: 8.6%;
   }
 
   /* 네온 버튼 */
   #screen-step3-suc .suc-mo-button {
     z-index: 1;
-    top: 70.1%;
-    left: 2%;
+    top: 78.3%;
+    left: 5%;
     width: 120%;
   }
 }
