@@ -1171,27 +1171,149 @@
 
       <!-- ============================================================
            RESULT  (#screen-result)
+           모바일 캔버스: 390×1630  (mobile-item/스마트폰용 랜딩페이지 수고텍스트.png)
+           PC 캔버스:    1920×3300 (pc-item/마지막 수고페이지 배경.jpg)
            전환: 재도전 버튼 → #screen-intro1
       ============================================================ -->
       <section id="screen-result" class="screen">
         <div class="page-canvas">
+          <!-- ── 캔버스 기준 이미지 ── -->
           <picture>
-            <source media="(max-width: 768px)" srcset="image/result/mo.png" />
+            <source
+              media="(max-width: 768px)"
+              srcset="image/result/mobile-item/스마트폰용 랜딩페이지 수고텍스트.png"
+            />
             <img
-              src="image/result/pc.png"
+              src="image/result/pc-item/마지막 수고페이지 배경.jpg"
               alt=""
               class="page-img"
               draggable="false"
             />
           </picture>
-          <!-- 모바일 전용: 피해예방 10계명 오버레이 -->
-          <!-- <img
-            id="result-mo-10"
-            src="image/result/mobile/피해예방10계명.png"
+
+          <!-- ── PC 전용: 전체 텍스트·장식 오버레이 (1920×3300) ── -->
+          <img
+            class="result-layer result-text-layer"
+            src="image/result/pc-item/보이스피싱 이벤트랜딩텍스트수고 이미지.png"
             alt=""
             aria-hidden="true"
             draggable="false"
-          /> -->
+          />
+
+          <!-- ── 피해예방 10계명 ── -->
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="image/result/mobile-item/피해예방10계명.png"
+            />
+            <img
+              class="result-layer result-commandments"
+              src="image/result/pc-item/10계명.png"
+              alt="보이스피싱 피해예방 10계명"
+              draggable="false"
+            />
+          </picture>
+
+          <!-- ── 모바일 전용: 유튜브+경품 박스 배경 (387×824) ── -->
+          <img
+            class="result-layer result-yt-prize-box"
+            src="image/result/mobile-item/수고 유튜브경품 박스.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <!-- ── 모바일 전용: 비디오 썸네일 (190×396) ── -->
+          <img
+            class="result-layer result-mo-thumbnail"
+            src="image/result/mobile-item/모바일썸네일.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <!-- ── 모바일 전용: 선물 장식 / 경품 배경 / 경품 아이콘 ── -->
+          <img
+            class="result-layer result-gift-deco"
+            src="image/result/mobile-item/선물장식.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-bg-mo"
+            src="image/result/mobile-item/경품하얀배경.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-icon-mo"
+            src="image/result/mobile-item/경품아인콘.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <!-- ── PC 전용: 경품 장식 / 경품 배경 / 경품 1~4 ── -->
+          <img
+            class="result-layer result-prize-deco-pc"
+            src="image/result/pc-item/경품 장식.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-bg-pc"
+            src="image/result/pc-item/경품하얀배경.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-pc result-prize-pc-1"
+            src="image/result/pc-item/경품 /1.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-pc result-prize-pc-2"
+            src="image/result/pc-item/경품 /2.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-pc result-prize-pc-3"
+            src="image/result/pc-item/경품 /3.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+          <img
+            class="result-layer result-prize-pc result-prize-pc-4"
+            src="image/result/pc-item/경품 /4.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+          />
+
+          <!-- ── 공통: 등록·공유 버튼 이미지 ── -->
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="image/result/mobile-item/등록:공유버튼.png"
+            />
+            <img
+              class="result-layer result-btn-img"
+              src="image/result/pc-item/등록:공유버튼.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
+          </picture>
+
           <!-- 재도전 버튼 -->
           <button
             class="btn-pos btn-retry"
@@ -1200,28 +1322,45 @@
           >
             <span class="sr-only">다시 도전하기</span>
           </button>
+
           <!-- 홍보영상 재생 버튼 3개 -->
           <button
             class="btn-pos btn-result-video"
             id="btn-video-1"
             aria-label="홍보영상 1 재생"
           >
-            <span class="sr-only">영상 재생</span>
+            <img
+              src="image/result/mobile-item/유큐브버튼.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
           </button>
           <button
             class="btn-pos btn-result-video"
             id="btn-video-2"
             aria-label="홍보영상 2 재생"
           >
-            <span class="sr-only">영상 재생</span>
+            <img
+              src="image/result/mobile-item/유큐브버튼.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
           </button>
           <button
             class="btn-pos btn-result-video"
             id="btn-video-3"
             aria-label="홍보영상 3 재생"
           >
-            <span class="sr-only">영상 재생</span>
+            <img
+              src="image/result/mobile-item/유큐브버튼.png"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
           </button>
+
           <!-- 지금 등록하고 자동 응모하기 -->
           <button
             class="btn-pos"
@@ -1230,6 +1369,7 @@
           >
             <span class="sr-only">지금 등록하고 자동 응모하기</span>
           </button>
+
           <!-- 보이스피싱크홀 공유하기 -->
           <button
             class="btn-pos"

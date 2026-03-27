@@ -39,7 +39,11 @@
       "Bash(echo \"=== $step/$type/item-mobile ===\")",
       "Bash(done)",
       "Bash(echo \"=== $step/$type demo ===\")",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git:*)",
+      "Bash(find /Users/marko/Documents/GitHub/voicetrap-project/image/result -type f ! -name \".DS_Store\" -exec ls -lh {})",
+      "Bash(for f:*)",
+      "Bash(do sips:*)"
     ]
   }
 }

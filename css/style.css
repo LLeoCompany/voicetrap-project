@@ -1004,7 +1004,7 @@ img {
   /* 성공 텍스트 오버레이 — 1920×1080 이미지, top:0 고정 */
   .suc-text {
     z-index: 8;
-    top: 0;
+    top: -0.3%;
   }
 
   /* 네온 버튼 이미지 — 1080px 기준 px 고정 */
@@ -1834,99 +1834,240 @@ img {
 
 /* ==========================================================================
    [RESULT]  #screen-result
-   이미지: image/result/mo.png(390×1442) / pc.png(1920×3300)
+   모바일 캔버스: 390×1630 (mobile-item/스마트폰용 랜딩페이지 수고텍스트.png)
+   PC 캔버스:    1920×3300 (pc-item/마지막 수고페이지 배경.jpg)
    ========================================================================== */
 
-/* 10계명 오버레이 — 기본 숨김 */
-#result-mo-10 {
+/* 공통 레이어 기본 속성 */
+.result-layer {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* PC 전용 — 기본 숨김 */
+.result-text-layer,
+.result-prize-deco-pc,
+.result-prize-bg-pc,
+.result-prize-pc {
   display: none;
 }
 
-/* ─── MOBILE (캔버스 390×1442) ─── */
+/* btn-result-video 내부 아이콘 이미지 */
+.btn-result-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ─── MOBILE (캔버스 390×1630) ─── */
 @media (max-width: 768px) {
-  #result-mo-10 {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: -10%;
-    width: 200%;
-    height: auto;
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    z-index: 3;
+  /* 피해예방 10계명 (487×554) */
+  .result-commandments {
+    top: 17%; /* TODO: 조정 필요 */
+    left: 5%;
+    width: 90%;
   }
 
+  /* 유튜브+경품 박스 배경 (387×824) */
+  .result-yt-prize-box {
+    top: 36%; /* TODO: 조정 필요 */
+    left: 0;
+    width: 100%;
+  }
+
+  /* 비디오 썸네일 (190×396) */
+  .result-mo-thumbnail {
+    top: 37.5%; /* TODO: 조정 필요 */
+    left: 4%;
+    width: 48.7%;
+  }
+
+  /* 선물 장식 (404×292) */
+  .result-gift-deco {
+    top: 68%; /* TODO: 조정 필요 */
+    left: -2%;
+    width: 104%;
+  }
+
+  /* 경품 하얀 배경 (410×183) */
+  .result-prize-bg-mo {
+    top: 76%; /* TODO: 조정 필요 */
+    left: -2%;
+    width: 105%;
+  }
+
+  /* 경품 아이콘 (218×92) */
+  .result-prize-icon-mo {
+    top: 78%; /* TODO: 조정 필요 */
+    left: 22%;
+    width: 55.9%;
+  }
+
+  /* 등록·공유 버튼 이미지 (422×254) */
+  .result-btn-img {
+    top: 87%; /* TODO: 조정 필요 */
+    left: -4%;
+    width: 108%;
+  }
+
+  /* 재도전 버튼 */
   #screen-result #btn-retry {
-    /* TODO */
-    background: rgba(255, 80, 80, 0.35); /* 위치 확인용 */
+    /* TODO: 위치 설정 필요 */
   }
 
+  /* 영상 재생 버튼 3개 — 썸네일 행별 배치 */
   #screen-result #btn-video-1 {
-    top: 46.3%;
-    left: 29%;
-    width: 42.5%;
-    height: 6.4%;
+    top: 38.5%; /* TODO: 조정 필요 */
+    left: 4%;
+    width: 48.7%;
+    height: 5.5%;
   }
   #screen-result #btn-video-2 {
-    top: 55.1%;
-    left: 29%;
-    width: 42.5%;
-    height: 6.4%;
+    top: 45%; /* TODO: 조정 필요 */
+    left: 4%;
+    width: 48.7%;
+    height: 5.5%;
   }
   #screen-result #btn-video-3 {
-    top: 63.8%;
-    left: 29%;
-    width: 42.5%;
-    height: 6.4%;
+    top: 51.5%; /* TODO: 조정 필요 */
+    left: 4%;
+    width: 48.7%;
+    height: 5.5%;
   }
+
+  /* 등록 / 공유 버튼 */
   #screen-result #btn-result-register {
-    top: 86%;
-    left: 19%;
-    width: 65%;
-    height: 2.5%;
+    top: 88%; /* TODO: 조정 필요 */
+    left: 10%;
+    width: 80%;
+    height: 3%;
   }
   #screen-result #btn-result-share {
-    top: 92%;
-    left: 19%;
-    width: 65%;
-    height: 2.5%;
+    top: 93%; /* TODO: 조정 필요 */
+    left: 10%;
+    width: 80%;
+    height: 3%;
   }
 }
 
 /* ─── DESKTOP (캔버스 1920×3300) ─── */
 @media (min-width: 769px) {
-  #screen-result #btn-retry {
-    /* TODO */
-    background: rgba(255, 80, 80, 0.35); /* 위치 확인용 */
+  /* 모바일 전용 요소 숨김 */
+  .result-yt-prize-box,
+  .result-mo-thumbnail,
+  .result-gift-deco,
+  .result-prize-bg-mo,
+  .result-prize-icon-mo {
+    display: none;
   }
 
+  /* PC 전용 요소 표시 */
+  .result-text-layer,
+  .result-prize-deco-pc,
+  .result-prize-bg-pc,
+  .result-prize-pc {
+    display: block;
+  }
+
+  /* 전체 텍스트·장식 오버레이 (1920×3300) */
+  .result-text-layer {
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  /* 피해예방 10계명 (1413×1521) */
+  .result-commandments {
+    top: 12%; /* TODO: 조정 필요 */
+    left: 19.2%;
+    width: 73.6%;
+  }
+
+  /* 경품 장식 (675×197) */
+  .result-prize-deco-pc {
+    top: 71%; /* TODO: 조정 필요 */
+    left: 32.4%;
+    width: 35.2%;
+  }
+
+  /* 경품 하얀 배경 (410×183) */
+  .result-prize-bg-pc {
+    top: 74%; /* TODO: 조정 필요 */
+    left: 38.8%;
+    width: 21.4%;
+  }
+
+  /* 경품 1~4 (각 757×549) — 4등분 가로 배치 */
+  .result-prize-pc {
+    top: 70%; /* TODO: 조정 필요 */
+    width: 22%;
+    z-index: 10;
+  }
+  .result-prize-pc-1 {
+    left: 15%;
+    top: 71%;
+    width: 21%;
+  }
+  .result-prize-pc-2 {
+    top: 72.3%;
+    width: 19%;
+    left: 32%;
+  }
+  .result-prize-pc-3 {
+    top: 70.3%;
+    width: 27%;
+    left: 44.3%;
+  }
+  .result-prize-pc-4 {
+    top: 71.3%;
+    width: 27%;
+    left: 61.3%;
+  }
+
+  /* 등록·공유 버튼 이미지 (422×254) */
+  .result-btn-img {
+    top: 83%; /* TODO: 조정 필요 */
+    left: 38.9%;
+    width: 22%;
+  }
+
+  /* 재도전 버튼 */
+  #screen-result #btn-retry {
+    /* TODO: 위치 설정 필요 */
+  }
+
+  /* 영상 재생 버튼 3개 — 가로 배치 */
   #screen-result #btn-video-1 {
-    top: 59.8%;
+    top: 59.8%; /* TODO: 조정 필요 */
     left: 19.5%;
     width: 19%;
     height: 6.4%;
   }
   #screen-result #btn-video-2 {
-    top: 59.8%;
+    top: 59.8%; /* TODO: 조정 필요 */
     left: 40.5%;
     width: 19%;
     height: 6.4%;
   }
   #screen-result #btn-video-3 {
-    top: 59.8%;
+    top: 59.8%; /* TODO: 조정 필요 */
     left: 61.5%;
     width: 19%;
     height: 6.4%;
   }
+
+  /* 등록 / 공유 버튼 */
   #screen-result #btn-result-register {
-    top: 83.9%;
+    top: 83.9%; /* TODO: 조정 필요 */
     left: 33%;
     width: 32%;
     height: 3.3%;
   }
   #screen-result #btn-result-share {
-    top: 90.3%;
+    top: 90.3%; /* TODO: 조정 필요 */
     left: 33%;
     width: 32%;
     height: 3.3%;
