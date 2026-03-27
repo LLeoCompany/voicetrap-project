@@ -1763,6 +1763,7 @@ img {
   #screen-step3-suc .suc-confetti1 {
     z-index: 3;
     animation: suc-confetti-drift 3.5s ease-in-out infinite;
+    top: -15%;
   }
   #screen-step3-suc .suc-confetti2 {
     z-index: 3;
