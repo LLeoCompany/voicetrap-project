@@ -427,14 +427,6 @@
     initWavePlayer("wave-step2", "btn-step2-play", "audio/stage2.mp3");
     initWavePlayer("wave-step3", "btn-step3-play", "audio/stage3.mp3");
 
-    /* ── INTRO 자동 진행 (0.5초 텀) ── */
-    setTimeout(function () {
-      goToScreen("screen-intro2");
-      setTimeout(function () {
-        goToScreen("screen-main");
-      }, 2000);
-    }, 2000);
-
     /* ── intro1 첫 터치/클릭 시 glitch 오디오 재시도 (autoplay 정책 우회) ── */
     var intro1Screen = document.getElementById("screen-intro1");
     if (intro1Screen) {

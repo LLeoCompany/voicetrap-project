@@ -859,21 +859,19 @@ img {
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 13%;
+    left: 13%;
+    width: 72%;
   }
   #screen-step1-suc.active .suc-mo-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
   }
   #screen-step1-suc .suc-mo-confetti1 {
     z-index: 3;
-    mix-blend-mode: multiply;
     animation: suc-confetti-drift 3.5s ease-in-out infinite;
   }
   #screen-step1-suc .suc-mo-confetti2 {
     z-index: 4;
-    mix-blend-mode: multiply;
     animation: suc-confetti-drift 4.8s ease-in-out infinite reverse;
     animation-delay: 0.7s;
   }
@@ -936,21 +934,19 @@ img {
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
-    top: 6%;
-    left: 13.3%;
-    width: 73.3%;
+    top: 14%;
+    left: 13%;
+    width: 74%;
   }
   #screen-step2-suc.active .suc-mo-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
   }
   #screen-step2-suc .suc-mo-confetti1 {
     z-index: 3;
-    mix-blend-mode: multiply;
     animation: suc-confetti-drift 3.5s ease-in-out infinite;
   }
   #screen-step2-suc .suc-mo-confetti2 {
     z-index: 4;
-    mix-blend-mode: multiply;
     animation: suc-confetti-drift 4.8s ease-in-out infinite reverse;
     animation-delay: 0.7s;
   }
@@ -1040,6 +1036,7 @@ img {
   .suc-confetti1 {
     z-index: 3;
     animation: suc-confetti-drift 3.5s ease-in-out infinite;
+    top: -14%;
   }
 
   /* 쏟아지는 컨페티 — 흰 배경 제거 후 느린 흔들림 */
@@ -1220,7 +1217,7 @@ img {
     z-index: 3;
     mix-blend-mode: multiply;
     transform-origin: center 35%;
-    animation: fall-rocks 3.2s ease-in-out infinite;
+    opacity: 0;
   }
 
   /* 예방안내배경.png (414×252) — 실버 명판, 95% 축소 중앙 정렬
@@ -1291,7 +1288,12 @@ img {
   #screen-step1-fail .fail-rocks {
     z-index: 3;
     transform-origin: center 35%;
-    animation: fall-rocks 3.2s ease-in-out infinite;
+    opacity: 0;
+  }
+  #screen-step1-fail.active .fail-rocks,
+  #screen-step1-fail.active .fail-mo-rocks {
+    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation-delay: 0.6s;
   }
 
   #screen-step1-fail .fail-people {
@@ -1358,7 +1360,12 @@ img {
   #screen-step2-fail .fail-rocks {
     z-index: 3;
     transform-origin: center 35%;
-    animation: fall-rocks 3.2s ease-in-out infinite;
+    opacity: 0;
+  }
+  #screen-step2-fail.active .fail-rocks,
+  #screen-step2-fail.active .fail-mo-rocks {
+    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation-delay: 0.6s;
   }
 
   #screen-step2-fail .fail-people {
@@ -1397,16 +1404,16 @@ img {
 /* ── 낙하 키프레임 ── */
 @keyframes fall-rocks {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) scale(1);
+    opacity: 1;
   }
-  40% {
-    transform: translateY(14px) rotate(4deg);
-  }
-  75% {
-    transform: translateY(5px) rotate(-2deg);
+  50% {
+    transform: translateY(50px) scale(0.6);
+    opacity: 0.8;
   }
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(90px) scale(0.2);
+    opacity: 0.5;
   }
 }
 
@@ -1571,9 +1578,9 @@ img {
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
-    top: 3%;
-    left: 11.5%;
-    width: 76.9%;
+    top: 13%;
+    left: 13.5%;
+    width: 72.9%;
   }
   #screen-step3-suc.active .suc-mo-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
@@ -1582,12 +1589,10 @@ img {
   /* 컨페티 */
   #screen-step3-suc .suc-mo-confetti1 {
     z-index: 3;
-    mix-blend-mode: multiply;
     animation: suc-confetti-drift 3.5s ease-in-out infinite;
   }
   #screen-step3-suc .suc-mo-confetti2 {
     z-index: 4;
-    mix-blend-mode: multiply;
     animation: suc-confetti-drift 4.8s ease-in-out infinite reverse;
     animation-delay: 0.7s;
   }
@@ -1792,7 +1797,8 @@ img {
     z-index: 3;
     mix-blend-mode: multiply;
     transform-origin: center 35%;
-    animation: fall-rocks 3.2s ease-in-out infinite;
+    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation-delay: 0.6s;
   }
 
   /* 명판 배경 */
@@ -1865,7 +1871,12 @@ img {
   #screen-step3-fail .fail-rocks {
     z-index: 3;
     transform-origin: center 35%;
-    animation: fall-rocks 3.2s ease-in-out infinite;
+    opacity: 0;
+  }
+  #screen-step3-fail.active .fail-rocks,
+  #screen-step3-fail.active .fail-mo-rocks {
+    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation-delay: 0.6s;
   }
 
   /* 사람 */
