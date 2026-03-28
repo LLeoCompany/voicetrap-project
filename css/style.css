@@ -1232,7 +1232,7 @@ img {
     width: 170%;
     left: -20%;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out 1 forwards;
+    animation: fall-people 4.5s ease-in 1 forwards;
     animation-delay: 0.6s;
   }
 
@@ -1246,7 +1246,7 @@ img {
   #screen-step1-fail.active .fail-mo-rocks,
   #screen-step2-fail.active .fail-mo-rocks,
   #screen-step3-fail.active .fail-mo-rocks {
-    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation: fall-rocks 3.2s ease-in 1 forwards;
     animation-delay: 0.6s;
   }
 
@@ -1331,7 +1331,6 @@ img {
   #screen-step1-fail .fail-equalizer {
     z-index: 1;
     mix-blend-mode: multiply;
-    animation: eq-pulse 0.45s ease-in-out infinite alternate;
     transform-origin: center 35%;
   }
 
@@ -1356,14 +1355,14 @@ img {
   }
   #screen-step1-fail.active .fail-rocks,
   #screen-step1-fail.active .fail-mo-rocks {
-    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation: fall-rocks 3.2s ease-in 1 forwards;
     animation-delay: 0.6s;
   }
 
   #screen-step1-fail .fail-people {
     z-index: 4;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out 1 forwards;
+    animation: fall-people 4.5s ease-in 1 forwards;
     animation-delay: 0.6s;
     top: -15%;
   }
@@ -1410,7 +1409,6 @@ img {
   #screen-step2-fail .fail-equalizer {
     z-index: 1;
     mix-blend-mode: multiply;
-    animation: eq-pulse 0.45s ease-in-out infinite alternate;
     transform-origin: center 35%;
   }
 
@@ -1435,14 +1433,14 @@ img {
   }
   #screen-step2-fail.active .fail-rocks,
   #screen-step2-fail.active .fail-mo-rocks {
-    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation: fall-rocks 3.2s ease-in 1 forwards;
     animation-delay: 0.6s;
   }
 
   #screen-step2-fail .fail-people {
     z-index: 4;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out 1 forwards;
+    animation: fall-people 4.5s ease-in 1 forwards;
     animation-delay: 0.6s;
     top: -15%;
   }
@@ -1478,13 +1476,9 @@ img {
     transform: translateY(0) scale(1);
     opacity: 1;
   }
-  50% {
-    transform: translateY(50px) scale(0.6);
-    opacity: 0.8;
-  }
   100% {
     transform: translateY(90px) scale(0.2);
-    opacity: 0.5;
+    opacity: 0;
   }
 }
 
@@ -1493,13 +1487,9 @@ img {
     transform: translateY(0) scale(1);
     opacity: 1;
   }
-  60% {
-    transform: translateY(60px) scale(0.55);
-    opacity: 0.6;
-  }
   100% {
     transform: translateY(80px) scale(0.3);
-    opacity: 1;
+    opacity: 0;
   }
 }
 
@@ -1860,7 +1850,7 @@ img {
     z-index: 2;
     mix-blend-mode: multiply;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out 1 forwards;
+    animation: fall-people 4.5s ease-in 1 forwards;
     animation-delay: 0.6s;
     width: 100%;
   }
@@ -1940,22 +1930,21 @@ img {
   #screen-step3-fail .fail-equalizer {
     z-index: 1;
     mix-blend-mode: multiply;
-    animation: eq-pulse 0.45s ease-in-out infinite alternate;
     transform-origin: center 35%;
   }
 
   /* 명판 */
   #screen-step3-fail .fail-back {
     z-index: 2;
-    top: 68%;
-    left: 14.94%;
-    width: 69.98%; /* 1286/1920 */
+    top: 70.5%;
+    left: 16.94%;
+    width: 66%; /* 1286/1920 */
     height: 27%;
   }
   #screen-step3-fail .fail-emoji-bar {
     z-index: 3;
-    top: 68.3%; /* TODO: 조정 필요 */
-    left: 16.58%;
+    top: 70.6%; /* TODO: 조정 필요 */
+    left: 18%;
     width: 64.84%; /* 1245/1920 */
   }
 
@@ -1967,7 +1956,7 @@ img {
   }
   #screen-step3-fail.active .fail-rocks,
   #screen-step3-fail.active .fail-mo-rocks {
-    animation: fall-rocks 3.2s ease-in-out 1 forwards;
+    animation: fall-rocks 3.2s ease-in 1 forwards;
     animation-delay: 0.6s;
   }
 
@@ -1975,7 +1964,7 @@ img {
   #screen-step3-fail .fail-people {
     z-index: 4;
     transform-origin: center 80%;
-    animation: fall-people 4.5s ease-in-out 1 forwards;
+    animation: fall-people 4.5s ease-in 1 forwards;
     animation-delay: 0.6s;
     top: -15%;
   }
@@ -1984,15 +1973,15 @@ img {
   #screen-step3-fail .fail-text {
     z-index: 7;
     top: 3.5%;
-    left: 2%;
-    width: 95%;
+    left: 1%;
+    width: 98%;
   }
 
   /* 네온 버튼 이미지 */
   #screen-step3-fail .fail-button-img {
     z-index: 6;
-    top: 80.6%;
-    left: 32.5%;
+    top: 83.3%;
+    left: 32.9%;
     width: 32%;
   }
 
@@ -2042,6 +2031,11 @@ img {
   display: none;
 }
 
+/* 유튜브 재생 아이콘 — 기본 숨김 */
+.result-yt-icon {
+  display: none;
+}
+
 /* btn-result-video 내부 아이콘 이미지 */
 .btn-result-video img {
   width: 100%;
@@ -2086,6 +2080,26 @@ img {
     top: 42%; /* TODO: 조정 필요 */
     left: 20%;
     width: 28.7%;
+  }
+
+  /* 유튜브 재생 아이콘 — 모바일 (썸네일 3개 세로 배치 위 중앙) */
+  .result-yt-icon {
+    display: block;
+    width: 10%;
+    z-index: 30;
+    pointer-events: none;
+  }
+  .result-yt-icon-1 {
+    top: 45%; /* TODO: 조정 필요 */
+    left: 29%;
+  }
+  .result-yt-icon-2 {
+    top: 53%; /* TODO: 조정 필요 */
+    left: 29%;
+  }
+  .result-yt-icon-3 {
+    top: 61%; /* TODO: 조정 필요 */
+    left: 29%;
   }
 
   /* 선물 장식 (404×292) */
@@ -2229,6 +2243,26 @@ img {
     top: 59.6%; /* TODO: 조정 필요 */
     left: 22.9%;
     width: 55.3%; /* 1115/1920 */
+  }
+
+  /* 유튜브 재생 아이콘 — PC (썸네일 3개 가로 배치 위 중앙) */
+  .result-yt-icon {
+    display: block;
+    width: 4%;
+    z-index: 30;
+    pointer-events: none;
+  }
+  .result-yt-icon-1 {
+    top: 62%; /* TODO: 조정 필요 */
+    left: 30%;
+  }
+  .result-yt-icon-2 {
+    top: 62%; /* TODO: 조정 필요 */
+    left: 48.5%;
+  }
+  .result-yt-icon-3 {
+    top: 62%; /* TODO: 조정 필요 */
+    left: 67%;
   }
 
   /* 경품 장식 (675×197) */
