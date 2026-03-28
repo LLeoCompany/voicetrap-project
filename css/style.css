@@ -2032,8 +2032,8 @@ img {
   display: none;
 }
 
-/* 유튜브 재생 아이콘 — 기본 숨김 */
-.result-yt-icon {
+/* 유튜브 재생 아이콘 (제목 왼쪽) — 기본 숨김 */
+.result-yt-title-icon {
   display: none;
 }
 
@@ -2083,24 +2083,14 @@ img {
     width: 28.7%;
   }
 
-  /* 유튜브 재생 아이콘 — 모바일 (썸네일 3개 세로 배치 위 중앙) */
-  .result-yt-icon {
+  /* 유튜브 재생 아이콘 — 모바일: 제목 왼쪽 */
+  .result-yt-title-icon {
     display: block;
-    width: 10%;
+    width: 9%;
     z-index: 30;
     pointer-events: none;
-  }
-  .result-yt-icon-1 {
-    top: 45%; /* TODO: 조정 필요 */
-    left: 29%;
-  }
-  .result-yt-icon-2 {
-    top: 53%; /* TODO: 조정 필요 */
-    left: 29%;
-  }
-  .result-yt-icon-3 {
-    top: 61%; /* TODO: 조정 필요 */
-    left: 29%;
+    top: 38%; /* TODO: 조정 필요 */
+    left: 11%; /* TODO: 조정 필요 */
   }
 
   /* 선물 장식 (404×292) */
@@ -2246,24 +2236,14 @@ img {
     width: 55.3%; /* 1115/1920 */
   }
 
-  /* 유튜브 재생 아이콘 — PC (썸네일 3개 가로 배치 위 중앙) */
-  .result-yt-icon {
+  /* 유튜브 재생 아이콘 — PC: 제목 왼쪽 */
+  .result-yt-title-icon {
     display: block;
-    width: 4%;
+    width: 5%;
     z-index: 30;
     pointer-events: none;
-  }
-  .result-yt-icon-1 {
-    top: 62%; /* TODO: 조정 필요 */
-    left: 30%;
-  }
-  .result-yt-icon-2 {
-    top: 62%; /* TODO: 조정 필요 */
-    left: 48.5%;
-  }
-  .result-yt-icon-3 {
-    top: 62%; /* TODO: 조정 필요 */
-    left: 67%;
+    top: 54.45%; /* TODO: 조정 필요 */
+    left: 37.6%; /* TODO: 조정 필요 */
   }
 
   /* 경품 장식 (675×197) */
