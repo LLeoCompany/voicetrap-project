@@ -1033,11 +1033,12 @@ img {
   /* STEP1 캐릭터 — 기본: 화면 위 대기 */
   #screen-step1-suc .suc-char {
     z-index: 2;
-    top: -240px;
+    top: 7%;
     transform-origin: center bottom;
     transform: translateY(-32%);
     opacity: 0;
-    left: -1%;
+    left: 35%;
+    width: 30%;
   }
   #screen-step1-suc.active .suc-char {
     animation: suc-char-fall 2.2s ease-in 0.45s 1 forwards;
