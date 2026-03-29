@@ -2225,18 +2225,19 @@ img {
 
   /* 공유하기 버튼 — 그룹 내 상단 (422×254 기준 상단 버튼) */
   #screen-result #btn-result-share {
-    top: 40%;
-    left: 5%;
-    width: 90%;
-    height: 42%;
+    top: 61%;
+
+    left: 22%;
+    width: 57%;
+    height: 14%;
   }
 
   /* 응모하기 버튼 — 그룹 내 하단 */
   #screen-result #btn-result-register {
-    top: 35%;
-    left: 5%;
-    width: 90%;
-    height: 42%;
+    top: 29%;
+    left: 22%;
+    width: 57%;
+    height: 14%;
   }
 }
 
