@@ -302,7 +302,7 @@ img {
     top: 25.8%; /* 205 / 844 */
     left: 25.7%; /* 38  / 390 */
     width: 47.6%; /* 314 / 390 */
-    height: 8.7%; /* 90  / 844 */
+    height: 7.45%; /* 90  / 844 */
   }
   .wave-play-btn {
     width: 40px;
@@ -318,7 +318,7 @@ img {
     top: 36.1%; /* 195 / 1080 */
     left: 38.7%; /* 590 / 1920 */
     width: 20.5%; /* 740 / 1920 */
-    height: 13.7%; /* 150 / 1080 */
+    height: 13.4%; /* 150 / 1080 */
   }
   .wave-play-btn {
     width: 64px;
@@ -339,7 +339,7 @@ img {
   display: flex;
   align-items: center;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.75); /* 반투명 검정 배경 */
+  background: rgba(0, 0, 0, 0.87); /* 반투명 검정 배경 */
 }
 
 .ticker-track {
@@ -371,7 +371,7 @@ img {
    티커 밴드: top 304/844 = 36.0%, height 28px */
 @media (max-width: 768px) {
   .ticker-overlay {
-    top: 46.8%; /* 304 / 844 */
+    top: 47%; /* 304 / 844 */
     height: 36px;
   }
   .ticker-text {
@@ -686,8 +686,8 @@ img {
   .intro1-red-dot-mo {
     display: block;
     top: 54%; /* TODO: 조정 필요 */
-    left: 10%; /* TODO: 조정 필요 */
-    width: 80%;
+    left: 12%; /* TODO: 조정 필요 */
+    width: 77%;
   }
 }
 
