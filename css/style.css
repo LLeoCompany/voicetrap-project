@@ -2435,3 +2435,55 @@ img {
 .popup-submit:active {
   background: #b01010;
 }
+
+.popup-privacy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.popup-privacy-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: #333;
+  cursor: pointer;
+  flex: 1;
+}
+
+.popup-privacy-chk {
+  width: 18px;
+  height: 18px;
+  accent-color: #e02020;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.popup-privacy-required {
+  color: #e02020;
+  font-weight: 700;
+}
+
+.popup-privacy-detail {
+  background: none;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  color: #666;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.popup-privacy-text {
+  font-size: 0.78rem;
+  color: #555;
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 10px 12px;
+  line-height: 1.8;
+  margin-bottom: 4px;
+}

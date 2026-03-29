@@ -1586,6 +1586,22 @@
               autocomplete="tel"
               inputmode="numeric"
             />
+            <div class="popup-privacy">
+              <label class="popup-privacy-label">
+                <input
+                  type="checkbox"
+                  id="chk-privacy"
+                  class="popup-privacy-chk"
+                />
+                <span>개인정보 수집·이용에 동의합니다 <span class="popup-privacy-required">(필수)</span></span>
+              </label>
+              <button type="button" class="popup-privacy-detail" id="btn-privacy-detail">내용보기</button>
+            </div>
+            <div class="popup-privacy-text" id="privacy-detail" hidden>
+              수집 항목: 이름, 전화번호<br/>
+              수집 목적: 경품 응모 및 당첨자 연락<br/>
+              보유 기간: 이벤트 종료 후 30일
+            </div>
             <button class="popup-submit" type="submit">응모 완료</button>
           </form>
         </div>

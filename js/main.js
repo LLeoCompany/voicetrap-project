@@ -615,13 +615,27 @@
         if (e.target === popup) closePopup();
       });
 
+    var btnPrivacyDetail = document.getElementById("btn-privacy-detail");
+    var privacyDetail = document.getElementById("privacy-detail");
+    if (btnPrivacyDetail && privacyDetail)
+      btnPrivacyDetail.addEventListener("click", function () {
+        var hidden = privacyDetail.hidden;
+        privacyDetail.hidden = !hidden;
+        btnPrivacyDetail.textContent = hidden ? "닫기" : "내용보기";
+      });
+
     if (formReg)
       formReg.addEventListener("submit", function (e) {
         e.preventDefault();
         var name = (document.getElementById("input-name") || {}).value || "";
         var phone = (document.getElementById("input-phone") || {}).value || "";
+        var chk = document.getElementById("chk-privacy");
         if (!name.trim() || !phone.trim()) {
           showToast("이름과 전화번호를 입력해 주세요.");
+          return;
+        }
+        if (!chk || !chk.checked) {
+          showToast("개인정보 수집·이용에 동의해 주세요.");
           return;
         }
         closePopup();
