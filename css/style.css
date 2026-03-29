@@ -738,9 +738,9 @@ img {
     left: 49%;
   } /* TODO: 조정 필요 */
   .main-prize-3 {
-    top: 62.5%;
-    left: 18%;
-    width: 38%; /* ~442/1920 */
+    top: 71.6%;
+    left: 30%;
+    width: 13%; /* ~442/1920 */
   } /* TODO: 조정 필요 */
   .main-prize-4 {
     top: 64%;
@@ -2083,14 +2083,9 @@ img {
     width: 28.7%;
   }
 
-  /* 유튜브 재생 아이콘 — 모바일: 제목 왼쪽 */
+  /* 유튜브 재생 아이콘 — 모바일: 숨김 */
   .result-yt-title-icon {
-    display: block;
-    width: 9%;
-    z-index: 30;
-    pointer-events: none;
-    top: 38%; /* TODO: 조정 필요 */
-    left: 11%; /* TODO: 조정 필요 */
+    display: none;
   }
 
   /* 선물 장식 (404×292) */
@@ -2114,9 +2109,9 @@ img {
     width: 40%;
   } /* TODO: 조정 필요 */
   .result-prize-mo-3 {
-    top: 69.7%;
-    left: 1%;
-    width: 60%;
+    top: 74.6%;
+    left: 19%;
+    width: 22%;
   } /* TODO: 조정 필요 */
   .result-prize-mo-4 {
     top: 70.5%;
@@ -2270,12 +2265,12 @@ img {
     left: 32%;
   }
   .result-prize-pc-3 {
-    top: 70.3%;
-    width: 27%;
-    left: 44.3%;
+    top: 74.3%;
+    width: 9%;
+    left: 53.6%;
   }
   .result-prize-pc-4 {
-    top: 71.3%;
+    top: 71%;
     width: 27%;
     left: 61.3%;
   }

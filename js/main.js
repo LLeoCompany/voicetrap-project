@@ -59,11 +59,12 @@
       stopAllAudio();
     }
 
-    /* intro 벗어날 때 glitch 오디오 정지 */
+    /* intro 벗어날 때 glitch 오디오 + 반복 루프 정지 */
     var introScreens = ["screen-intro1", "screen-intro2"];
     if (introScreens.indexOf(nextId) === -1) {
       glitchAudio.pause();
       glitchAudio.currentTime = 0;
+      if (glitchLoopTimer) { clearTimeout(glitchLoopTimer); glitchLoopTimer = null; }
     }
 
     requestAnimationFrame(function () {
@@ -77,7 +78,7 @@
             ".ticker-overlay", ".ticker-track",
             ".suc-mo-whitebg", ".suc-mo-img1", ".suc-mo-img2", ".suc-mo-text", ".suc-mo-button",
             ".suc-whitebg", ".suc-img1", ".suc-img2", ".suc-text", ".suc-button-img",
-            ".fail-mo-people", ".fail-mo-back", ".fail-mo-text", ".fail-mo-button",
+            ".fail-mo-people", ".fail-mo-back", ".fail-mo-emoji-bar1", ".fail-mo-emoji-bar2", ".fail-mo-text", ".fail-mo-button",
             ".fail-people", ".fail-back", ".fail-text", ".fail-button-img"
           ];
           resetSelectors.forEach(function (sel) {
@@ -354,6 +355,7 @@
   playBgmAudio();
 
   var glitchTimers = [];
+  var glitchLoopTimer = null;
   var glitchAudio = new Audio("image/intro1/audio/Digital TV Glitch 2.mp3");
   /* glitchAudio는 allAudios에 넣지 않음 — intro 구간에서 계속 재생되어야 하므로 별도 관리 */
 
@@ -406,6 +408,13 @@
         }, delay));
       })(frames[idx], idx > 0 ? frames[idx - 1] : null, delays[idx]);
     }
+
+    /* 시퀀스 완료 후 3초 대기 → 반복 */
+    if (glitchLoopTimer) clearTimeout(glitchLoopTimer);
+    glitchLoopTimer = setTimeout(function () {
+      glitchLoopTimer = null;
+      runGlitch();
+    }, 1250 + 3000);
   }
 
   /* ── DOMContentLoaded ──────────────────────────────────────────────────── */
