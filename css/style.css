@@ -2130,7 +2130,7 @@ img {
   /* 반짝이 — 모바일 */
   .result-sparkle-mo {
     display: block;
-    top: 3%; /* TODO: 조정 필요 */
+    top: -2%; /* TODO: 조정 필요 */
     left: 0;
     width: 100%;
     z-index: 50;
@@ -2254,9 +2254,9 @@ img {
 
   /* 반짝이 — PC */
   .result-sparkle-pc {
-    top: 5%; /* TODO: 조정 필요 */
-    left: 0;
-    width: 100%;
+    top: -3%; /* TODO: 조정 필요 */
+    left: 7%;
+    width: 90%;
     z-index: 50;
     pointer-events: none;
   }
