@@ -45,8 +45,9 @@
 /* 배달의민족 연성체 */
 @font-face {
   font-family: "BMYeonsung";
-  src: url("../font/BMYEONSUNG_otf.otf") format("opentype"),
-       url("../font/BMYEONSUNG_ttf.ttf") format("truetype");
+  src:
+    url("../font/BMYEONSUNG_otf.otf") format("opentype"),
+    url("../font/BMYEONSUNG_ttf.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -1724,40 +1725,40 @@ img {
   #screen-step3-suc .suc-mo-whitebg {
     z-index: 5;
     top: 54.9%;
-    left: 3%;
-    width: 94%;
+    left: 7%;
+    width: 86%;
     height: 29%;
   }
 
   /* 글자 배경 1.png */
   #screen-step3-suc .suc-mo-img1 {
     z-index: 6;
-    top: 51.9%;
-    left: -5%;
+    top: 51.5%;
+    left: -2%;
     width: 100%;
   }
 
   /* 글자 배경 2.png */
   #screen-step3-suc .suc-mo-img2 {
     z-index: 7;
-    top: 63.3%;
-    left: -5%;
+    top: 62.5%;
+    left: -2%;
     width: 100%;
   }
 
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-mo-text {
     z-index: 8;
-    top: 8%;
-    width: 83.5%;
-    left: 8.6%;
+    top: 9.5%;
+    width: 80.5%;
+    left: 10.6%;
   }
 
   /* 네온 버튼 */
   #screen-step3-suc .suc-mo-button {
     z-index: 1;
-    top: 78.3%;
-    left: 5%;
+    top: 77.2%;
+    left: 4.5%;
     width: 120%;
   }
 }
