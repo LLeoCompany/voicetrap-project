@@ -42,6 +42,15 @@
    [전역] RESET
    ========================================================================== */
 
+/* 배달의민족 연성체 */
+@font-face {
+  font-family: "BMYeonsung";
+  src: url("../font/BMYEONSUNG_otf.otf") format("opentype"),
+       url("../font/BMYEONSUNG_ttf.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* G마켓 산스 불러오기 */
 @font-face {
   font-family: "GmarketSansBold";
@@ -349,11 +358,13 @@ img {
 }
 
 .ticker-text {
+  font-family: "BMYeonsung", sans-serif;
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   color: #e02020;
   white-space: nowrap;
-  letter-spacing: 0.02em;
+  font-stretch: 100%;
+  letter-spacing: 10px;
   text-shadow: 0 0 8px rgba(200, 0, 0, 0.5);
 }
 
@@ -385,10 +396,10 @@ img {
 @media (min-width: 769px) {
   .ticker-overlay {
     top: 57%; /* 367 / 1080 */
-    height: 30px;
+    height: 36px;
   }
   .ticker-text {
-    font-size: 1.12rem;
+    font-size: 24px;
     padding-right: 100px;
   }
 }
