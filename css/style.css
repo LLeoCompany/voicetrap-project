@@ -371,11 +371,11 @@ img {
    티커 밴드: top 304/844 = 36.0%, height 28px */
 @media (max-width: 768px) {
   .ticker-overlay {
-    top: 45.8%; /* 304 / 844 */
-    height: 56px;
+    top: 46.8%; /* 304 / 844 */
+    height: 36px;
   }
   .ticker-text {
-    font-size: 1rem;
+    font-size: 0.93rem;
     padding-right: 60px;
   }
 }
@@ -388,7 +388,7 @@ img {
     height: 30px;
   }
   .ticker-text {
-    font-size: 0.92rem;
+    font-size: 1.12rem;
     padding-right: 100px;
   }
 }
