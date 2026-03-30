@@ -1728,7 +1728,7 @@ img {
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   #screen-step2-fail #btn-step2-fail-next {
-    top: 79%;
+    top: 87%;
     left: 17%;
     width: 65%;
     height: 6.7%;
