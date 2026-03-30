@@ -970,7 +970,7 @@ img {
     opacity: 1;
   }
   #screen-step1-suc.active .suc-mo-before {
-    animation: suc-before-fadeout 0.4s ease forwards;
+    animation: suc-before-fadeout 0.3s ease forwards;
     animation-delay: 2.65s;
   }
   #screen-step1-suc .suc-mo-char {
@@ -1057,6 +1057,16 @@ img {
   }
   #screen-step2-suc .suc-mo-bg {
     z-index: 1;
+  }
+  #screen-step2-suc .suc-mo-before {
+    z-index: 1;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+  }
+  #screen-step2-suc.active .suc-mo-before {
+    animation: suc-before-fadeout 0.3s ease forwards;
+    animation-delay: 2.65s;
   }
   #screen-step2-suc .suc-mo-char {
     z-index: 2;
@@ -1246,8 +1256,13 @@ img {
 
 /* ── before 페이드아웃 ── */
 @keyframes suc-before-fadeout {
-  0%   { opacity: 1; }
-  100% { opacity: 0; pointer-events: none; }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 /* ── 성공 키프레임 ── */
@@ -1770,6 +1785,16 @@ img {
   /* 배경 */
   #screen-step3-suc .suc-mo-bg {
     z-index: 1;
+  }
+  #screen-step3-suc .suc-mo-before {
+    z-index: 1;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+  }
+  #screen-step3-suc.active .suc-mo-before {
+    animation: suc-before-fadeout 0.3s ease forwards;
+    animation-delay: 2.65s;
   }
 
   /* 캐릭터 */
