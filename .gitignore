@@ -3,3 +3,4 @@ image/pdf-file/
 
 # macOS
 .DS_Store
+.vercel

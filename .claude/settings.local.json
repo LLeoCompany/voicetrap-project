@@ -46,7 +46,9 @@
       "Bash(do sips:*)",
       "Bash(open \"$f\")",
       "Bash(vercel --version)",
-      "Bash(npm i:*)"
+      "Bash(npm i:*)",
+      "Bash(vercel login:*)",
+      "Bash(vercel:*)"
     ]
   }
 }
