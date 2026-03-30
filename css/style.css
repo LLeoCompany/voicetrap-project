@@ -742,7 +742,9 @@ img {
     display: flex;
     bottom: auto;
     top: 86%;
-    height: 34px;
+    height: 32px;
+    left: 5%;
+    width: 90%;
   }
 }
 
@@ -1360,43 +1362,56 @@ img {
   .fail-mo-back {
     z-index: 4;
     top: 48%;
-    left: -2%;
+    left: 0;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
     height: 32%;
   }
 
   /* 명판 위 하얀바+이모지 — 스테이지별 */
   #screen-step1-fail .fail-mo-emoji-bar1 {
     z-index: 6;
-    top: 49.2%; /* TODO: 조정 필요 */
-    left: 10.5%;
+    top: 49.2%;
+    left: 0;
+    right: 0;
     width: 68%;
+    margin: 0 auto;
   }
   #screen-step1-fail .fail-mo-emoji-bar2 {
     z-index: 6;
-    top: 61.8%; /* TODO: 조정 필요 */
-    left: 11.9%;
+    top: 61.8%;
+    left: 0;
+    right: 0;
     width: 68%;
+    margin: 0 auto;
   }
 
   #screen-step2-fail .fail-mo-emoji-bar1 {
     z-index: 6;
-    top: 49.5%; /* TODO: 조정 필요 */
-    left: 10.5%;
+    top: 49.5%;
+    left: 0;
+    right: 0;
     width: 68%;
+    margin: 0 auto;
   }
   #screen-step2-fail .fail-mo-emoji-bar2 {
     z-index: 6;
-    top: 61.3%; /* TODO: 조정 필요 */
-    left: 11.9%;
+    top: 61.3%;
+    left: 0;
+    right: 0;
     width: 68%;
+    margin: 0 auto;
   }
 
   /* 텍스트 오버레이 — 전체 캔버스 투명 PNG */
   .fail-mo-text {
     z-index: 7;
     top: 0;
+    left: 0;
+    right: 0;
     width: 91%;
+    margin: 0 auto;
   }
 
   /* 네온 버튼 (432×201 → 88% 축소)
@@ -1979,8 +1994,10 @@ img {
   #screen-step3-fail .fail-mo-back {
     z-index: 4;
     top: 43%;
-    left: -1%;
+    left: 0;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
     height: 31%;
   }
 
@@ -1988,8 +2005,10 @@ img {
   #screen-step3-fail .fail-mo-text {
     z-index: 6;
     top: 0;
-    left: 3%;
+    left: 0;
+    right: 0;
     width: 83%;
+    margin: 0 auto;
   }
 
   /* 네온 버튼 */
