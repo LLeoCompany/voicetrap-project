@@ -2148,8 +2148,8 @@ img {
   #screen-step3-fail .fail-emoji-bar {
     z-index: 3;
     top: 70.6%; /* TODO: 조정 필요 */
-    left: 18%;
-    width: 64.84%; /* 1245/1920 */
+    left: 17.5%;
+    width: 63.84%; /* 1245/1920 */
   }
 
   /* 돌 */
