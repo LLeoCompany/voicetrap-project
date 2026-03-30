@@ -725,8 +725,8 @@ img {
 /* PC 로고 바 */
 .intro1-logo-bar-pc {
   bottom: auto;
-  top: 89%;
-  height: 60px;
+  top: 87%;
+  height: 6%;
 }
 
 /* 모바일 로고 바 — PC에서 숨김 */
@@ -1635,8 +1635,12 @@ img {
 
 /* ── 실패 배경 페이드아웃 ── */
 @keyframes fail-bg-fadeout {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* ── 낙하 키프레임 ── */
