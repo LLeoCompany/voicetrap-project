@@ -338,17 +338,15 @@
     bgmAudio.currentTime = 0;
     bgmAudio.muted = false;
     bgmAudio.play().catch(function () {
-      bgmAudio.muted = true;
-      bgmAudio.play().then(function () {
+      /* iOS: 첫 터치/클릭 시 재시도 */
+      var retry = function (e) {
+        document.removeEventListener("click",      retry);
+        document.removeEventListener("touchstart", retry);
         bgmAudio.muted = false;
-      }).catch(function () {
-        var retry = function () {
-          bgmAudio.muted = false;
-          bgmAudio.play().catch(function () {});
-        };
-        document.addEventListener("click",      retry, { once: true });
-        document.addEventListener("touchstart", retry, { once: true });
-      });
+        bgmAudio.play().catch(function () {});
+      };
+      document.addEventListener("click",      retry, { once: true });
+      document.addEventListener("touchstart", retry, { once: true, passive: true });
     });
   }
 
@@ -477,6 +475,11 @@
     var btnIntro1 = document.getElementById("btn-intro1-next");
     if (btnIntro1)
       btnIntro1.addEventListener("click", function () {
+        /* iOS: 첫 터치가 여기서 발생하므로 BGM 강제 시작 */
+        if (bgmAudio.paused) {
+          bgmAudio.muted = false;
+          bgmAudio.play().catch(function () {});
+        }
         goToScreen("screen-intro2");
       });
 
