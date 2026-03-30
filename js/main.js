@@ -334,12 +334,14 @@
   var bgmAudio = new Audio("image/intro1/audio/theblackwaltz.mp3");
   bgmAudio.loop = true;
 
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
   function playBgmAudio() {
     bgmAudio.currentTime = 0;
     bgmAudio.muted = false;
-    bgmAudio.play().catch(function () {
-      /* iOS: 첫 터치/클릭 시 재시도 */
-      var retry = function (e) {
+    if (isMobile) {
+      /* 모바일: 첫 터치 시 재생 */
+      var retry = function () {
         document.removeEventListener("click",      retry);
         document.removeEventListener("touchstart", retry);
         bgmAudio.muted = false;
@@ -347,7 +349,10 @@
       };
       document.addEventListener("click",      retry, { once: true });
       document.addEventListener("touchstart", retry, { once: true, passive: true });
-    });
+    } else {
+      /* 데스크탑: 즉시 자동재생 */
+      bgmAudio.play().catch(function () {});
+    }
   }
 
   playBgmAudio();
