@@ -360,12 +360,12 @@ img {
 
 .ticker-text {
   font-family: "BMYeonsung", sans-serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   color: #e02020;
   white-space: nowrap;
   font-stretch: 100%;
-  letter-spacing: 10px;
+  letter-spacing: 0.01em;
   text-shadow: 0 0 8px rgba(200, 0, 0, 0.5);
 }
 
@@ -700,6 +700,49 @@ img {
     top: 54%; /* TODO: 조정 필요 */
     left: 12%; /* TODO: 조정 필요 */
     width: 77%;
+  }
+}
+
+/* 로고 바 — #intro1-glitch(inset:0) 기준 절대배치, 비율 무관 고정 */
+.intro1-logo-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro1-logo-bar img {
+  width: auto;
+  height: 100%;
+  display: block;
+}
+
+/* PC 로고 바 */
+.intro1-logo-bar-pc {
+  bottom: auto;
+  top: 89%;
+  height: 60px;
+}
+
+/* 모바일 로고 바 — PC에서 숨김 */
+.intro1-logo-bar-mo {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .intro1-logo-bar-pc {
+    display: none;
+  }
+  .intro1-logo-bar-mo {
+    display: flex;
+    bottom: auto;
+    top: 86%;
+    height: 34px;
   }
 }
 
