@@ -675,7 +675,7 @@
     var btnShare = document.getElementById("btn-result-share");
     if (btnShare)
       btnShare.addEventListener("click", function () {
-        var url = window.location.href;
+        var url = "https://보이스피싱크홀.com";
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard
             .writeText(url)
@@ -697,7 +697,7 @@
     var btnSharePc = document.getElementById("btn-result-share-pc");
     if (btnSharePc)
       btnSharePc.addEventListener("click", function () {
-        var url = window.location.href;
+        var url = "https://보이스피싱크홀.com";
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard
             .writeText(url)
