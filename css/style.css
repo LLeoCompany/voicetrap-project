@@ -1227,7 +1227,7 @@ img {
   /* 성공 텍스트 오버레이 */
   .suc-text {
     z-index: 8;
-    top: -6%;
+    top: -5.9%;
     width: 100%;
   }
 
