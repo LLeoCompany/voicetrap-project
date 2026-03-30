@@ -1116,7 +1116,8 @@
             aria-hidden="true"
             draggable="false"
           />
-          <!-- ── 반짝이 — 모바일 전용 -->
+          <!-- ── 반짝이 — 모바일 전용 (주석) -->
+          <!--
           <img
             class="result-layer result-sparkle result-sparkle-mo"
             src="image/result/mobile-item/경품페이지 반짝이(모바일).png"
@@ -1124,13 +1125,10 @@
             aria-hidden="true"
             draggable="false"
           />
+          -->
 
-          <!-- ── 피해예방 10계명 ── -->
+          <!-- ── 피해예방 10계명 — PC만 사용 ── -->
           <picture>
-            <source
-              media="(max-width: 768px)"
-              srcset="image/result/mobile-item/피해예방10계명.png"
-            />
             <img
               class="result-layer result-commandments"
               src="image/result/pc-item/10계명.png"
@@ -1157,54 +1155,15 @@
             draggable="false"
           />
 
-          <!-- ── 모바일 전용: 유튜브+경품 박스 배경 (387×824) ── -->
-          <img
-            class="result-layer result-yt-prize-box"
-            src="image/result/mobile-item/수고 유튜브경품 박스.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-
-          <!-- ── 모바일 전용: 비디오 썸네일 (190×396) ── -->
-          <img
-            class="result-layer result-mo-thumbnail"
-            src="image/result/mobile-item/모바일썸네일.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-
-   
-          <!-- ── 모바일 전용: 경품 1~4 ── -->
-          <img
-            class="result-layer result-prize-mo result-prize-mo-1"
-            src="image/result/mobile-item/경품 /1.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-          <img
-            class="result-layer result-prize-mo result-prize-mo-2"
-            src="image/result/mobile-item/경품 /2.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-          <img
-            class="result-layer result-prize-mo result-prize-mo-3"
-            src="image/result/mobile-item/경품 /3.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
-          <img
-            class="result-layer result-prize-mo result-prize-mo-4"
-            src="image/result/mobile-item/경품 /4.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
+          <!-- ── 모바일 전용 아이템 주석 처리 (mo.png로 대체) ── -->
+          <!--
+          <img class="result-layer result-yt-prize-box" src="image/result/mobile-item/수고 유튜브경품 박스.png" alt="" aria-hidden="true" draggable="false" />
+          <img class="result-layer result-mo-thumbnail" src="image/result/mobile-item/모바일썸네일.png" alt="" aria-hidden="true" draggable="false" />
+          <img class="result-layer result-prize-mo result-prize-mo-1" src="image/result/mobile-item/경품 /1.png" alt="" aria-hidden="true" draggable="false" />
+          <img class="result-layer result-prize-mo result-prize-mo-2" src="image/result/mobile-item/경품 /2.png" alt="" aria-hidden="true" draggable="false" />
+          <img class="result-layer result-prize-mo result-prize-mo-3" src="image/result/mobile-item/경품 /3.png" alt="" aria-hidden="true" draggable="false" />
+          <img class="result-layer result-prize-mo result-prize-mo-4" src="image/result/mobile-item/경품 /4.png" alt="" aria-hidden="true" draggable="false" />
+          -->
 
           <!-- ── PC 전용: 경품 장식 / 경품 1~4 ── -->
           <img
@@ -1243,14 +1202,10 @@
             draggable="false"
           />
 
-          <!-- 유튜브 재생 아이콘 — "보이스피싱 예방 홍보영상" 제목 왼쪽 -->
-          <img
-            class="result-layer result-yt-title-icon"
-            src="image/result/mobile-item/유큐브버튼.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-          />
+          <!-- 유튜브 재생 아이콘 주석 처리 -->
+          <!--
+          <img class="result-layer result-yt-title-icon" src="image/result/mobile-item/유큐브버튼.png" alt="" aria-hidden="true" draggable="false" />
+          -->
 
           <!-- 재도전 버튼 -->
           <button
@@ -1299,32 +1254,22 @@
             />
           </button>
 
-          <!-- ── 모바일 전용: 등록·공유 버튼 그룹 (combined 이미지 + 투명 버튼 묶음) ── -->
-          <div class="result-layer result-btn-group result-btn-group-mo">
-            <img
-              class="result-btn-img"
-              src="image/result/mobile-item/등록:공유버튼.png"
-              alt=""
-              aria-hidden="true"
-              draggable="false"
-            />
-            <!-- 보이스피싱크홀 공유하기 -->
-            <button
-              class="btn-pos"
-              id="btn-result-share"
-              aria-label="보이스피싱크홀 공유하기"
-            >
-              <span class="sr-only">보이스피싱크홀 공유하기</span>
-            </button>
-            <!-- 지금 등록하고 자동 응모하기 -->
-            <button
-              class="btn-pos"
-              id="btn-result-register"
-              aria-label="지금 등록하고 자동 응모하기"
-            >
-              <span class="sr-only">지금 등록하고 자동 응모하기</span>
-            </button>
-          </div>
+          <!-- 보이스피싱크홀 공유하기 -->
+          <button
+            class="btn-pos"
+            id="btn-result-share"
+            aria-label="보이스피싱크홀 공유하기"
+          >
+            <span class="sr-only">보이스피싱크홀 공유하기</span>
+          </button>
+          <!-- 지금 등록하고 자동 응모하기 -->
+          <button
+            class="btn-pos"
+            id="btn-result-register"
+            aria-label="지금 등록하고 자동 응모하기"
+          >
+            <span class="sr-only">지금 등록하고 자동 응모하기</span>
+          </button>
 
           <!-- ── PC 전용: 경품 응모하기 버튼 (1133×380) ── -->
           <div class="result-layer result-btn-group result-register-group-pc">

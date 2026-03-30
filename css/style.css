@@ -213,6 +213,7 @@ img {
   background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 20;
   -webkit-tap-highlight-color: transparent;
   /* 위치/크기는 각 화면 섹션에서 지정 */
 }
@@ -2264,12 +2265,12 @@ img {
     background-image: none;
   }
 
-  /* 텍스트 이미지(page-img)를 모든 레이어 위로 */
+  /* mo.png 화면 꽉 채움 */
   #screen-result .page-img {
     position: relative;
-    z-index: 10;
-    width: 80%;
-    left: 8%;
+    z-index: 1;
+    width: 100%;
+    left: 0;
   }
 
   /* 피해예방 10계명 (487×554) */
@@ -2340,6 +2341,9 @@ img {
     width: 60%;
   } /* TODO: 조정 필요 */
 
+  #screen-result .btn-result-video img {
+    display: none;
+  }
   /* 재도전 버튼 */
   #screen-result #btn-retry {
     /* TODO: 위치 설정 필요 */
@@ -2347,28 +2351,27 @@ img {
 
   /* 영상 재생 버튼 3개 — 썸네일 행별 배치 */
   #screen-result #btn-video-1 {
-    top: 42.2%; /* TODO: 조정 필요 */
+    top: 47%;
     left: 11%;
-    width: 48.7%;
-    height: 5.5%;
+    width: 38%;
+    height: 4.5%;
   }
   #screen-result #btn-video-2 {
-    top: 48.1%; /* TODO: 조정 필요 */
+    top: 52%;
     left: 11%;
-    width: 48.7%;
-    height: 5.5%;
+    width: 38%;
+    height: 4.5%;
   }
   #screen-result #btn-video-3 {
-    top: 53.6%; /* TODO: 조정 필요 */
+    top: 57.6%;
     left: 11%;
-    width: 48.7%;
-    height: 5.5%;
+    width: 38%;
+    height: 4.5%;
   }
 
-  /* ── 모바일 전용: 등록·공유 버튼 그룹 ──
-     top 하나만 바꾸면 이미지+버튼 전체가 함께 이동 */
+  /* ── 모바일 전용: 등록·공유 버튼 그룹 ── */
   .result-btn-group-mo {
-    top: 81.1%; /* ← 여기만 조정하면 됨 */
+    top: 81.1%;
     left: 2%;
     width: 100%;
   }
@@ -2383,21 +2386,20 @@ img {
     -webkit-user-drag: none;
   }
 
-  /* 공유하기 버튼 — 그룹 내 상단 (422×254 기준 상단 버튼) */
+  /* 공유하기 버튼 */
   #screen-result #btn-result-share {
-    top: 61%;
-
+    top: 92.5%;
     left: 22%;
-    width: 57%;
-    height: 14%;
+    width: 59%;
+    height: 3%;
   }
 
-  /* 응모하기 버튼 — 그룹 내 하단 */
+  /* 응모하기 버튼 */
   #screen-result #btn-result-register {
-    top: 29%;
-    left: 22%;
-    width: 57%;
-    height: 14%;
+    top: 87%;
+    left: 21%;
+    width: 59%;
+    height: 3%;
   }
 }
 
