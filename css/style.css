@@ -1362,7 +1362,7 @@ img {
   .fail-mo-back {
     z-index: 4;
     top: 48%;
-    left: 0;
+    left: 1%;
     right: 0;
     width: 100%;
     margin: 0 auto;
@@ -1373,7 +1373,7 @@ img {
   #screen-step1-fail .fail-mo-emoji-bar1 {
     z-index: 6;
     top: 49.2%;
-    left: 0;
+    left: -4%;
     right: 0;
     width: 68%;
     margin: 0 auto;
@@ -1381,7 +1381,7 @@ img {
   #screen-step1-fail .fail-mo-emoji-bar2 {
     z-index: 6;
     top: 61.8%;
-    left: 0;
+    left: -4%;
     right: 0;
     width: 68%;
     margin: 0 auto;
@@ -1389,16 +1389,16 @@ img {
 
   #screen-step2-fail .fail-mo-emoji-bar1 {
     z-index: 6;
-    top: 49.5%;
-    left: 0;
+    top: 49.7%;
+    left: -4%;
     right: 0;
     width: 68%;
     margin: 0 auto;
   }
   #screen-step2-fail .fail-mo-emoji-bar2 {
     z-index: 6;
-    top: 61.3%;
-    left: 0;
+    top: 61.5%;
+    left: -4%;
     right: 0;
     width: 68%;
     margin: 0 auto;
@@ -1418,9 +1418,11 @@ img {
      width: 343px, height: 159px → top: (844-159-30)/844 ≈ 78% */
   .fail-mo-button {
     z-index: 3;
-    top: 72.3%;
-    left: 1%;
-    width: 99%;
+    top: 72%;
+    left: 4%;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
   }
 
   /* 투명 클릭 버튼 — fail-mo-button 커버 (step1·2 공통) */
@@ -1783,7 +1785,7 @@ img {
     z-index: 5;
     top: 78%;
     left: 6%;
-    width: 88%;
+    width: 89%;
   }
 
   /* 투명 클릭 버튼 */
@@ -1840,8 +1842,8 @@ img {
   #screen-step3-suc .suc-mo-button {
     z-index: 1;
     top: 77.2%;
-    left: 4.5%;
-    width: 120%;
+    left: 10%;
+    width: 88%;
   }
 }
 
@@ -1993,12 +1995,12 @@ img {
   /* 명판 배경 */
   #screen-step3-fail .fail-mo-back {
     z-index: 4;
-    top: 43%;
+    top: 47%;
     left: 0;
     right: 0;
     width: 100%;
     margin: 0 auto;
-    height: 31%;
+    height: 34%;
   }
 
   /* 텍스트 오버레이 */
@@ -2007,30 +2009,36 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    width: 83%;
+    width: 90%;
     margin: 0 auto;
   }
 
   /* 네온 버튼 */
   #screen-step3-fail .fail-mo-button {
     z-index: 5;
-    top: 69%;
-    left: -0.1%;
-    width: 100%;
+    top: 75%;
+    left: 9%;
+    right: 0;
+    width: 93%;
+    margin: 0 auto;
   }
 
   /* 명판 위 하얀바+이모지 */
   #screen-step3-fail .fail-mo-emoji-bar1 {
     z-index: 6;
-    top: 44.3%; /* TODO: 조정 필요 */
-    left: 11.8%;
-    width: 68%;
+    top: 47.6%;
+    left: 3%;
+    right: 0;
+    width: 85%;
+    margin: 0 auto;
   }
   #screen-step3-fail .fail-mo-emoji-bar2 {
     z-index: 6;
-    top: 56%; /* TODO: 조정 필요 */
-    left: 12.6%;
-    width: 68%;
+    top: 60.3%;
+    left: 5%;
+    right: 0;
+    width: 85%;
+    margin: 0 auto;
   }
 
   /* 투명 클릭 버튼 */
