@@ -2254,10 +2254,14 @@ img {
 
 /* ─── MOBILE (캔버스 390×1630) ─── */
 @media (max-width: 768px) {
-  /* 배경 이미지 — 캔버스 전체 커버 (텍스트 PNG 투명 영역 대비) */
+  /* mo.png 외 모든 오버레이 숨김 */
+  #screen-result .result-layer {
+    display: none;
+  }
+
+  /* 배경 이미지 제거 — mo.png로 대체 */
   #screen-result .page-canvas {
-    background-image: url("../image/result/mobile-item/마지막%20수고페이지%20배경.jpg");
-    background-size: 100% 100%;
+    background-image: none;
   }
 
   /* 텍스트 이미지(page-img)를 모든 레이어 위로 */
