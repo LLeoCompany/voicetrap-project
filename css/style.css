@@ -962,6 +962,17 @@ img {
   #screen-step1-suc .suc-mo-bg {
     z-index: 1;
   }
+  /* m-before: 사람 낙하 전 보이는 배경, 낙하 완료 후 페이드아웃 */
+  #screen-step1-suc .suc-mo-before {
+    z-index: 1;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+  }
+  #screen-step1-suc.active .suc-mo-before {
+    animation: suc-before-fadeout 0.4s ease forwards;
+    animation-delay: 2.65s;
+  }
   #screen-step1-suc .suc-mo-char {
     z-index: 2;
     transform-origin: center bottom;
@@ -1231,6 +1242,12 @@ img {
   #screen-step2-suc #btn-step2-suc-next:active {
     opacity: 0.7;
   }
+}
+
+/* ── before 페이드아웃 ── */
+@keyframes suc-before-fadeout {
+  0%   { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
 }
 
 /* ── 성공 키프레임 ── */
@@ -1800,7 +1817,7 @@ img {
   /* 하얀 배경 박스 */
   #screen-step3-suc .suc-mo-whitebg {
     z-index: 5;
-    top: 54.9%;
+    top: 57.9%;
     left: 2%;
     right: 0;
     width: 89%;
@@ -1831,10 +1848,10 @@ img {
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-mo-text {
     z-index: 8;
-    top: 9.5%;
+    top: 2.5%;
     left: 0;
     right: 0;
-    width: 80.5%;
+    width: 93.5%;
     margin: 0 auto;
   }
 

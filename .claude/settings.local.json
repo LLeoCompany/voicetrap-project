@@ -44,7 +44,9 @@
       "Bash(find /Users/marko/Documents/GitHub/voicetrap-project/image/result -type f ! -name \".DS_Store\" -exec ls -lh {})",
       "Bash(for f:*)",
       "Bash(do sips:*)",
-      "Bash(open \"$f\")"
+      "Bash(open \"$f\")",
+      "Bash(vercel --version)",
+      "Bash(npm i:*)"
     ]
   }
 }
