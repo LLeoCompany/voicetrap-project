@@ -985,26 +985,34 @@ img {
     z-index: 5;
     top: 55.9%;
     left: 3%;
+    right: 0;
     width: 94%;
+    margin: 0 auto;
     height: 30%;
   }
   #screen-step1-suc .suc-mo-img1 {
     z-index: 6;
     top: 53.2%;
-    left: -5%;
+    left: -11%;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
   }
   #screen-step1-suc .suc-mo-img2 {
     z-index: 7;
     top: 66%;
-    left: -5%;
+    left: -11%;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
   }
   #screen-step1-suc .suc-mo-text {
     z-index: 8;
     top: 3%;
+    left: 0;
+    right: 0;
     width: 93.5%;
-    left: 3.6%;
+    margin: 0 auto;
   }
   #screen-step1-suc .suc-mo-button {
     z-index: 1;
@@ -1062,26 +1070,34 @@ img {
     z-index: 5;
     top: 55.9%;
     left: 3%;
+    right: 0;
     width: 94%;
+    margin: 0 auto;
     height: 30%;
   }
   #screen-step2-suc .suc-mo-img1 {
     z-index: 6;
     top: 53.2%;
-    left: -5%;
+    left: -10%;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
   }
   #screen-step2-suc .suc-mo-img2 {
     z-index: 7;
     top: 64.1%;
-    left: -5%;
+    left: -10%;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
   }
   #screen-step2-suc .suc-mo-text {
     z-index: 8;
     top: 3%;
+    left: 0;
+    right: 0;
     width: 93.5%;
-    left: 3.6%;
+    margin: 0 auto;
   }
   #screen-step2-suc .suc-mo-button {
     z-index: 1;
@@ -1768,8 +1784,10 @@ img {
   #screen-step3-suc .suc-mo-whitebg {
     z-index: 5;
     top: 54.9%;
-    left: 7%;
-    width: 86%;
+    left: 2%;
+    right: 0;
+    width: 89%;
+    margin: 0 auto;
     height: 29%;
   }
 
@@ -1777,24 +1795,30 @@ img {
   #screen-step3-suc .suc-mo-img1 {
     z-index: 6;
     top: 51.5%;
-    left: -2%;
+    left: -7%;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
   }
 
   /* 글자 배경 2.png */
   #screen-step3-suc .suc-mo-img2 {
     z-index: 7;
     top: 62.5%;
-    left: -2%;
+    left: -7%;
+    right: 0;
     width: 100%;
+    margin: 0 auto;
   }
 
   /* 텍스트 오버레이 */
   #screen-step3-suc .suc-mo-text {
     z-index: 8;
     top: 9.5%;
+    left: 0;
+    right: 0;
     width: 80.5%;
-    left: 10.6%;
+    margin: 0 auto;
   }
 
   /* 네온 버튼 */
