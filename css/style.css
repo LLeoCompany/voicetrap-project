@@ -689,6 +689,7 @@ img {
   .glitch-mo {
     display: block;
     width: 130%;
+    top: 62%;
   }
 
   /* 모바일 빨간점 */
