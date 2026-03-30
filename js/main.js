@@ -641,7 +641,8 @@
         var SHEET_URL = "https://script.google.com/macros/s/AKfycbx2aBU6AiD77Fm9y4VqbMXF9V9Dpfpd7xq7v-qOpHsWnfzsi5Qg0m7gBzVnTaUp-1bvng/exec";
         fetch(SHEET_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain" },
           body: JSON.stringify({ name: name, phone: phone, privacy: chk.checked })
         }).catch(function() {});
         closePopup();
