@@ -307,18 +307,18 @@
 
     btn.addEventListener("click", function () {
       var ctx = getAudioContext();
-      if (ctx.state === 'suspended') {
-        ctx.resume();
-      }
-      if (audio.paused) {
-        audio.play().catch(function () {});
-        btn.classList.add("playing");
-        btn.setAttribute("aria-pressed", "true");
-      } else {
-        audio.pause();
-        btn.classList.remove("playing");
-        btn.setAttribute("aria-pressed", "false");
-      }
+      var resume = ctx.state === 'suspended' ? ctx.resume() : Promise.resolve();
+      resume.then(function () {
+        if (audio.paused) {
+          audio.play().catch(function () {});
+          btn.classList.add("playing");
+          btn.setAttribute("aria-pressed", "true");
+        } else {
+          audio.pause();
+          btn.classList.remove("playing");
+          btn.setAttribute("aria-pressed", "false");
+        }
+      });
     });
 
     audio.addEventListener("ended", function () {
