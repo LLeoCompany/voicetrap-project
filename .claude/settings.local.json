@@ -48,7 +48,9 @@
       "Bash(vercel --version)",
       "Bash(npm i:*)",
       "Bash(vercel login:*)",
-      "Bash(vercel:*)"
+      "Bash(vercel:*)",
+      "Read(//Users/marko/Documents/GitHub/**)",
+      "Bash(zip -r voicetrap-project.zip voicetrap-project --exclude \"voicetrap-project/.git/*\" --exclude \"voicetrap-project/node_modules/*\")"
     ]
   }
 }
