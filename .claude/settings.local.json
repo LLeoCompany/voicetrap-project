@@ -50,7 +50,8 @@
       "Bash(vercel login:*)",
       "Bash(vercel:*)",
       "Read(//Users/marko/Documents/GitHub/**)",
-      "Bash(zip -r voicetrap-project.zip voicetrap-project --exclude \"voicetrap-project/.git/*\" --exclude \"voicetrap-project/node_modules/*\")"
+      "Bash(zip -r voicetrap-project.zip voicetrap-project --exclude \"voicetrap-project/.git/*\" --exclude \"voicetrap-project/node_modules/*\")",
+      "Skill(update-config)"
     ]
   }
 }

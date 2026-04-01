@@ -647,26 +647,11 @@
           return;
         }
         var SHEET_URL = "https://script.google.com/macros/s/AKfycbx2aBU6AiD77Fm9y4VqbMXF9V9Dpfpd7xq7v-qOpHsWnfzsi5Qg0m7gBzVnTaUp-1bvng/exec";
-        var iframe = document.getElementById('gs-iframe') || (function() {
-          var f = document.createElement('iframe');
-          f.id = 'gs-iframe';
-          f.name = 'gs-iframe';
-          f.style.display = 'none';
-          document.body.appendChild(f);
-          return f;
-        })();
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = SHEET_URL;
-        form.target = 'gs-iframe';
-        [['name', name], ['phone', phone], ['privacy', chk.checked ? '동의' : '미동의']].forEach(function(pair) {
-          var inp = document.createElement('input');
-          inp.type = 'hidden'; inp.name = pair[0]; inp.value = pair[1];
-          form.appendChild(inp);
+        fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams({ name: name, phone: phone, privacy: chk.checked ? '동의' : '미동의' })
         });
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
         closePopup();
         showToast("응모가 완료되었습니다!", 3000);
       });
