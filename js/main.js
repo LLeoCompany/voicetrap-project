@@ -646,10 +646,14 @@
           showToast("개인정보 수집·이용에 동의해 주세요.");
           return;
         }
-        var SHEET_URL = "https://script.google.com/macros/s/AKfycbx2aBU6AiD77Fm9y4VqbMXF9V9Dpfpd7xq7v-qOpHsWnfzsi5Qg0m7gBzVnTaUp-1bvng/exec";
-        var params = new URLSearchParams({ name: name, phone: phone, privacy: chk.checked ? '동의' : '미동의' });
+        var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdadbaHBVcIb3OeDfj_WGGLe5MbSj3R8FDb_Ox0KDOGC8sx6A/formResponse";
+        var params = new URLSearchParams({
+          'entry.1949689735': name,
+          'entry.767660958': phone,
+          'entry.1624545522': chk.checked ? '동의' : '미동의'
+        });
         window._submitImg = new Image();
-        window._submitImg.src = SHEET_URL + '?' + params.toString();
+        window._submitImg.src = FORM_URL + '?' + params.toString();
         closePopup();
         showToast("응모가 완료되었습니다!", 3000);
       });
