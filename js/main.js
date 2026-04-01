@@ -647,9 +647,8 @@
           return;
         }
         var SHEET_URL = "https://script.google.com/macros/s/AKfycbx2aBU6AiD77Fm9y4VqbMXF9V9Dpfpd7xq7v-qOpHsWnfzsi5Qg0m7gBzVnTaUp-1bvng/exec";
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', SHEET_URL, true);
-        xhr.send(new URLSearchParams({ name: name, phone: phone, privacy: chk.checked ? '동의' : '미동의' }));
+        var params = new URLSearchParams({ name: name, phone: phone, privacy: chk.checked ? '동의' : '미동의' });
+        new Image().src = SHEET_URL + '?' + params.toString();
         closePopup();
         showToast("응모가 완료되었습니다!", 3000);
       });
