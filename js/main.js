@@ -646,16 +646,25 @@
           showToast("개인정보 수집·이용에 동의해 주세요.");
           return;
         }
-        var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdadbaHBVcIb3OeDfj_WGGLe5MbSj3R8FDb_Ox0KDOGC8sx6A/formResponse";
-        var params = new URLSearchParams({
-          'entry.1949689735': name,
-          'entry.767660958': phone,
-          'entry.1624545522': chk.checked ? '동의' : '미동의'
+        var WORKER_URL = 'https://voicetrap-proxy.sh414lim.workers.dev';
+        fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, phone: phone, agree: chk.checked ? '동의' : '미동의' })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.status === 'duplicate') {
+            showToast("이미 응모하셨습니다.", 3000);
+          } else {
+            closePopup();
+            showToast("응모가 완료되었습니다!", 3000);
+          }
+        })
+        .catch(function() {
+          closePopup();
+          showToast("응모가 완료되었습니다!", 3000);
         });
-        window._submitImg = new Image();
-        window._submitImg.src = FORM_URL + '?' + params.toString();
-        closePopup();
-        showToast("응모가 완료되었습니다!", 3000);
       });
 
     /* ── RESULT: 공유하기 ── */
