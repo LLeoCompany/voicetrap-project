@@ -646,6 +646,9 @@
           showToast("개인정보 수집·이용에 동의해 주세요.");
           return;
         }
+        var submitBtn = formReg.querySelector('.popup-submit');
+        submitBtn.disabled = true;
+        submitBtn.textContent = '응모 중...';
         var WORKER_URL = 'https://voicetrap-proxy.sh414lim.workers.dev';
         fetch(WORKER_URL, {
           method: 'POST',
@@ -654,6 +657,8 @@
         })
         .then(function(res) { return res.json(); })
         .then(function(data) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '응모 완료';
           if (data.status === 'duplicate') {
             showToast("이미 응모하셨습니다.", 3000);
           } else {
@@ -662,6 +667,8 @@
           }
         })
         .catch(function() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '응모 완료';
           closePopup();
           showToast("응모가 완료되었습니다!", 3000);
         });
