@@ -672,17 +672,11 @@
           submitBtn.disabled = false;
           submitBtn.textContent = '응모 완료';
           closePopup();
-          if (data.status === 'duplicate') {
-            alert("이미 응모하셨습니다.");
-          } else {
-            alert("응모가 완료되었습니다!");
-          }
         })
         .catch(function() {
           submitBtn.disabled = false;
           submitBtn.textContent = '응모 완료';
           closePopup();
-          alert("응모가 완료되었습니다!");
         });
       });
 
