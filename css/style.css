@@ -2671,6 +2671,22 @@ img {
   background: #b01010;
 }
 
+.popup-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.popup-result-msg {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  line-height: 1.5;
+}
+
 .popup-privacy {
   display: flex;
   align-items: center;

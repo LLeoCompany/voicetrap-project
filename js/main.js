@@ -609,12 +609,24 @@
     var btnClose = document.getElementById("btn-popup-close");
     var formReg = document.getElementById("form-register");
 
+    var popupResult = document.getElementById("popup-result");
+    var popupResultMsg = document.getElementById("popup-result-msg");
+    var btnPopupResultClose = document.getElementById("btn-popup-result-close");
+
     function openPopup() {
       if (popup) popup.classList.add("active");
+      if (formReg) formReg.hidden = false;
+      if (popupResult) popupResult.hidden = true;
     }
     function closePopup() {
       if (popup) popup.classList.remove("active");
     }
+    function showPopupResult(msg) {
+      if (formReg) formReg.hidden = true;
+      if (popupResultMsg) popupResultMsg.textContent = msg;
+      if (popupResult) popupResult.hidden = false;
+    }
+    if (btnPopupResultClose) btnPopupResultClose.addEventListener("click", closePopup);
 
     if (btnReg) btnReg.addEventListener("click", openPopup);
     if (btnClose) btnClose.addEventListener("click", closePopup);
@@ -659,18 +671,16 @@
         .then(function(data) {
           submitBtn.disabled = false;
           submitBtn.textContent = '응모 완료';
-          closePopup();
           if (data.status === 'duplicate') {
-            showToast("이미 응모하셨습니다.", 3000);
+            showPopupResult("이미 응모하셨습니다.");
           } else {
-            showToast("응모가 완료되었습니다!", 3000);
+            showPopupResult("응모가 완료되었습니다!");
           }
         })
         .catch(function() {
           submitBtn.disabled = false;
           submitBtn.textContent = '응모 완료';
-          closePopup();
-          showToast("응모가 완료되었습니다!", 3000);
+          showPopupResult("응모가 완료되었습니다!");
         });
       });
 
