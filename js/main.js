@@ -659,10 +659,10 @@
         .then(function(data) {
           submitBtn.disabled = false;
           submitBtn.textContent = '응모 완료';
+          closePopup();
           if (data.status === 'duplicate') {
             showToast("이미 응모하셨습니다.", 3000);
           } else {
-            closePopup();
             showToast("응모가 완료되었습니다!", 3000);
           }
         })
